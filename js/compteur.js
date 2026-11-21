@@ -1,7 +1,7 @@
 // Page « PokéChroma Counter » : version actuelle et agrandissement des captures
 (function () {
   // dernière version publiée (affichée sur le bouton de téléchargement)
-  fetch("https://api.github.com/repos/Starduust9/compteur-shiny/releases/latest")
+  fetch("https://api.github.com/repos/Starduust9/PokeChroma-Counter/releases/latest")
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => {
       const el = document.getElementById("cpt-version");
