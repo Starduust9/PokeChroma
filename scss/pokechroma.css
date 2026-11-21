@@ -275,3 +275,11 @@ footer.pc-footer { margin-top: 0 !important; }
 #main-page .pc-ico { height: 20px; width: auto; }
 #main-page .pc-legende { font-size: 14px !important; color: var(--pc-doux); display: flex;
   align-items: center; gap: 6px; margin-top: 6px; }
+
+/* choix de la langue (drapeau) */
+.pc-nav .pc-btn-langue { background: none; border: 0; display: flex; align-items: center; gap: 4px; }
+.pc-nav .pc-btn-langue img, .pc-nav .pc-menu-langue img { width: 26px; height: 18px; border-radius: 3px;
+  object-fit: cover; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25); }
+.pc-nav .pc-menu-langue { min-width: 160px; }
+.pc-nav .pc-menu-langue .dropdown-item { display: flex; align-items: center; gap: 10px; }
+.pc-nav .pc-menu-langue .dropdown-item.active { background: rgba(255, 216, 74, 0.16); color: var(--pc-or); }

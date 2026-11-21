@@ -26,8 +26,13 @@ const LoadContentPage = async () => {
   const path = window.location.pathname;
   // Récupération de l'URL actuelle
   const actualRoute = getRouteByUrl(path);
-  // Récupération du contenu HTML de la route
-  const html = await fetch(actualRoute.pathHtml).then((data) => data.text());
+  // Récupération du contenu HTML de la route (version anglaise si elle existe)
+  let html = null;
+  if (window.PC_LANGUE === "en") {
+    const r = await fetch(actualRoute.pathHtml.replace("/pages/", "/pages/en/"));
+    if (r.ok) html = await r.text();
+  }
+  if (html === null) html = await fetch(actualRoute.pathHtml).then((data) => data.text());
   // Ajout du contenu HTML à l'élément avec l'ID "main-page"
   document.getElementById("main-page").innerHTML = html;
 
@@ -43,7 +48,8 @@ const LoadContentPage = async () => {
   }
 
   // Changement du titre de la page
-  document.title = actualRoute.title + " - " + websiteName;
+  document.title = ((window.PC_LANGUE === "en" && actualRoute.titleEn) || actualRoute.title) +
+    " - " + websiteName;
 
   // Page ouverte mise en avant dans le menu
   document.querySelectorAll(".pc-nav .nav-link, .pc-nav .dropdown-item").forEach((lien) => {
@@ -71,5 +77,7 @@ const routeEvent = (event) => {
 window.onpopstate = LoadContentPage;
 // Assignation de la fonction routeEvent à la propriété route de la fenêtre
 window.route = routeEvent;
+// Changement de langue : on recharge le contenu de la page sans recharger le site
+window.pcRechargerPage = LoadContentPage;
 // Chargement du contenu de la page au chargement initial
 LoadContentPage();

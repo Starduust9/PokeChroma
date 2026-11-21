@@ -1,0 +1,51 @@
+<div class="accueil-scene text-center">
+  <div class="hero-scene-content">
+    <div class="container">
+      <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
+    </div>
+
+    <div class="blackO-text text-white response-container" style="max-width: 760px;">
+      <h1>Contact me</h1>
+      <p class="pc-intro">A bug in the counter, a mistake on the site, a question or an idea?
+        Write to me and I'll answer as soon as I can ✨</p>
+      <div class="border-bottom"></div>
+
+      <form id="pc-contact" novalidate>
+        <div class="mb-3">
+          <label for="SujetInput" class="form-label">Subject</label>
+          <select class="form-control" id="SujetInput" name="sujet">
+            <option value="bug">🐞 Report a counter bug</option>
+            <option value="site">✏️ A mistake on the site</option>
+            <option value="question">❓ A question</option>
+            <option value="idee">💡 An idea or suggestion</option>
+            <option value="autre">✉️ Other</option>
+          </select>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6 mb-3">
+            <label for="PseudoInput" class="form-label">Your nickname</label>
+            <input type="text" class="form-control" id="PseudoInput" name="pseudo" placeholder="Nickname" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="MailInput" class="form-label">Your e-mail (so I can reply)</label>
+            <input type="email" class="form-control" id="MailInput" name="email" placeholder="example@gmail.com" required>
+          </div>
+        </div>
+        <div class="mb-3" id="ligne-version" style="display: none;">
+          <label for="VersionInput" class="form-label">Counter version</label>
+          <input type="text" class="form-control" id="VersionInput" name="version" placeholder="e.g. 1.14">
+        </div>
+        <div class="mb-3">
+          <label for="MessageInput" class="form-label">Your message</label>
+          <textarea class="form-control" id="MessageInput" name="message" rows="6" required
+                    placeholder="Explain what happened: what you were doing, what was displayed…"></textarea>
+        </div>
+        <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
+        <div class="mb-1">
+          <button type="submit" class="btn btn-primary" id="btn-envoie-message">Send my message</button>
+        </div>
+        <p id="pc-etat" class="pc-intro" style="min-height: 24px;"></p>
+      </form>
+    </div>
+  </div>
+</div>

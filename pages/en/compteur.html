@@ -1,0 +1,128 @@
+<div class="accueil-scene">
+  <div class="hero-scene-content">
+    <style>
+      .cpt { width: min(1100px, 92%); margin: 24px auto 0; color: #fff; }
+      .cpt-bloc { background: rgba(20, 22, 34, 0.86); border: 3px solid #4C678F;
+                  border-radius: 18px; padding: 28px 32px; margin-bottom: 24px; }
+      .cpt-tete { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .cpt-tete img { width: 110px; height: 110px; flex: none; }
+      .cpt-tete > div { flex: 1; min-width: 240px; }
+      .cpt-tete h1 { font-size: 34px; margin: 0; color: #ffd84a; }
+      .cpt-tete p { font-size: 17px; margin: 6px 0 0; color: #d8d8e6; }
+      .cpt-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+      .cpt-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+                 border-radius: 12px; font-weight: bold; text-decoration: none !important;
+                 font-size: 17px; transition: transform .1s, filter .1s; }
+      .cpt-btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+      .cpt-btn { justify-content: center; flex-wrap: wrap; text-align: center; }
+      #cpt-version { font-weight: normal; font-size: 14px; white-space: nowrap; }
+      @media (max-width: 600px) {
+        .cpt-btn { width: 100%; }
+        .cpt-bloc { padding: 20px 18px; }
+        .cpt-tete h1 { font-size: 28px; }
+      }
+      .cpt-btn-dl { background: #ffd84a; color: #1b1d2b !important; }
+      .cpt-btn-sec { background: #2c3046; color: #fff !important; border: 1px solid #4C678F; }
+      .cpt-petit { font-size: 13px; color: #a9a7b8; margin-top: 8px; }
+      .cpt h2 { font-size: 24px; color: #ffd84a; margin: 0 0 16px; }
+      .cpt-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                    gap: 14px; }
+      .cpt-carte { background: #22263a; border-radius: 14px; padding: 16px 18px; }
+      .cpt-carte h3 { font-size: 17px; margin: 0 0 6px; color: #fff; }
+      .cpt-carte p { font-size: 14px; margin: 0; color: #c9c8d6; }
+      .cpt-captures { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                      gap: 16px; }
+      .cpt-captures figure { margin: 0; }
+      .cpt-captures img { width: 100%; border-radius: 12px; border: 1px solid #3a3f5c;
+                          cursor: zoom-in; }
+      .cpt-captures figcaption { font-size: 14px; color: #c9c8d6; margin-top: 6px;
+                                 text-align: center; }
+      .cpt ol { font-size: 15px; color: #d8d8e6; padding-left: 22px; margin: 0; }
+      .cpt ol li { margin-bottom: 8px; }
+      .cpt-zoom { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none;
+                  align-items: center; justify-content: center; z-index: 2000;
+                  cursor: zoom-out; }
+      .cpt-zoom img { max-width: 94vw; max-height: 92vh; border-radius: 12px; }
+    </style>
+
+    <div class="cpt">
+      <!-- présentation + téléchargement -->
+      <section class="cpt-bloc">
+        <div class="cpt-tete">
+          <img src="/assets/picture/compteur/logo-compteur.png" alt="Logo PokéChroma Counter">
+          <div>
+            <h1>PokéChroma Counter</h1>
+            <p>The free shiny counter that counts your encounters <b>by itself</b> and
+              alerts you when the Pokémon is shiny ✨</p>
+          </div>
+        </div>
+        <div class="cpt-actions">
+          <a class="cpt-btn cpt-btn-dl"
+             href="https://github.com/Starduust9/PokeChroma-Counter/releases/latest/download/Compteur-Shiny.zip">
+            ⬇ Download <span id="cpt-version"></span></a>
+          <a class="cpt-btn cpt-btn-sec" href="https://ko-fi.com/pokechroma" target="_blank"
+             rel="noopener">❤ Support the project on Ko-fi</a>
+        </div>
+        <div class="cpt-petit">For Windows 10 and 11 · free · about 60 MB · updates install
+          by themselves from the app.</div>
+      </section>
+
+      <!-- fonctionnalités -->
+      <section class="cpt-bloc">
+        <h2>What it does</h2>
+        <div class="cpt-grille">
+          <div class="cpt-carte"><h3>🎮 Counts by itself</h3>
+            <p>It reads the picture from your capture card (Elgato, OBS…) and adds +1 for every
+              encounter or reset, without you touching anything.</p></div>
+          <div class="cpt-carte"><h3>✨ Shiny alert</h3>
+            <p>A sound, a message and a Discord notification as soon as a shiny appears, so you
+              never miss one again.</p></div>
+          <div class="cpt-carte"><h3>🌍 3D games</h3>
+            <p>Legends: Z-A, Arceus, Scarlet / Violet: it spots every Pokémon on screen. You can
+              train your own detector and share it with the community.</p></div>
+          <div class="cpt-carte"><h3>🗂 Several hunts</h3>
+            <p>Run several hunts at once, with +1 / −1 keyboard shortcuts and a mini counter
+              that stays on top of the game.</p></div>
+          <div class="cpt-carte"><h3>📺 For streamers</h3>
+            <p>A page to add in OBS to show your counter live.</p></div>
+          <div class="cpt-carte"><h3>🏆 My shinies</h3>
+            <p>Your shiny collection with badges, statistics, import from Pokémon Elements,
+              an online profile and friends (sign in with Discord or Google).</p></div>
+        </div>
+      </section>
+
+      <!-- captures -->
+      <section class="cpt-bloc">
+        <h2>Screenshots</h2>
+        <div class="cpt-captures">
+          <figure><img src="/assets/picture/compteur/chasses.jpg" alt="My hunts">
+            <figcaption>Your current hunts, with the game's sprite</figcaption></figure>
+          <figure><img src="/assets/picture/compteur/mes-chromatiques.jpg"
+                       alt="My shinies">
+            <figcaption>Your collection, badges and profile</figcaption></figure>
+          <figure><img src="/assets/picture/compteur/statistiques.jpg" alt="Statistics">
+            <figcaption>Your statistics by game, generation, Ball…</figcaption></figure>
+          <figure><img src="/assets/picture/compteur/entrainement-3d.jpg"
+                       alt="Train the 3D detector">
+            <figcaption>Teaching the counter to recognise a Pokémon in 3D</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- installation -->
+      <section class="cpt-bloc">
+        <h2>Installation</h2>
+        <ol>
+          <li>Download the <b>Compteur-Shiny.zip</b> file with the button above.</li>
+          <li>Right-click it → <b>Extract All…</b>, then open the folder.</li>
+          <li>Run <b>CompteurShiny.exe</b>. If Windows shows “Windows protected your PC”, click
+            <b>More info</b> then <b>Run anyway</b> (the app isn't signed, which is normal for a
+            fan project).</li>
+          <li>Click <b>New hunt</b>, choose your Pokémon and your game, and off you go ✨</li>
+        </ol>
+      </section>
+    </div>
+
+    <div class="cpt-zoom" id="cpt-zoom"><img alt=""></div>
+  </div>
+</div>

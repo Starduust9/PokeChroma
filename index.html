@@ -23,38 +23,50 @@
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Ouvrir le menu">
+                aria-expanded="false" aria-label="Menu">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-            <li class="nav-item"><a class="nav-link" href="/introshinyhunting">Débuter le shiny hunting</a></li>
+            <li class="nav-item"><a class="nav-link" href="/introshinyhunting" data-i18n="nav.debuter">Débuter le shiny hunting</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="/shinyhuntingjeu" role="button"
-                 data-bs-toggle="dropdown" aria-expanded="false">Les jeux</a>
+                 data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.jeux">Les jeux</a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="/shinyhuntingjeu">Tous les jeux & Shiny Lock</a></li>
+                <li><a class="dropdown-item" href="/shinyhuntingjeu" data-i18n="nav.tous">Tous les jeux & Shiny Lock</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><h6 class="dropdown-header">Par génération</h6></li>
-                <li><a class="dropdown-item" href="/1G">1G · Rouge, Bleu, Jaune</a></li>
-                <li><a class="dropdown-item" href="/2G">2G · Or, Argent, Cristal</a></li>
-                <li><a class="dropdown-item" href="/3G">3G · Rubis, Saphir, Émeraude, RF/VF</a></li>
-                <li><a class="dropdown-item" href="/4G">4G · Diamant, Perle, Platine, HG/SS</a></li>
-                <li><a class="dropdown-item" href="/5G">5G · Noir, Blanc, N2/B2</a></li>
-                <li><a class="dropdown-item" href="/6G">6G · X, Y, ROSA</a></li>
-                <li><a class="dropdown-item" href="/7G">7G · Soleil, Lune, Let's Go</a></li>
-                <li><a class="dropdown-item" href="/8G">8G · Épée, Bouclier, DEPS, Arceus</a></li>
-                <li><a class="dropdown-item" href="/9G">9G · Écarlate, Violet, Z-A</a></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.parGen">Par génération</h6></li>
+                <li><a class="dropdown-item" href="/1G" data-i18n="nav.1G">1G · Rouge, Bleu, Jaune</a></li>
+                <li><a class="dropdown-item" href="/2G" data-i18n="nav.2G">2G · Or, Argent, Cristal</a></li>
+                <li><a class="dropdown-item" href="/3G" data-i18n="nav.3G">3G · Rubis, Saphir, Émeraude, RF/VF</a></li>
+                <li><a class="dropdown-item" href="/4G" data-i18n="nav.4G">4G · Diamant, Perle, Platine, HG/SS</a></li>
+                <li><a class="dropdown-item" href="/5G" data-i18n="nav.5G">5G · Noir, Blanc, N2/B2</a></li>
+                <li><a class="dropdown-item" href="/6G" data-i18n="nav.6G">6G · X, Y, ROSA</a></li>
+                <li><a class="dropdown-item" href="/7G" data-i18n="nav.7G">7G · Soleil, Lune, Let's Go</a></li>
+                <li><a class="dropdown-item" href="/8G" data-i18n="nav.8G">8G · Épée, Bouclier, DEPS, Arceus</a></li>
+                <li><a class="dropdown-item" href="/9G" data-i18n="nav.9G">9G · Écarlate, Violet, Z-A</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><h6 class="dropdown-header">Méthodes</h6></li>
-                <li><a class="dropdown-item" href="/masuda">Masuda</a></li>
-                <li><a class="dropdown-item" href="/charmechroma">Charme Chroma</a></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.methodes">Méthodes</h6></li>
+                <li><a class="dropdown-item" href="/masuda" data-i18n="nav.masuda">Masuda</a></li>
+                <li><a class="dropdown-item" href="/charmechroma" data-i18n="nav.charme">Charme Chroma</a></li>
               </ul>
             </li>
-            <li class="nav-item"><a class="nav-link" href="/siteaide">Sites d'aide</a></li>
-            <li class="nav-item"><a class="nav-link" href="/streameryoutuber">Streamers & YouTubers</a></li>
-            <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-            <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/compteur">⬇ Compteur Shiny</a></li>
+            <li class="nav-item"><a class="nav-link" href="/siteaide" data-i18n="nav.aide">Sites d'aide</a></li>
+            <li class="nav-item"><a class="nav-link" href="/streameryoutuber" data-i18n="nav.streamers">Streamers & YouTubers</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact" data-i18n="nav.contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/compteur" data-i18n="nav.compteur">⬇ Compteur Shiny</a></li>
+            <li class="nav-item dropdown pc-langues">
+              <button class="nav-link dropdown-toggle pc-btn-langue" type="button"
+                      data-bs-toggle="dropdown" aria-expanded="false" aria-label="Langue / Language">
+                <img id="pc-drapeau" src="/assets/picture/drapeau-fr.svg" alt="Français">
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-langue">
+                <li><button class="dropdown-item" type="button" data-langue="fr"
+                            onclick="pcChangerLangue('fr')"><img src="/assets/picture/drapeau-fr.svg" alt=""> Français</button></li>
+                <li><button class="dropdown-item" type="button" data-langue="en"
+                            onclick="pcChangerLangue('en')"><img src="/assets/picture/drapeau-en.svg" alt=""> English</button></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -72,33 +84,34 @@
             <img src="/assets/picture/Logo.png" alt="">
             <span>PokéChroma</span>
           </div>
-          <p>Des astuces simples, des guides clairs et des infos utiles pour tous les shiny
+          <p data-i18n="pied.texte">Des astuces simples, des guides clairs et des infos utiles pour tous les shiny
              hunters, débutants comme confirmés ✨</p>
         </div>
         <div>
-          <h4>Liens</h4>
+          <h4 data-i18n="pied.liens">Liens</h4>
           <ul>
             <li><a href="/compteur">⬇ PokéChroma Counter</a></li>
-            <li><a href="/introshinyhunting">Débuter le shiny hunting</a></li>
-            <li><a href="/shinyhuntingjeu">Les jeux</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener">❤ Soutenir sur Ko-fi</a></li>
+            <li><a href="/introshinyhunting" data-i18n="pied.debuter">Débuter le shiny hunting</a></li>
+            <li><a href="/shinyhuntingjeu" data-i18n="pied.jeux">Les jeux</a></li>
+            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener" data-i18n="pied.kofi">❤ Soutenir sur Ko-fi</a></li>
           </ul>
         </div>
         <div>
-          <h4>Mentions légales</h4>
-          <p>Le site est un projet de fan, pour des fans. Merci à <b>Sky_Lasth</b> pour l'aide
+          <h4 data-i18n="pied.mentions">Mentions légales</h4>
+          <p data-i18n="pied.fan">Le site est un projet de fan, pour des fans. Merci à <b>Sky_Lasth</b> pour l'aide
              sur le code et le site.</p>
-          <p>Certaines illustrations sont la propriété de The Pokémon Company. Brindibou shiny
+          <p data-i18n="pied.illus">Certaines illustrations sont la propriété de The Pokémon Company. Brindibou shiny
              appartient à <a href="https://pin.it/5vtTFbc6J" target="_blank" rel="noopener">milenagorosito</a>
              sur Pinterest.</p>
         </div>
       </div>
-      <div class="pc-footer-bas">© <span id="pc-annee">2026</span> PokéChroma · Pokémon et les
-        noms associés sont des marques de Nintendo, Creatures et GAME FREAK.</div>
+      <div class="pc-footer-bas">© <span id="pc-annee">2026</span> PokéChroma · <span data-i18n="pied.marques">Pokémon et les
+        noms associés sont des marques de Nintendo, Creatures et GAME FREAK.</span></div>
     </footer>
 
-    <script type="module" src="Router/router.js"></script>
+    <script src="/js/langue.js"></script>
+    <script type="module" src="/Router/router.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

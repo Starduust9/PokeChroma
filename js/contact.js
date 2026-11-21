@@ -4,6 +4,8 @@
 (function () {
   const CLE_WEB3FORMS = "bbec68f9-4407-4d52-b079-1a5a7ef33226"; // clé du formulaire PokéChroma (web3forms.com)
 
+  const EN = window.PC_LANGUE === "en";
+  const T = (fr, en) => (EN ? en : fr);
   const form = document.getElementById("pc-contact");
   if (!form) return;
   const etat = document.getElementById("pc-etat");
@@ -42,16 +44,16 @@
       valide(message, message.value.trim().length >= 5),
     ].every(Boolean);
     if (!ok) {
-      etat.textContent = "Vérifie les champs en rouge.";
+      etat.textContent = T("Vérifie les champs en rouge.", "Please check the fields in red.");
       return;
     }
     if (!CLE_WEB3FORMS) {
-      etat.textContent = "Le formulaire n'est pas encore relié à une boîte mail.";
+      etat.textContent = T("Le formulaire n'est pas encore relié à une boîte mail.", "The form is not connected to a mailbox yet.");
       return;
     }
     const nomSujet = sujet.options[sujet.selectedIndex].text;
     bouton.disabled = true;
-    etat.textContent = "Envoi en cours…";
+    etat.textContent = T("Envoi en cours…", "Sending…");
     try {
       const r = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -63,6 +65,7 @@
           name: pseudo.value.trim(),
           email: mail.value.trim(),
           sujet: nomSujet,
+          langue: EN ? "anglais" : "français",
           version: sujet.value === "bug" ? version.value.trim() : "",
           message: message.value.trim(),
           botcheck: form.botcheck.checked,
@@ -73,12 +76,12 @@
         form.reset();
         majVersion();
         [pseudo, mail, message].forEach((c) => c.classList.remove("is-valid"));
-        etat.textContent = "Merci ! Ton message est bien envoyé ✨";
+        etat.textContent = T("Merci ! Ton message est bien envoyé ✨", "Thank you! Your message has been sent ✨");
       } else {
-        etat.textContent = "L'envoi a échoué : " + (data.message || "erreur inconnue");
+        etat.textContent = T("L'envoi a échoué : ", "Sending failed: ") + (data.message || T("erreur inconnue", "unknown error"));
       }
     } catch (err) {
-      etat.textContent = "L'envoi a échoué. Vérifie ta connexion et réessaie.";
+      etat.textContent = T("L'envoi a échoué. Vérifie ta connexion et réessaie.", "Sending failed. Check your connection and try again.");
     } finally {
       bouton.disabled = false;
     }
