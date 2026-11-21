@@ -1,0 +1,277 @@
+/* =====================================================================
+   Thème PokéChroma : barre du haut, pied de page et blocs de texte
+   (chargé après main.css ; les règles « #main-page … » passent avant les
+   petits <style> écrits dans chaque page)
+   ===================================================================== */
+:root {
+  --pc-fond-bloc: rgba(20, 22, 34, 0.86);
+  --pc-carte: #22263a;
+  --pc-bord: #4C678F;
+  --pc-or: #ffd84a;
+  --pc-texte: #ffffff;
+  --pc-doux: #c9c8d6;
+  --pc-barre: rgba(17, 19, 30, 0.92);
+}
+
+/* ---------------------------------------------------------------- mise en page générale */
+html { min-height: 100%; }
+body { display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
+main { flex: 1 0 auto; margin-bottom: 0 !important; }
+
+/* ---------------------------------------------------------------- barre du haut */
+.pc-nav {
+  position: sticky; top: 0; z-index: 1030;
+  background: var(--pc-barre) !important;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(76, 103, 143, 0.6);
+  padding: 6px 18px;
+}
+.pc-nav .navbar-brand { display: flex; align-items: center; gap: 10px; color: #fff; }
+.pc-nav .navbar-brand img { height: 56px; width: auto; transition: transform .2s; }
+.pc-nav .navbar-brand:hover img { transform: rotate(-6deg) scale(1.05); }
+.pc-nav .pc-marque { font-size: 24px; font-weight: bold; color: var(--pc-or);
+                     letter-spacing: .5px; }
+.pc-nav .nav-link {
+  color: #e6e6f0 !important; font-size: 16px; padding: 8px 14px !important;
+  border-radius: 10px; position: relative; transition: background .15s, color .15s;
+}
+.pc-nav .nav-link:hover { background: rgba(255, 255, 255, 0.08); color: #fff !important; }
+.pc-nav .nav-link.active { color: var(--pc-or) !important; }
+.pc-nav .nav-link.active::after {
+  content: ""; position: absolute; left: 14px; right: 14px; bottom: 3px; height: 2px;
+  background: var(--pc-or); border-radius: 2px;
+}
+.pc-nav .dropdown-menu {
+  background: #1c1f2e; border: 1px solid var(--pc-bord); border-radius: 12px;
+  padding: 6px; min-width: 230px;
+}
+.pc-nav .dropdown-item { color: #e6e6f0; border-radius: 8px; padding: 7px 12px; }
+.pc-nav .dropdown-item:hover, .pc-nav .dropdown-item:focus {
+  background: rgba(255, 216, 74, 0.14); color: var(--pc-or);
+}
+.pc-nav .dropdown-divider { border-color: rgba(76, 103, 143, 0.5); }
+.pc-nav .dropdown-header { color: var(--pc-or); font-size: 12px; text-transform: uppercase; }
+.pc-nav .pc-btn-compteur {
+  background: var(--pc-or); color: #1b1d2b !important; font-weight: bold;
+  border-radius: 10px; padding: 8px 16px !important; margin-left: 6px;
+}
+.pc-nav .pc-btn-compteur:hover { background: #ffe27a; }
+.pc-nav .pc-btn-compteur.active::after { display: none; }
+.pc-nav .navbar-toggler { border-color: rgba(255, 255, 255, 0.25); }
+@media (max-width: 991px) {
+  .pc-nav .navbar-collapse { padding: 8px 0 12px; }
+  .pc-nav .pc-btn-compteur { display: inline-block; margin: 6px 0 0; }
+  .pc-nav .dropdown-menu { position: static !important; width: 100% !important; }
+}
+
+/* ---------------------------------------------------------------- pied de page */
+footer.pc-footer {
+  position: static !important; height: auto !important;
+  background: #11131e !important; color: var(--pc-doux);
+  border-top: 1px solid rgba(76, 103, 143, 0.6);
+  padding: 34px 24px 18px; margin-top: 40px;
+}
+.pc-footer .pc-footer-grille {
+  max-width: 1100px; margin: 0 auto; display: grid; gap: 28px;
+  grid-template-columns: 1.4fr 1fr 1.4fr;
+}
+@media (max-width: 800px) { .pc-footer .pc-footer-grille { grid-template-columns: 1fr; } }
+.pc-footer h4 { color: var(--pc-or); font-size: 15px; text-transform: uppercase;
+                letter-spacing: 1px; margin: 0 0 10px; }
+.pc-footer p, .pc-footer li { font-size: 14px; line-height: 1.55; margin: 0 0 6px; }
+.pc-footer ul { list-style: none; padding: 0; margin: 0; }
+.pc-footer a { color: #e6e6f0; text-decoration: none; }
+.pc-footer a:hover { color: var(--pc-or); }
+.pc-footer .pc-footer-marque { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.pc-footer .pc-footer-marque img { height: 44px; }
+.pc-footer .pc-footer-marque span { color: var(--pc-or); font-weight: bold; font-size: 20px; }
+.pc-footer .pc-footer-bas {
+  max-width: 1100px; margin: 24px auto 0; padding-top: 14px; font-size: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08); text-align: center; color: #8e8ca0;
+}
+
+/* ---------------------------------------------------------------- blocs de texte des pages */
+#main-page .response-container {
+  background: var(--pc-fond-bloc) !important;
+  border: 3px solid var(--pc-bord) !important;
+  border-radius: 18px;
+  padding: 26px 32px !important;
+  margin: 0 auto 24px !important;
+  width: min(1100px, 92%) !important;
+  color: var(--pc-texte);
+  text-align: left;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+#main-page .response-container:first-of-type { margin-top: 24px !important; }
+#main-page .response-container .d-flex.justify-content-center { justify-content: flex-start !important; }
+@media (max-width: 600px) {
+  #main-page .response-container { padding: 20px 18px !important; width: 94% !important; }
+}
+
+/* titres */
+#main-page .response-container h1 { font-size: 30px; color: var(--pc-or); font-weight: bold; }
+#main-page .response-container h1 u,
+#main-page .response-container h2 u { text-decoration: none; }
+#main-page .response-container h2 { font-size: 23px; color: var(--pc-or); font-weight: bold;
+                                    margin-bottom: 6px; }
+#main-page .response-container h3 { font-size: 17px; font-weight: normal; line-height: 1.6;
+                                    color: #e3e2ee; }
+#main-page .response-container h3.gras,
+#main-page .response-container .gras { font-weight: bold; color: #fff; }
+#main-page .response-container h4 { font-size: 19px; color: var(--pc-or); font-weight: bold; }
+#main-page .response-container h5 { font-size: 15px; color: var(--pc-doux); }
+#main-page .response-container p { font-size: 17px; line-height: 1.6; }
+
+/* ligne sous les titres */
+#main-page .response-container .border-bottom {
+  border: 0 !important; height: 2px; margin: 4px 0 6px;
+  background: linear-gradient(90deg, var(--pc-or), rgba(255, 216, 74, 0));
+}
+
+/* mots mis en avant et liens */
+#main-page .response-container em { color: #ffb347; font-style: normal; font-weight: bold; }
+#main-page .response-container a { color: var(--pc-or); text-decoration: underline;
+                                   text-underline-offset: 3px; }
+#main-page .response-container a:hover { color: #fff; }
+
+/* tableaux */
+#main-page .response-container .table-container { padding: 0; overflow-x: auto; }
+#main-page .response-container table {
+  width: 100%; border-collapse: separate; border-spacing: 0; margin: 10px 0;
+  border-radius: 12px; overflow: hidden; border: 1px solid #3a3f5c;
+  background: var(--pc-carte); color: #e6e6f0; font-size: 15px;
+}
+#main-page .response-container table th {
+  background: #2c3150; color: var(--pc-or); font-weight: bold; padding: 10px 12px;
+  border: 0 !important; border-bottom: 1px solid #3a3f5c !important;
+}
+#main-page .response-container table td {
+  background: transparent; color: #e6e6f0; padding: 10px 12px; vertical-align: middle;
+  border: 0 !important; border-bottom: 1px solid rgba(58, 63, 92, 0.7) !important;
+}
+#main-page .response-container table tr:last-child td { border-bottom: 0 !important; }
+#main-page .response-container table tr:hover td { background: rgba(255, 255, 255, 0.03); }
+
+/* boutons Bootstrap dans les blocs */
+#main-page .response-container .btn-primary {
+  background: var(--pc-or); border-color: var(--pc-or); color: #1b1d2b; font-weight: bold;
+  border-radius: 10px;
+}
+#main-page .response-container .btn-primary:hover { background: #ffe27a; border-color: #ffe27a; }
+
+/* formulaire de contact */
+#main-page .response-container .form-control {
+  background: #1c1f2e; border: 1px solid #3a3f5c; color: #fff; border-radius: 10px;
+}
+#main-page .response-container .form-control:focus {
+  border-color: var(--pc-or); box-shadow: 0 0 0 3px rgba(255, 216, 74, 0.2);
+}
+
+/* images décoratives sur les côtés : cachées sur petit écran (elles passaient sur le texte) */
+@media (max-width: 900px) {
+  #main-page picture[style*="position: fixed"] { display: none; }
+}
+
+/* petits ajustements */
+.pc-nav .nav-link { white-space: nowrap; }
+@media (min-width: 992px) and (max-width: 1250px) {
+  .pc-nav .nav-link { font-size: 14px; padding: 8px 9px !important; }
+  .pc-nav .pc-marque { font-size: 20px; }
+}
+#main-page .response-container table td img { vertical-align: middle; margin-right: 8px; }
+
+/* page contact et page 404 : même style de bloc */
+#main-page .bg-contact, #main-page .black-text {
+  background: var(--pc-fond-bloc) !important; border: 3px solid var(--pc-bord);
+  border-radius: 18px; width: min(760px, 92%); margin: 24px auto;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25); padding: 26px 24px;
+}
+#main-page .bg-contact .container, #main-page .bg-contact .row { padding: 0 !important; }
+#main-page .bg-contact .col-md-6 { width: 100%; max-width: 560px; }
+#main-page .bg-contact h1, #main-page .black-text h1 {
+  font-size: 24px; color: var(--pc-or); font-weight: bold; line-height: 1.4;
+}
+#main-page .bg-contact .form-label { display: block; text-align: left; font-weight: bold; }
+#main-page .bg-contact .form-control {
+  background: #1c1f2e; border: 1px solid #3a3f5c; color: #fff; border-radius: 10px;
+  text-align: left !important;
+}
+#main-page .bg-contact .form-control::placeholder { color: #8e8ca0; }
+#main-page .bg-contact .form-control:focus {
+  border-color: var(--pc-or); box-shadow: 0 0 0 3px rgba(255, 216, 74, 0.2);
+}
+#main-page .bg-contact .btn-primary, #main-page .black-text .btn-primary {
+  background: var(--pc-or); border-color: var(--pc-or); color: #1b1d2b !important;
+  font-weight: bold; border-radius: 10px; padding: 10px 22px;
+}
+@media (max-width: 991px) {
+  .pc-nav .nav-link.active::after { right: auto; width: 36px; }
+}
+
+/* images décoratives des pages (communes à toutes les pages) */
+.flipped { transform: scaleX(-1); }
+.resized1, .resized2 { height: 40vh; }
+
+/* cartes de liens (sites d'aide, streamers, youtubers) */
+#main-page .pc-grille { display: grid; gap: 14px; margin-top: 14px;
+                        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+#main-page .pc-carte { background: var(--pc-carte); border: 1px solid #343955;
+                       border-radius: 14px; padding: 16px 18px; display: flex;
+                       flex-direction: column; gap: 6px; transition: transform .12s, border-color .12s; }
+#main-page .pc-carte:hover { transform: translateY(-2px); border-color: var(--pc-bord); }
+#main-page .pc-carte h3 { font-size: 18px !important; font-weight: bold !important;
+                          color: #fff !important; margin: 0; }
+#main-page .pc-carte p { font-size: 14px !important; color: var(--pc-doux); margin: 0; flex: 1; }
+#main-page .pc-carte .pc-liens { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+#main-page .pc-carte .pc-liens a {
+  font-size: 13px; font-weight: bold; text-decoration: none; padding: 6px 12px;
+  border-radius: 8px; background: rgba(255, 216, 74, 0.14); color: var(--pc-or);
+}
+#main-page .pc-carte .pc-liens a:hover { background: var(--pc-or); color: #1b1d2b; }
+#main-page .pc-intro { font-size: 16px; color: var(--pc-doux); margin: 6px 0 0; }
+
+/* ---------------------------------------------------------------- contenu des guides */
+#main-page .pc-taux { display: inline-block; background: rgba(255, 216, 74, 0.16);
+  color: var(--pc-or); font-weight: bold; border-radius: 8px; padding: 1px 9px;
+  white-space: nowrap; }
+#main-page .pc-astuce { background: rgba(76, 103, 143, 0.22); border-left: 4px solid var(--pc-bord);
+  border-radius: 10px; padding: 12px 16px; margin: 14px 0; font-size: 16px; color: #e3e2ee; }
+#main-page .pc-attention { background: rgba(255, 107, 129, 0.12); border-left: 4px solid #ff6b81;
+  border-radius: 10px; padding: 12px 16px; margin: 14px 0; font-size: 16px; color: #f3dde2; }
+#main-page .response-container ul.pc-liste { padding-left: 20px; margin: 8px 0; }
+#main-page .response-container ul.pc-liste li { font-size: 17px; line-height: 1.6; margin-bottom: 6px; }
+#main-page .pc-jeux { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 12px 0 4px; }
+#main-page .pc-jeux img { height: 70px; width: auto; border-radius: 8px; }
+#main-page .pc-images { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; margin: 12px 0; }
+#main-page .pc-images img { max-height: 160px; max-width: 100%; border-radius: 10px; }
+#main-page .pc-gen { display: grid; gap: 14px; margin-top: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+#main-page .pc-gen a.pc-carte { text-decoration: none !important; color: inherit; }
+#main-page .pc-gen .pc-gen-titre { display: flex; justify-content: space-between; align-items: baseline; }
+#main-page .pc-gen .pc-gen-titre span { color: var(--pc-or); font-weight: bold; font-size: 22px; }
+#main-page .pc-gen .pc-jeux img { height: 54px; }
+
+/* pas de bande blanche entre la page et le pied de page */
+body { background: #11131e; }
+footer.pc-footer { margin-top: 0 !important; }
+
+/* Pokémon décoratifs : mieux intégrés (ombre douce, ne gênent pas les clics) */
+#main-page picture[style*="position: fixed"] { pointer-events: none; }
+#main-page picture[style*="position: fixed"] img {
+  height: 34vh !important; width: auto;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+}
+
+/* tableau des taux (page Masuda) */
+#main-page table.pc-tableau-taux th, #main-page table.pc-tableau-taux td { text-align: center; }
+#main-page table.pc-tableau-taux th.pc-ligne { text-align: left; background: #262a40; color: #fff;
+  white-space: nowrap; }
+#main-page table.pc-tableau-taux td { padding: 12px 8px; }
+#main-page table.pc-tableau-taux td + td, #main-page table.pc-tableau-taux th + th {
+  border-left: 1px solid rgba(58, 63, 92, 0.7) !important; }
+#main-page .pc-avec { display: flex; align-items: center; justify-content: center; gap: 4px;
+  margin-top: 6px; font-size: 13px; color: var(--pc-doux); white-space: nowrap; }
+#main-page .pc-avec.pc-sans { font-style: italic; opacity: 0.7; }
+#main-page .pc-ico { height: 20px; width: auto; }
+#main-page .pc-legende { font-size: 14px !important; color: var(--pc-doux); display: flex;
+  align-items: center; gap: 6px; margin-top: 6px; }

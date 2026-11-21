@@ -1,99 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Imprima&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="scss/main.css"/>
+    <link rel="stylesheet" href="/scss/main.css"/>
+    <link rel="stylesheet" href="/scss/pokechroma.css"/>
     <meta name="google-site-verification" content="b9bl0zc-K1b6ivHczMaCEDYzLEhgyuPErUrRr1GAr5g" />
-    <title>Document</title>
+    <title>PokéChroma</title>
+    <meta name="description" content="PokéChroma : astuces, guides et outils pour le shiny hunting Pokémon, de la 1G à la 9G, et PokéChroma Counter, le compteur de shiny automatique.">
     <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
-        <div class="container-fluid d-flex justify-content-between">
-          <a class="navbar-brand" href="/accueil"><img
-            style="height: 100px"
-            src="/assets/picture/Logo.png"
-            alt="Raichu alola" 
-            id="logo"/>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 navbar-global">
-              <li class="nav-item">
-                <a class="nav-link" href="/introshinyhunting"><u>Introduction au Shiny Hunting</u></a>
-              </li>
+    <nav class="navbar navbar-expand-lg pc-nav" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/accueil">
+          <img src="/assets/picture/Logo.png" alt="Logo PokéChroma" id="logo">
+          <span class="pc-marque">PokéChroma</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Ouvrir le menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="/introshinyhunting">Débuter le shiny hunting</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="/shinyhuntingjeu" role="button" data-bs-toggle="dropdown" aria-expanded="false"><u>Le Shiny Hunting  dans les jeux</u></a>
-              <ul class="dropdown-menu" style="position: absolute; width: 100%;">
-                <li><a class="dropdown-item" href="/shinyhuntingjeu">Tous les jeux</a></li>
+              <a class="nav-link dropdown-toggle" href="/shinyhuntingjeu" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">Les jeux</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/shinyhuntingjeu">Tous les jeux & Shiny Lock</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/1G">Jeu 1G</a></li>
-                <li><a class="dropdown-item" href="/2G">Jeu 2G</a></li>
-                <li><a class="dropdown-item" href="/3G">Jeu 3G</a></li>
-                <li><a class="dropdown-item" href="/4G">Jeu 4G</a></li>
-                <li><a class="dropdown-item" href="/5G">Jeu 5G</a></li>
-                <li><a class="dropdown-item" href="/6G">Jeu 6G</a></li>
-                <li><a class="dropdown-item" href="/7G">Jeu 7G</a></li>
-                <li><a class="dropdown-item" href="/8G">Jeu 8G</a></li>
-                <li><a class="dropdown-item" href="/9G">Jeu 9G</a></li>
+                <li><h6 class="dropdown-header">Par génération</h6></li>
+                <li><a class="dropdown-item" href="/1G">1G · Rouge, Bleu, Jaune</a></li>
+                <li><a class="dropdown-item" href="/2G">2G · Or, Argent, Cristal</a></li>
+                <li><a class="dropdown-item" href="/3G">3G · Rubis, Saphir, Émeraude, RF/VF</a></li>
+                <li><a class="dropdown-item" href="/4G">4G · Diamant, Perle, Platine, HG/SS</a></li>
+                <li><a class="dropdown-item" href="/5G">5G · Noir, Blanc, N2/B2</a></li>
+                <li><a class="dropdown-item" href="/6G">6G · X, Y, ROSA</a></li>
+                <li><a class="dropdown-item" href="/7G">7G · Soleil, Lune, Let's Go</a></li>
+                <li><a class="dropdown-item" href="/8G">8G · Épée, Bouclier, DEPS, Arceus</a></li>
+                <li><a class="dropdown-item" href="/9G">9G · Écarlate, Violet, Z-A</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/shinyhuntingjeu">Shiny Lock</a></li>
-                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header">Méthodes</h6></li>
                 <li><a class="dropdown-item" href="/masuda">Masuda</a></li>
-                <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/charmechroma">Charme Chroma</a></li>
               </ul>
             </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/siteaide"><u>Site d'aide</u></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/streameryoutuber"><span class="violet">streamer </span> <br> <span class="rouge">youtuber</span></a>
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact"><u>Contact</u></a>
-          </li>
-            </ul>
-          </div>
+            <li class="nav-item"><a class="nav-link" href="/siteaide">Sites d'aide</a></li>
+            <li class="nav-item"><a class="nav-link" href="/streameryoutuber">Streamers & YouTubers</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/compteur">⬇ Compteur Shiny</a></li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 </header>  
 
     <main id="main-page">
         <!-- Le contenu de la page sera ici -->
     </main>
 
-    <footer class="bg-secondary text-white text-center footer">
-      <div class="row">
-        <div class="col-12">
-          <h3><u>Mention Légale</u></h3>
+    <footer class="pc-footer">
+      <div class="pc-footer-grille">
+        <div>
+          <div class="pc-footer-marque">
+            <img src="/assets/picture/Logo.png" alt="">
+            <span>PokéChroma</span>
+          </div>
+          <p>Des astuces simples, des guides clairs et des infos utiles pour tous les shiny
+             hunters, débutants comme confirmés ✨</p>
         </div>
-        <div class="col-6">
-          <p>La dernière modification du site a été faite le 07 Avril 2025 à 03h15. <br/><br/>
-             Le site est un projet de formation d’un fan pour des fans. <br/> <br/>
-             Spécial thanx à <u>Sky_Lasth</u> pour l'aide sur le code et le site.
-          </p>
+        <div>
+          <h4>Liens</h4>
+          <ul>
+            <li><a href="/compteur">⬇ PokéChroma Counter</a></li>
+            <li><a href="/introshinyhunting">Débuter le shiny hunting</a></li>
+            <li><a href="/shinyhuntingjeu">Les jeux</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener">❤ Soutenir sur Ko-fi</a></li>
+          </ul>
         </div>
-        <div class="col-6">
-          <p>© 2025. Certaines illustrations sont la propriété de The Pokémon Company. Tous droits réservés. <br/><br/>
-             Brindibou Shiny appartient à <u>milenagorosito</u> sur Pinterest. 
-             <a style="color: white;" href="https://pin.it/5vtTFbc6J">Lien vers l'image</a>
-          </p> 
+        <div>
+          <h4>Mentions légales</h4>
+          <p>Le site est un projet de fan, pour des fans. Merci à <b>Sky_Lasth</b> pour l'aide
+             sur le code et le site.</p>
+          <p>Certaines illustrations sont la propriété de The Pokémon Company. Brindibou shiny
+             appartient à <a href="https://pin.it/5vtTFbc6J" target="_blank" rel="noopener">milenagorosito</a>
+             sur Pinterest.</p>
         </div>
       </div>
+      <div class="pc-footer-bas">© <span id="pc-annee">2026</span> PokéChroma · Pokémon et les
+        noms associés sont des marques de Nintendo, Creatures et GAME FREAK.</div>
     </footer>
 
     <script type="module" src="Router/router.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

@@ -2,13 +2,14 @@ import Route from "./Route.js";
 
 //Définir ici vos routes
 export const allRoutes = [
-    new Route("/", "Pré Accueil", "/pages/home.html"),
+    new Route("/", "Accueil", "/pages/accueil.html"),
     new Route("/accueil", "Accueil", "/pages/accueil.html"),
     new Route("/contact", "Contact", "/pages/contact.html", "/js/contact.js"),
     new Route("/introshinyhunting", "Introduction au Shiny Hunting", "/pages/introshinyhunting.html"),
     new Route("/shinyhuntingjeu", "Le Shiny Hunting dans les jeux", "/pages/shinyhuntingjeu.html"),
     new Route("/siteaide", "Site d'aide", "/pages/siteaide.html"),
     new Route("/streameryoutuber", "Streamer Youtuber", "/pages/streameryoutuber.html"),
+    new Route("/compteur", "PokéChroma Counter", "/pages/compteur.html", "/js/compteur.js"),
     new Route("/1G", "1G", "/pages/page-gen/1G.html"),
     new Route("/2G", "2G", "/pages/page-gen/2G.html"),
     new Route("/3G", "3G", "/pages/page-gen/3G.html"),

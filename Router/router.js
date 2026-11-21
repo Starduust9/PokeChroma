@@ -44,6 +44,17 @@ const LoadContentPage = async () => {
 
   // Changement du titre de la page
   document.title = actualRoute.title + " - " + websiteName;
+
+  // Page ouverte mise en avant dans le menu
+  document.querySelectorAll(".pc-nav .nav-link, .pc-nav .dropdown-item").forEach((lien) => {
+    const actif = lien.getAttribute("href") === path ||
+      (lien.classList.contains("dropdown-toggle") &&
+       [...lien.parentElement.querySelectorAll(".dropdown-item")]
+         .some((d) => d.getAttribute("href") === path));
+    lien.classList.toggle("active", actif);
+  });
+  const annee = document.getElementById("pc-annee");
+  if (annee) annee.textContent = new Date().getFullYear();
 };
 
 // Fonction pour gérer les événements de routage (clic sur les liens)

@@ -1,90 +1,86 @@
-const inputPseudo = document.getElementById("PseudoInput");
-const inputMail = document.getElementById("MailInput");
-const btnValidation = document.getElementById("btn-envoie-message");
+// Page Contact : envoi du message par e-mail (service Web3Forms, sans serveur à gérer).
+// La clé Web3Forms est publique par conception : elle permet seulement d'envoyer un message
+// vers TON adresse e-mail, elle ne donne accès à rien d'autre.
+(function () {
+  const CLE_WEB3FORMS = "bbec68f9-4407-4d52-b079-1a5a7ef33226"; // clé du formulaire PokéChroma (web3forms.com)
 
-inputPseudo.addEventListener("keyup", validateForm);
-inputMail.addEventListener("keyup", validateForm);
+  const form = document.getElementById("pc-contact");
+  if (!form) return;
+  const etat = document.getElementById("pc-etat");
+  const bouton = document.getElementById("btn-envoie-message");
+  const sujet = document.getElementById("SujetInput");
+  const pseudo = document.getElementById("PseudoInput");
+  const mail = document.getElementById("MailInput");
+  const version = document.getElementById("VersionInput");
+  const message = document.getElementById("MessageInput");
+  const ligneVersion = document.getElementById("ligne-version");
 
-// Function permettant de valider tout le formulaire
-function validateForm() {
-    const pseudoOk = validateRequired(inputPseudo);
-    const mailOk = validateMail(inputMail);
+  // Arrivée depuis le compteur (bouton « Signaler un bug ») :
+  // /contact?sujet=bug&pseudo=Starduust&version=1.13.1
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("sujet")) sujet.value = params.get("sujet");
+  if (params.get("pseudo")) pseudo.value = params.get("pseudo");
+  if (params.get("version")) version.value = params.get("version");
 
-    // Activer/désactiver le bouton d'envoi en fonction de la validité des champs
-    btnValidation.disabled = !(pseudoOk && mailOk);
-}
+  const majVersion = () => {
+    ligneVersion.style.display = sujet.value === "bug" ? "block" : "none";
+  };
+  sujet.addEventListener("change", majVersion);
+  majVersion();
 
-function validateMail(input) {
-    // Définir le regex pour valider l'adresse email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const mailUser = input.value;
-    if (mailUser.match(emailRegex)) {
-        input.classList.add("is-valid");
-        input.classList.remove("is-invalid");
-        return true;
-    } else {
-        input.classList.remove("is-valid");
-        input.classList.add("is-invalid");
-        return false;
+  const valide = (champ, ok) => {
+    champ.classList.toggle("is-invalid", !ok);
+    champ.classList.toggle("is-valid", ok);
+    return ok;
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const ok = [
+      valide(pseudo, pseudo.value.trim() !== ""),
+      valide(mail, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value.trim())),
+      valide(message, message.value.trim().length >= 5),
+    ].every(Boolean);
+    if (!ok) {
+      etat.textContent = "Vérifie les champs en rouge.";
+      return;
     }
-}
-
-function validateRequired(input) {
-    if (input.value !== '') {
-        input.classList.add("is-valid");
-        input.classList.remove("is-invalid");
-        return true;
-    } else {
-        input.classList.remove("is-valid");
-        input.classList.add("is-invalid");
-        return false;
+    if (!CLE_WEB3FORMS) {
+      etat.textContent = "Le formulaire n'est pas encore relié à une boîte mail.";
+      return;
     }
-}
-
-// Fonction pour valider et soumettre le formulaire
-function validateAndSubmit() {
-    // Valider le formulaire
-    const pseudoOk = validateRequired(inputPseudo);
-    const mailOk = validateMail(inputMail);
-
-    // Si le formulaire est valide, soumettre le formulaire via AJAX
-    if (pseudoOk && mailOk) {
-        // Récupérer les données du formulaire
-        const pseudo = inputPseudo.value;
-        const email = inputMail.value;
-        const message = document.getElementById("exampleFormControlTextarea1").value;
-
-        // Construction des données à envoyer
-        const formData = new FormData();
-        formData.append("pseudo", pseudo);
-        formData.append("email", email);
-        formData.append("message", message);
-
-        // Envoi des données via AJAX
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/Mail_PHP/envoi_email.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    // Analyser la réponse JSON si nécessaire
-                    const response = JSON.parse(xhr.responseText);
-                    if (response.success) {
-                        // Afficher le modal de succès si l'envoi est réussi
-                        document.getElementById("EnvoiSuccès").style.display = "block";
-                    } else {
-                        // Afficher le modal d'erreur avec le message d'erreur
-                        const errorMessage = document.getElementById("EnvoiErreurMessage");
-                        errorMessage.textContent = "Erreur: " + response.error;
-                        document.getElementById("EnvoiErreur").style.display = "block";
-                    }
-                } else {
-                    // Afficher le modal d'erreur générique
-                    const errorMessage = document.getElementById("EnvoiErreurMessage");
-                    errorMessage.textContent = "Une erreur est survenue lors de l'envoi du message.";
-                    document.getElementById("EnvoiErreur").style.display = "block";
-                }
-            }
-        };
-        xhr.send(formData);
+    const nomSujet = sujet.options[sujet.selectedIndex].text;
+    bouton.disabled = true;
+    etat.textContent = "Envoi en cours…";
+    try {
+      const r = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: CLE_WEB3FORMS,
+          subject: "PokéChroma – " + nomSujet + " – " + pseudo.value.trim(),
+          from_name: "Site PokéChroma",
+          name: pseudo.value.trim(),
+          email: mail.value.trim(),
+          sujet: nomSujet,
+          version: sujet.value === "bug" ? version.value.trim() : "",
+          message: message.value.trim(),
+          botcheck: form.botcheck.checked,
+        }),
+      });
+      const data = await r.json();
+      if (data.success) {
+        form.reset();
+        majVersion();
+        [pseudo, mail, message].forEach((c) => c.classList.remove("is-valid"));
+        etat.textContent = "Merci ! Ton message est bien envoyé ✨";
+      } else {
+        etat.textContent = "L'envoi a échoué : " + (data.message || "erreur inconnue");
+      }
+    } catch (err) {
+      etat.textContent = "L'envoi a échoué. Vérifie ta connexion et réessaie.";
+    } finally {
+      bouton.disabled = false;
     }
-}
+  });
+})();

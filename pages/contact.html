@@ -1,68 +1,52 @@
-<div class="hero-scene text-center">
-    <div class="hero-scene-content">
-      <div class="container">
-        <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
-    </div>
-    <div style="position: relative;">
-        <img style="position: fixed; height: 8vh; left: 100px; bottom: 540px;" src="/assets/picture/Brindibou.png" alt="Brindibou">
-    </div>
-    <div class="bg-contact">
-        <div class="container py-5">
-            <div class="row py-5 g-3 flex-column align-items-center">
-                <div class="col-md-6 first_col">
-                    <h1 class="text-center mt-3 text-white">Me contacter, report un bug, un problème, des fautes ou tout autres demande.<br><br></h1>
-                    <form action="#" method="post">
-                        <div class="mb-3">
-                            <label for="PseudoInput" class="form-label text-white">Entrer votre Pseudo ou votre Nom</label>
-                            <input type="text" class="form-control text-center" id="PseudoInput" name="pseudo" placeholder="Pseudo">
-                        </div>
-                        <div class="mb-3">
-                            <label for="MailInput" class="form-label text-white">Email de contact</label>
-                            <input type="email" class="form-control text-center" id="MailInput" name="email" placeholder="exemple@gmail.com">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label text-white">Entrer votre message</label>
-                            <textarea  type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="message" placeholder="Ecrire mon texte ici !"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <button type="button" class="btn btn-primary" id="btn-envoie-message" data-bs-toggle="modal" data-bs-target="#EnvoiSuccès" disabled>Envoyer mon message</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="accueil-scene text-center">
+  <div class="hero-scene-content">
+    <div class="container">
+      <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
     </div>
 
-    <!-- Modal -->
-<div class="modal fade" id="EnvoiSuccès" tabindex="-1" aria-labelledby="EnvoiSuccèsLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="EnvoiSuccèsLabel">Confirmation</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="blackO-text text-white response-container" style="max-width: 760px;">
+      <h1>Me contacter</h1>
+      <p class="pc-intro">Un bug dans le compteur, une faute sur le site, une question ou une idée ?
+        Écris-moi, je te réponds dès que possible ✨</p>
+      <div class="border-bottom"></div>
+
+      <form id="pc-contact" novalidate>
+        <div class="mb-3">
+          <label for="SujetInput" class="form-label">Sujet</label>
+          <select class="form-control" id="SujetInput" name="sujet">
+            <option value="bug">🐞 Signaler un bug du compteur</option>
+            <option value="site">✏️ Une erreur sur le site</option>
+            <option value="question">❓ Une question</option>
+            <option value="idee">💡 Une idée ou une suggestion</option>
+            <option value="autre">✉️ Autre</option>
+          </select>
         </div>
-        <div class="modal-body">
-            Votre message a été envoyé avec succès.
+        <div class="row g-3">
+          <div class="col-md-6 mb-3">
+            <label for="PseudoInput" class="form-label">Ton pseudo</label>
+            <input type="text" class="form-control" id="PseudoInput" name="pseudo" placeholder="Pseudo" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="MailInput" class="form-label">Ton e-mail (pour te répondre)</label>
+            <input type="email" class="form-control" id="MailInput" name="email" placeholder="exemple@gmail.com" required>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Fermer</button>
+        <div class="mb-3" id="ligne-version" style="display: none;">
+          <label for="VersionInput" class="form-label">Version du compteur</label>
+          <input type="text" class="form-control" id="VersionInput" name="version" placeholder="ex. 1.13.1">
         </div>
-      </div>
+        <div class="mb-3">
+          <label for="MessageInput" class="form-label">Ton message</label>
+          <textarea class="form-control" id="MessageInput" name="message" rows="6" required
+                    placeholder="Explique ce qui se passe : ce que tu faisais, ce qui s'est affiché…"></textarea>
+        </div>
+        <!-- piège à robots : invisible pour les humains -->
+        <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
+        <div class="mb-1">
+          <button type="submit" class="btn btn-primary" id="btn-envoie-message">Envoyer mon message</button>
+        </div>
+        <p id="pc-etat" class="pc-intro" style="min-height: 24px;"></p>
+      </form>
     </div>
   </div>
-
-  <!-- Modal d'erreur -->
-<div class="modal fade" id="EnvoiErreur" tabindex="-1" aria-labelledby="EnvoiErreurLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="EnvoiErreurLabel">Erreur</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            Une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer plus tard.
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Fermer</button>
-          </div>
-        <div
+</div>

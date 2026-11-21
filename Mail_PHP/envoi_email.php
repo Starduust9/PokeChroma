@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host = 'mail.wikishinyhunting.fr';
         $mail->SMTPAuth = true;
         $mail->Username = 'smtp.o2switch@wikishinyhunting.fr'; // Votre adresse O2Switch
-        $mail->Password = '8f8s-5fzA-6y8+'; // Votre mot de passe O2Switch
+        $mail->Password = ''; // Votre mot de passe O2Switch
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
 
