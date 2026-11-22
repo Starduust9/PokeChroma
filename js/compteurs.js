@@ -123,20 +123,45 @@
     }
   });
 
-  // ---- bouton « Installer l'application » (quand le navigateur le propose)
+  // ---- bouton « Installer l'application » : toujours visible (sauf dans l'app installée).
+  // Si le navigateur propose sa fenêtre d'installation (Android / PC), on l'ouvre ;
+  // sinon (iPhone, Firefox…), on ouvre les étapes qui correspondent à l'appareil.
   const bt = document.getElementById("pc-installer");
-  if (bt) {
-    const montrer = () => { if (window.pcInvitation) bt.hidden = false; };
-    montrer();
-    window.addEventListener("pc-installable", montrer);
+  const dejaInstallee = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  const montrerEtapes = () => {
+    const ua = navigator.userAgent;
+    const ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    const id = ios ? "pc-a-ios" : /Android/.test(ua) ? "pc-a-android" : "pc-a-pc";
+    const bloc = document.getElementById(id);
+    if (bloc && window.bootstrap) window.bootstrap.Collapse.getOrCreateInstance(bloc, { toggle: false }).show();
+    else if (bloc) bloc.classList.add("show");
+    const aide = document.getElementById("pc-aide-installation");
+    if (aide) setTimeout(() => aide.scrollIntoView({ behavior: "smooth", block: "start" }), 150);
+    return aide;
+  };
+  if (bt && !dejaInstallee) {
+    bt.hidden = false;
     bt.addEventListener("click", async () => {
-      if (!window.pcInvitation) return;
-      window.pcInvitation.prompt();
-      await window.pcInvitation.userChoice;
-      window.pcInvitation = null;
-      bt.hidden = true;
+      if (window.pcInvitation) {
+        window.pcInvitation.prompt();
+        await window.pcInvitation.userChoice;
+        window.pcInvitation = null;
+      } else {
+        montrerEtapes();
+      }
     });
+    // arrivée depuis le bouton « Installer les compteurs » de la page Compteur
+    // (deuxième défilement : la page peut encore bouger pendant le chargement des images)
+    if (new URLSearchParams(location.search).has("installer")) {
+      setTimeout(montrerEtapes, 300);
+      setTimeout(() => {
+        const aide = document.getElementById("pc-aide-installation");
+        if (aide && aide.getBoundingClientRect().top > 200) aide.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 1200);
+    }
   }
+  const lienAide = document.querySelector(".pc-lien-aide");
+  if (lienAide) lienAide.onclick = (e) => { e.preventDefault(); montrerEtapes(); };
 
   // Espace ou + sur le clavier : +1 sur le premier compteur (écouteur ajouté une seule fois)
   window.pcCompteursChanger = changer;
