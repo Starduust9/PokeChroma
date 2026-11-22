@@ -523,3 +523,25 @@ body.pc-mode-app { padding-bottom: 70px; }
   box-shadow: 0 0 0 .2rem rgba(255, 215, 94, .2); }
 #main-page select.form-control option, #main-page select.form-control optgroup { background: #1a1c28; color: #f8f8f2; }
 #main-page input[type="search"].form-control::-webkit-search-cancel-button { filter: invert(1); }
+
+/* ---------------------------------------------------------------- page Guides (onglet de l'application) */
+#main-page .pc-gd h1 { margin-bottom: 2px; }
+#main-page .pc-gd-titre { font-size: 19px !important; margin: 22px 0 10px !important; }
+#main-page .pc-gd-grille { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+#main-page .pc-gd-carte, #main-page .pc-gd-gen { display: flex; align-items: center; gap: 12px; background: #282a36;
+  border: 1px solid #343748; border-radius: 14px; padding: 12px 14px; color: #f8f8f2; text-decoration: none !important;
+  transition: border-color .15s, transform .15s; }
+#main-page .pc-gd-carte:hover, #main-page .pc-gd-gen:hover { border-color: #ffd75e; transform: translateY(-2px); }
+#main-page .pc-gd-ic { font-size: 26px; width: 40px; text-align: center; flex: none; }
+#main-page .pc-gd-txt, #main-page .pc-gd-gen-txt { display: flex; flex-direction: column; min-width: 0; text-align: left; }
+#main-page .pc-gd-txt b, #main-page .pc-gd-gen-txt b { font-size: 16px; }
+#main-page .pc-gd-txt small, #main-page .pc-gd-gen-txt small { color: #9aa0b4; font-size: 13px; }
+#main-page .pc-gd-gens { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+#main-page .pc-gd-gen img { width: 56px; height: 56px; object-fit: contain; border-radius: 8px; flex: none; }
+#main-page .pc-gd-gen-txt b { color: #ffd75e; font-size: 18px; }
+@media (max-width: 575px) {
+  #main-page .pc-gd-gens { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  #main-page .pc-gd-gen { flex-direction: column; text-align: center; padding: 10px 8px; gap: 6px; }
+  #main-page .pc-gd-gen-txt { text-align: center; align-items: center; }
+  #main-page .pc-gd-gen-txt small { font-size: 12px; }
+}

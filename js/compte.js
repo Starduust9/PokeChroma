@@ -153,7 +153,7 @@
       ["/compteurs", "🎯", TT("Chasses", "Hunts"), p.indexOf("/compteurs") === 0, 0],
       ["/profil", "👤", TT("Profil", "Profile"), p.indexOf("/profil") === 0, 0],
       ["/joueurs", "👥", TT("Joueurs", "Players"), p.indexOf("/joueurs") === 0, window.pcCompte.demandes || 0],
-      ["/accueil", "📖", TT("Guides", "Guides"), guide, 0],
+      ["/guides", "📖", TT("Guides", "Guides"), guide, 0],
     ];
     barre.innerHTML = onglets.map(([href, ic, nom, actif, n]) =>
       `<a href="${href}" class="${actif ? "actif" : ""}"><span class="pc-app-ic">${ic}${pastille(n)}</span><span>${nom}</span></a>`).join("");
