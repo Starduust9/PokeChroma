@@ -10,6 +10,7 @@
   const BADGES = {
     admin: ["🛡", "Admin", "#ff6b81", "Administrateur de PokéChroma", "PokéChroma administrator"],
     vip: ["💎", "VIP", "#c9a8ff", "Membre VIP", "VIP member"],
+    mensuel: ["🌟", T("Supporter mensuel", "Monthly supporter"), "#ffd75e", "Soutient PokéChroma chaque mois sur Ko-fi", "Supports PokéChroma every month on Ko-fi"],
     supporter: ["❤", "Supporter", "#ff8fb1", "Soutient PokéChroma", "Supports PokéChroma"],
     partageur: ["🧩", T("Partageur", "Sharer"), "#6fd3a0",
       "Pour avoir partagé et participé à l'élaboration d'un modèle 3D",
