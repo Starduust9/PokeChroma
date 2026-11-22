@@ -1,0 +1,76 @@
+<div class="accueil-scene text-center">
+  <div class="hero-scene-content">
+    <div class="container">
+      <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
+    </div>
+
+    <!-- recherche d'un joueur -->
+    <div class="blackO-text text-white response-container pc-pf-recherche">
+      <form id="pc-pf-chercher" class="pc-pf-ligne" autocomplete="off">
+        <input id="pc-pf-joueur" class="form-control" type="search" placeholder="🔎 Chercher un joueur (pseudo)">
+        <button class="btn btn-primary" type="submit">Chercher</button>
+      </form>
+      <div id="pc-pf-resultats" class="pc-pf-resultats"></div>
+    </div>
+
+    <!-- connexion (quand on n'est pas connecté) -->
+    <div class="blackO-text text-white response-container" id="pc-pf-connexion" hidden>
+      <h1>Mon profil PokéChroma</h1>
+      <p class="pc-intro">Connecte-toi avec le <b>même compte</b> que dans PokéChroma Counter pour
+        retrouver ton profil, tes shinies, tes badges et tes chasses en cours.</p>
+      <div class="pc-pf-boutons">
+        <button class="pc-pf-btn pc-pf-discord" type="button" onclick="pcConnexion('discord')">Se connecter avec Discord</button>
+        <button class="pc-pf-btn pc-pf-google" type="button" onclick="pcConnexion('google')">Se connecter avec Google</button>
+      </div>
+      <p class="pc-legende">Pas encore de compte ? Il est créé automatiquement à la première connexion,
+        ici ou dans le compteur. Voir la <a href="/confidentialite">politique de confidentialité</a>.</p>
+    </div>
+
+    <div id="pc-pf-chargement" class="blackO-text text-white response-container">
+      <p class="pc-intro">Chargement…</p>
+    </div>
+
+    <!-- profil -->
+    <div id="pc-pf-profil" hidden>
+      <div class="blackO-text text-white response-container pc-pf-entete" id="pc-pf-entete"></div>
+
+      <div class="blackO-text text-white response-container" id="pc-pf-edition" hidden>
+        <h2>Modifier mon profil</h2>
+        <div class="border-bottom"></div>
+        <form id="pc-pf-form" class="pc-pf-form" autocomplete="off">
+          <label>Pseudo <input id="pc-pf-e-pseudo" class="form-control" maxlength="24" minlength="2" required></label>
+          <label>Bio <textarea id="pc-pf-e-bio" class="form-control" maxlength="300" rows="3"></textarea></label>
+          <label>Pokémon de l'avatar (en chromatique) <input id="pc-pf-e-avatar" class="form-control" placeholder="ex. Gardevoir"></label>
+          <label class="pc-pf-case"><input id="pc-pf-e-discord" type="checkbox"> Utiliser plutôt mon avatar Discord</label>
+          <p id="pc-pf-e-erreur" class="pc-pf-erreur"></p>
+          <div class="pc-pf-boutons">
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+            <button class="btn btn-outline-light" type="button" id="pc-pf-e-annuler">Annuler</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="blackO-text text-white response-container" id="pc-pf-bloc-chasses" hidden>
+        <h2>Mes chasses en cours</h2>
+        <div class="border-bottom"></div>
+        <p class="pc-legende">Les chasses de PokéChroma Counter, mises à jour quand le compteur est connecté.</p>
+        <div id="pc-pf-chasses" class="pc-pf-grille"></div>
+      </div>
+
+      <div class="blackO-text text-white response-container">
+        <h2 id="pc-pf-titre-shinies">Shinies</h2>
+        <div class="border-bottom"></div>
+        <div class="pc-pf-ligne pc-pf-filtres">
+          <input id="pc-pf-filtre" class="form-control" type="search" placeholder="🔎 Pokémon, jeu, surnom…">
+          <select id="pc-pf-tri" class="form-control">
+            <option value="recent">Plus récents</option>
+            <option value="ancien">Plus anciens</option>
+            <option value="nom">Nom</option>
+            <option value="rencontres">Rencontres</option>
+          </select>
+        </div>
+        <div id="pc-pf-shinies" class="pc-pf-grille"></div>
+      </div>
+    </div>
+  </div>
+</div>

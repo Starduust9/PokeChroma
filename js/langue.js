@@ -57,6 +57,7 @@
     }
     document.querySelectorAll("[data-langue]").forEach((el) =>
       el.classList.toggle("active", el.dataset.langue === window.PC_LANGUE));
+    if (window.pcMajMenuCompte) window.pcMajMenuCompte();   // bouton « Se connecter » / profil
   }
 
   window.pcChangerLangue = function (l) {

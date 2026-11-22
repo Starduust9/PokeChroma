@@ -66,6 +66,7 @@
             <li class="nav-item"><a class="nav-link" href="/streameryoutuber" data-i18n="nav.streamers">Streamers & YouTubers</a></li>
             <li class="nav-item"><a class="nav-link" href="/contact" data-i18n="nav.contact">Contact</a></li>
             <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/compteur" data-i18n="nav.compteur">⬇ Compteur Shiny</a></li>
+            <li class="nav-item"><a class="nav-link pc-nav-compte" id="pc-nav-compte" href="/profil"><span>Se connecter</span></a></li>
             <li class="nav-item dropdown pc-langues">
               <button class="nav-link dropdown-toggle pc-btn-langue" type="button"
                       data-bs-toggle="dropdown" aria-expanded="false" aria-label="Langue / Language">
@@ -123,6 +124,8 @@
     </footer>
 
     <script src="/js/langue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <script src="/js/compte.js"></script>
     <script>
       // Application installable (PWA) : fonctionne hors ligne une fois visitée
       if ("serviceWorker" in navigator) {
