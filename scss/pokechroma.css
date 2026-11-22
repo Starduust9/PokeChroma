@@ -57,6 +57,7 @@ main { flex: 1 0 auto; margin-bottom: 0 !important; }
 }
 .pc-nav .pc-btn-compteur:hover { background: #ffe27a; }
 .pc-nav .pc-btn-compteur.active::after { display: none; }
+.pc-nav .pc-btn-compteur.active { color: #1b1d2b !important; box-shadow: 0 0 0 2px rgba(255, 216, 74, 0.45); }
 .pc-nav .navbar-toggler { border-color: rgba(255, 255, 255, 0.25); }
 @media (max-width: 1199px) {
   .pc-nav .navbar-collapse { padding: 8px 0 12px; }
