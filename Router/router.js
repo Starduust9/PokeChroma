@@ -59,6 +59,15 @@ const LoadContentPage = async () => {
          .some((d) => d.getAttribute("href") === path));
     lien.classList.toggle("active", actif);
   });
+  // Application « Compteurs » installée : plein écran, sans le menu du site
+  const enApp = window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+  document.body.classList.toggle("pc-mode-app", enApp && path.indexOf("/compteurs") === 0);
+  const titreApple = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+  if (titreApple) {
+    titreApple.content = path.indexOf("/compteurs") === 0 ? "Compteurs" : "PokéChroma";
+  }
+
   const annee = document.getElementById("pc-annee");
   if (annee) annee.textContent = new Date().getFullYear();
 };

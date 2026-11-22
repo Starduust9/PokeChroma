@@ -1,8 +1,8 @@
 {
-  "name": "PokéChroma",
+  "name": "PokéChroma – Guides de shiny hunting",
   "short_name": "PokéChroma",
-  "description": "Guides de shiny hunting et compteurs de chasse, même hors connexion.",
-  "start_url": "/compteurs",
+  "description": "Les guides de shiny hunting de PokéChroma, même sans connexion.",
+  "start_url": "/accueil",
   "scope": "/",
   "display": "standalone",
   "background_color": "#11131e",
@@ -25,5 +25,6 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "id": "/"
 }

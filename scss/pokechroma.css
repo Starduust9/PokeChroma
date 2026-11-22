@@ -318,3 +318,12 @@ footer.pc-footer { margin-top: 0 !important; }
   .pc-nav .pc-btn-compteur { padding: 7px 10px !important; }
 }
 
+
+/* ---------------------------------------------------------------- application « Compteurs » installée */
+body.pc-mode-app header, body.pc-mode-app footer,
+body.pc-mode-app #main-page .hero-scene-content > .container,
+body.pc-mode-app #main-page .pc-actions-compteurs,
+body.pc-mode-app #main-page #pc-aide-installation,
+body.pc-mode-app #main-page picture { display: none !important; }
+body.pc-mode-app #main-page .response-container:first-of-type { margin-top: 14px !important; }
+body.pc-mode-app #main-page .hero-scene-content { padding-bottom: 20px; min-height: 100vh; }

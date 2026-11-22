@@ -24,4 +24,21 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") zoom.style.display = "none";
   });
+
+  // « Installer le site » : la fenêtre d'installation du navigateur, si elle est disponible
+  const btSite = document.getElementById("pc-installer-site");
+  if (btSite) {
+    btSite.addEventListener("click", async () => {
+      if (window.pcInvitation) {
+        window.pcInvitation.prompt();
+        await window.pcInvitation.userChoice;
+        window.pcInvitation = null;
+      } else {
+        const aide = document.getElementById("pc-installer-site-aide");
+        if (aide) aide.style.color = "#ffd84a";
+        const acc = document.getElementById("pc-accordeon-cpt");
+        if (acc) acc.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  }
 })();

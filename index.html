@@ -12,7 +12,13 @@
     <title>PokéChroma</title>
     <meta name="description" content="PokéChroma : astuces, guides et outils pour le shiny hunting Pokémon, de la 1G à la 9G, et PokéChroma Counter, le compteur de shiny automatique.">
     <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
-    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="manifest" id="pc-manifest" href="/manifest.webmanifest">
+    <script>
+      // Deux applications installables : « Compteurs » (page /compteurs) et le site entier
+      if (location.pathname.indexOf("/compteurs") === 0) {
+        document.getElementById("pc-manifest").href = "/manifest-compteurs.webmanifest";
+      }
+    </script>
     <meta name="theme-color" content="#11131e">
     <link rel="apple-touch-icon" href="/assets/picture/icone-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -123,6 +129,11 @@
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
       }
+      // Site installé (ou installation acceptée) : on garde aussi toutes les images des guides
+      const pcToutGarder = () => navigator.serviceWorker && navigator.serviceWorker.ready
+        .then((r) => r.active && r.active.postMessage("pc-tout-garder")).catch(() => {});
+      if (window.matchMedia("(display-mode: standalone)").matches || navigator.standalone) pcToutGarder();
+      window.addEventListener("appinstalled", pcToutGarder);
       window.addEventListener("beforeinstallprompt", (e) => {
         e.preventDefault();
         window.pcInvitation = e;
