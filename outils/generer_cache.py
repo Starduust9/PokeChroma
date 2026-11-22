@@ -13,6 +13,11 @@ from urllib.parse import unquote
 ICI = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ICI)
 
+# d'abord les pages pré-remplies (Google, aperçus de liens), sitemap et robots.txt
+import runpy  # noqa: E402
+runpy.run_path(os.path.join(ICI, "outils", "generer_pages.py"))
+os.chdir(ICI)
+
 fichiers = ["/", "/manifest.webmanifest", "/manifest-compteurs.webmanifest",
             "/scss/main.css", "/scss/pokechroma.css", "/assets/picture/favicon.ico",
             "/assets/picture/icone-192.png", "/assets/picture/icone-512.png",

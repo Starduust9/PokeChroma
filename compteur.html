@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imprima&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/scss/main.css"/>
+    <link rel="stylesheet" href="/scss/pokechroma.css"/>
+    <meta name="google-site-verification" content="b9bl0zc-K1b6ivHczMaCEDYzLEhgyuPErUrRr1GAr5g" />
+    <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
+    <link rel="manifest" id="pc-manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#11131e">
+    <link rel="apple-touch-icon" href="/assets/picture/icone-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="PokéChroma">
+    <!--pc-meta-->
+    <title>PokéChroma Counter, le compteur de shiny automatique - PokéChroma</title>
+    <meta name="description" content="Compteur de shiny gratuit pour Windows : il compte tes rencontres tout seul avec ta carte de capture et t&#x27;alerte quand le Pokémon est chromatique.">
+    <link rel="canonical" href="https://pokechroma.com/compteur">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PokéChroma">
+    <meta property="og:title" content="PokéChroma Counter, le compteur de shiny automatique - PokéChroma">
+    <meta property="og:description" content="Compteur de shiny gratuit pour Windows : il compte tes rencontres tout seul avec ta carte de capture et t&#x27;alerte quand le Pokémon est chromatique.">
+    <meta property="og:url" content="https://pokechroma.com/compteur">
+    <meta property="og:image" content="https://pokechroma.com/assets/picture/partage.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <!--/pc-meta-->
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-xl pc-nav" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/accueil">
+          <img src="/assets/picture/Logo.png" alt="Logo PokéChroma" id="logo">
+          <span class="pc-marque">PokéChroma</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-xl-0 align-items-xl-center">
+            <li class="nav-item"><a class="nav-link" href="/introshinyhunting" data-i18n="nav.debuter">Débuter le shiny hunting</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/shinyhuntingjeu" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.jeux">Les jeux</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/shinyhuntingjeu" data-i18n="nav.tous">Tous les jeux & Shiny Lock</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.parGen">Par génération</h6></li>
+                <li><a class="dropdown-item" href="/1G" data-i18n="nav.1G">1G · Rouge, Bleu, Jaune</a></li>
+                <li><a class="dropdown-item" href="/2G" data-i18n="nav.2G">2G · Or, Argent, Cristal</a></li>
+                <li><a class="dropdown-item" href="/3G" data-i18n="nav.3G">3G · Rubis, Saphir, Émeraude, RF/VF</a></li>
+                <li><a class="dropdown-item" href="/4G" data-i18n="nav.4G">4G · Diamant, Perle, Platine, HG/SS</a></li>
+                <li><a class="dropdown-item" href="/5G" data-i18n="nav.5G">5G · Noir, Blanc, N2/B2</a></li>
+                <li><a class="dropdown-item" href="/6G" data-i18n="nav.6G">6G · X, Y, ROSA</a></li>
+                <li><a class="dropdown-item" href="/7G" data-i18n="nav.7G">7G · Soleil, Lune, Let's Go</a></li>
+                <li><a class="dropdown-item" href="/8G" data-i18n="nav.8G">8G · Épée, Bouclier, DEPS, Arceus</a></li>
+                <li><a class="dropdown-item" href="/9G" data-i18n="nav.9G">9G · Écarlate, Violet, Z-A</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.methodes">Méthodes</h6></li>
+                <li><a class="dropdown-item" href="/masuda" data-i18n="nav.masuda">Masuda</a></li>
+                <li><a class="dropdown-item" href="/charmechroma" data-i18n="nav.charme">Charme Chroma</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/siteaide" data-i18n="nav.aide">Sites d'aide</a></li>
+            <li class="nav-item"><a class="nav-link" href="/streameryoutuber" data-i18n="nav.streamers">Streamers & YouTubers</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact" data-i18n="nav.contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link pc-nav-discord" href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" title="Discord">💬 Discord</a></li>
+            <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/compteur" data-i18n="nav.compteur">⬇ Compteur Shiny</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link pc-nav-compte" id="pc-nav-compte" href="/profil"><span>Se connecter</span></a>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-compte" id="pc-menu-compte"></ul>
+            </li>
+            <li class="nav-item dropdown pc-langues">
+              <button class="nav-link dropdown-toggle pc-btn-langue" type="button"
+                      data-bs-toggle="dropdown" aria-expanded="false" aria-label="Langue / Language">
+                <img id="pc-drapeau" src="/assets/picture/drapeau-fr.svg" alt="Français">
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-langue">
+                <li><button class="dropdown-item" type="button" data-langue="fr"
+                            onclick="pcChangerLangue('fr')"><img src="/assets/picture/drapeau-fr.svg" alt=""> Français</button></li>
+                <li><button class="dropdown-item" type="button" data-langue="en"
+                            onclick="pcChangerLangue('en')"><img src="/assets/picture/drapeau-en.svg" alt=""> English</button></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>  
+
+    <main id="main-page"><!--pc-contenu-->
+<div class="accueil-scene">
+  <div class="hero-scene-content">
+    <style>
+      .cpt { width: min(1100px, 92%); margin: 24px auto 0; color: #fff; }
+      .cpt-bloc { background: rgba(20, 22, 34, 0.86); border: 3px solid #4C678F;
+                  border-radius: 18px; padding: 28px 32px; margin-bottom: 24px; }
+      .cpt-tete { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .cpt-tete img { width: 110px; height: 110px; flex: none; }
+      .cpt-tete > div { flex: 1; min-width: 240px; }
+      .cpt-tete h1 { font-size: 34px; margin: 0; color: #ffd84a; }
+      .cpt-tete p { font-size: 17px; margin: 6px 0 0; color: #d8d8e6; }
+      .cpt-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+      .cpt-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+                 border-radius: 12px; font-weight: bold; text-decoration: none !important;
+                 font-size: 17px; transition: transform .1s, filter .1s; }
+      .cpt-btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+      .cpt-btn { justify-content: center; flex-wrap: wrap; text-align: center; }
+      #cpt-version { font-weight: normal; font-size: 14px; white-space: nowrap; }
+      @media (max-width: 600px) {
+        .cpt-btn { width: 100%; }
+        .cpt-bloc { padding: 20px 18px; }
+        .cpt-tete h1 { font-size: 28px; }
+      }
+      .cpt-btn-dl { background: #ffd84a; color: #1b1d2b !important; }
+      .cpt-btn-sec { background: #2c3046; color: #fff !important; border: 1px solid #4C678F; }
+      .cpt-petit { font-size: 13px; color: #a9a7b8; margin-top: 8px; }
+      .cpt h2 { font-size: 24px; color: #ffd84a; margin: 0 0 16px; }
+      .cpt-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                    gap: 14px; }
+      .cpt-carte { background: #22263a; border-radius: 14px; padding: 16px 18px; }
+      .cpt-carte h3 { font-size: 17px; margin: 0 0 6px; color: #fff; }
+      .cpt-carte p { font-size: 14px; margin: 0; color: #c9c8d6; }
+      .cpt-captures { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                      gap: 16px; }
+      .cpt-captures figure { margin: 0; }
+      .cpt-captures img { width: 100%; border-radius: 12px; border: 1px solid #3a3f5c;
+                          cursor: zoom-in; }
+      .cpt-captures figcaption { font-size: 14px; color: #c9c8d6; margin-top: 6px;
+                                 text-align: center; }
+      .cpt ol { font-size: 15px; color: #d8d8e6; padding-left: 22px; margin: 0; }
+      .cpt ol li { margin-bottom: 8px; }
+      .cpt-zoom { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none;
+                  align-items: center; justify-content: center; z-index: 2000;
+                  cursor: zoom-out; }
+      .cpt-zoom img { max-width: 94vw; max-height: 92vh; border-radius: 12px; }
+    </style>
+
+    <div class="cpt">
+      <!-- présentation + téléchargement -->
+      <section class="cpt-bloc">
+        <div class="cpt-tete">
+          <img src="/assets/picture/compteur/logo-compteur.png" alt="Logo PokéChroma Counter">
+          <div>
+            <h1>PokéChroma Counter</h1>
+            <p>Le compteur de shiny gratuit qui compte tes rencontres <b>tout seul</b> et
+              t'alerte quand le Pokémon est chromatique ✨</p>
+          </div>
+        </div>
+        <div class="cpt-actions">
+          <a class="cpt-btn cpt-btn-dl"
+             href="https://github.com/Starduust9/PokeChroma-Counter/releases/latest/download/Compteur-Shiny.zip">
+            ⬇ Télécharger <span id="cpt-version"></span></a>
+          <a class="cpt-btn cpt-btn-sec" href="https://ko-fi.com/pokechroma" target="_blank"
+             rel="noopener">❤ Soutenir le projet sur Ko-fi</a>
+        </div>
+        <div class="cpt-petit">Pour Windows 10 et 11 · gratuit · environ 60 Mo · les mises à jour
+          s'installent toutes seules depuis le logiciel.</div>
+      </section>
+
+      <!-- fonctionnalités -->
+      <section class="cpt-bloc">
+        <h2>Ce qu'il fait</h2>
+        <div class="cpt-grille">
+          <div class="cpt-carte"><h3>🎮 Compte tout seul</h3>
+            <p>Il lit l'image de ta carte de capture (Elgato, OBS…) et ajoute +1 à chaque
+              rencontre ou reset, sans que tu touches à rien.</p></div>
+          <div class="cpt-carte"><h3>✨ Alerte chromatique</h3>
+            <p>Son, message et notification Discord dès qu'un shiny apparaît, pour ne plus
+              jamais en rater un.</p></div>
+          <div class="cpt-carte"><h3>🌍 Jeux en 3D</h3>
+            <p>Légendes Z-A, Arceus, Écarlate / Violet : il repère chaque Pokémon à l'écran.
+              Tu peux entraîner ton propre détecteur et le partager avec la communauté.</p></div>
+          <div class="cpt-carte"><h3>🗂 Plusieurs chasses</h3>
+            <p>Lance plusieurs chasses en même temps, avec des raccourcis clavier +1 / −1
+              et un mini compteur à garder par-dessus le jeu.</p></div>
+          <div class="cpt-carte"><h3>📺 Pour les streamers</h3>
+            <p>Une page à ajouter dans OBS pour afficher ton compteur en direct.</p></div>
+          <div class="cpt-carte"><h3>🏆 Mes chromatiques</h3>
+            <p>Ta collection de shinies avec badges, statistiques, import depuis Pokémon
+              Elements, profil en ligne et amis (connexion Discord ou Google).</p></div>
+        </div>
+      </section>
+
+      <!-- captures -->
+      <section class="cpt-bloc">
+        <h2>En images</h2>
+        <div class="cpt-captures">
+          <figure><img src="/assets/picture/compteur/chasses.jpg" alt="Mes chasses">
+            <figcaption>Tes chasses en cours, avec le sprite du jeu</figcaption></figure>
+          <figure><img src="/assets/picture/compteur/mes-chromatiques.jpg"
+                       alt="Mes chromatiques">
+            <figcaption>Ta collection, tes badges et ton profil</figcaption></figure>
+          <figure><img src="/assets/picture/compteur/statistiques.jpg" alt="Statistiques">
+            <figcaption>Tes statistiques par jeu, génération, Ball…</figcaption></figure>
+          <figure><img src="/assets/picture/compteur/entrainement-3d.jpg"
+                       alt="Entraîner le détecteur 3D">
+            <figcaption>Apprendre au compteur à reconnaître un Pokémon en 3D</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- installation -->
+      <section class="cpt-bloc">
+        <h2>Installation</h2>
+        <ol>
+          <li>Télécharge le fichier <b>Compteur-Shiny.zip</b> avec le bouton plus haut.</li>
+          <li>Clique droit dessus → <b>Extraire tout…</b>, puis ouvre le dossier.</li>
+          <li>Lance <b>CompteurShiny.exe</b>. Si Windows affiche « Windows a protégé votre
+            ordinateur », clique sur <b>Informations complémentaires</b> puis
+            <b>Exécuter quand même</b> (le logiciel n'est pas signé, c'est normal pour un
+            projet de fan).</li>
+          <li>Clique sur <b>Nouvelle chasse</b>, choisis ton Pokémon et ton jeu, et c'est
+            parti ✨</li>
+        </ol>
+      </section>
+
+      <!-- application web (téléphone, tablette, PC) -->
+      <section class="cpt-bloc" id="pc-aide-installation">
+      <h2>Installer l'application PokéChroma</h2>
+      <div class="border-bottom"></div>
+      <p>Tes chasses, ton profil, tes amis et tous les guides du site dans une seule application,
+        sur l'écran d'accueil de ton téléphone ou dans le menu Démarrer de ton PC. Elle marche aussi
+        hors connexion.</p>
+      <div class="pc-actions-compteurs">
+        <button id="pc-installer" class="cpt-btn cpt-btn-dl" type="button" hidden>📲 Installer l'application</button>
+      </div>
+      <div class="accordion pc-accordeon" id="pc-accordeon">
+        <div class="accordion-item">
+          <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#pc-a-android">Android</button></h3>
+          <div id="pc-a-android" class="accordion-collapse collapse" data-bs-parent="#pc-accordeon">
+            <div class="accordion-body">
+              <p>Dans Google Chrome, appuie sur le bouton « 📲 Installer l'application », ou sur les
+                trois petits points en haut à droite, puis « Ajouter à l'écran d'accueil » et
+                « Installer ».</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#pc-a-ios">iPhone / iPad (iOS)</button></h3>
+          <div id="pc-a-ios" class="accordion-collapse collapse" data-bs-parent="#pc-accordeon">
+            <div class="accordion-body">
+              <p><b>Ouvre la page dans Safari</b> : sur iPhone, Brave, Firefox et les autres navigateurs
+                ne permettent pas toujours d'installer une application web.</p>
+              <ol>
+                <li>Appuie sur l'icône Partager <svg class="pc-icone-partage" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Partager"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg> (sur les iPhone récents, elle est dans le
+                  menu « ••• » en bas de l'écran).</li>
+                <li>Fais défiler et appuie sur « Sur l'écran d'accueil ».</li>
+                <li>Laisse « Ouvrir comme app web » activé, puis appuie sur « Ajouter ».</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#pc-a-pc">Windows / Mac / Linux / Chrome OS</button></h3>
+          <div id="pc-a-pc" class="accordion-collapse collapse" data-bs-parent="#pc-accordeon">
+            <div class="accordion-body">
+              <p>Dans Chrome ou Edge, clique sur l'icône d'installation à droite de la barre d'adresse
+                (un petit écran avec une flèche), ou sur le bouton « 📲 Installer l'application ».</p>
+              <p>Pour le comptage <b>automatique</b> avec ta carte de capture, utilise plutôt
+                <a href="/compteur">PokéChroma Counter</a> pour Windows.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div>
+
+    <div class="cpt-zoom" id="cpt-zoom"><img alt=""></div>
+  </div>
+</div>
+
+<!--/pc-contenu--></main>
+
+    <footer class="pc-footer">
+      <div class="pc-footer-grille">
+        <div>
+          <div class="pc-footer-marque">
+            <img src="/assets/picture/Logo.png" alt="">
+            <span>PokéChroma</span>
+          </div>
+          <p data-i18n="pied.texte">Des astuces simples, des guides clairs et des infos utiles pour tous les shiny
+             hunters, débutants comme confirmés ✨</p>
+        </div>
+        <div>
+          <h4 data-i18n="pied.liens">Liens</h4>
+          <ul>
+            <li><a href="/compteur">⬇ PokéChroma Counter</a></li>
+            <li><a href="/introshinyhunting" data-i18n="pied.debuter">Débuter le shiny hunting</a></li>
+            <li><a href="/shinyhuntingjeu" data-i18n="pied.jeux">Les jeux</a></li>
+            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" data-i18n="pied.discord">💬 Rejoindre le Discord</a></li>
+            <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener" data-i18n="pied.kofi">❤ Soutenir sur Ko-fi</a></li>
+            <li><a href="/confidentialite" data-i18n="pied.confidentialite">Confidentialité</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="pied.mentions">Mentions légales</h4>
+          <p data-i18n="pied.fan">Le site est un projet de fan, pour des fans. Merci à <b>Sky_Lasth</b> pour l'aide
+             sur le code et le site.</p>
+          <p data-i18n="pied.illus">Certaines illustrations sont la propriété de The Pokémon Company. Brindibou shiny
+             appartient à <a href="https://pin.it/5vtTFbc6J" target="_blank" rel="noopener">milenagorosito</a>
+             sur Pinterest.</p>
+        </div>
+      </div>
+      <div class="pc-footer-bas">© <span id="pc-annee">2026</span> PokéChroma · <span data-i18n="pied.marques">Pokémon et les
+        noms associés sont des marques de Nintendo, Creatures et GAME FREAK.</span></div>
+    </footer>
+
+    <script src="/js/langue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <script src="/js/compte.js"></script>
+    <script>
+      // Application installable (PWA) : fonctionne hors ligne une fois visitée
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+      }
+      // Site installé (ou installation acceptée) : on garde aussi toutes les images des guides
+      const pcToutGarder = () => navigator.serviceWorker && navigator.serviceWorker.ready
+        .then((r) => r.active && r.active.postMessage("pc-tout-garder")).catch(() => {});
+      if (window.matchMedia("(display-mode: standalone)").matches || navigator.standalone) pcToutGarder();
+      window.addEventListener("appinstalled", pcToutGarder);
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        window.pcInvitation = e;
+        window.dispatchEvent(new Event("pc-installable"));
+      });
+    </script>
+    <script type="module" src="/Router/router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+<script src="./js/easteregg.js"></script>

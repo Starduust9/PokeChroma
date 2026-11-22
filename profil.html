@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imprima&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/scss/main.css"/>
+    <link rel="stylesheet" href="/scss/pokechroma.css"/>
+    <meta name="google-site-verification" content="b9bl0zc-K1b6ivHczMaCEDYzLEhgyuPErUrRr1GAr5g" />
+    <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
+    <link rel="manifest" id="pc-manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#11131e">
+    <link rel="apple-touch-icon" href="/assets/picture/icone-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="PokéChroma">
+    <!--pc-meta-->
+    <title>Profil - PokéChroma</title>
+    <meta name="description" content="Le profil PokéChroma d&#x27;un chasseur de shiny.">
+    <link rel="canonical" href="https://pokechroma.com/profil">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PokéChroma">
+    <meta property="og:title" content="Profil - PokéChroma">
+    <meta property="og:description" content="Le profil PokéChroma d&#x27;un chasseur de shiny.">
+    <meta property="og:url" content="https://pokechroma.com/profil">
+    <meta property="og:image" content="https://pokechroma.com/assets/picture/partage.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="noindex">
+    <!--/pc-meta-->
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-xl pc-nav" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/accueil">
+          <img src="/assets/picture/Logo.png" alt="Logo PokéChroma" id="logo">
+          <span class="pc-marque">PokéChroma</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-xl-0 align-items-xl-center">
+            <li class="nav-item"><a class="nav-link" href="/introshinyhunting" data-i18n="nav.debuter">Débuter le shiny hunting</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/shinyhuntingjeu" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.jeux">Les jeux</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/shinyhuntingjeu" data-i18n="nav.tous">Tous les jeux & Shiny Lock</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.parGen">Par génération</h6></li>
+                <li><a class="dropdown-item" href="/1G" data-i18n="nav.1G">1G · Rouge, Bleu, Jaune</a></li>
+                <li><a class="dropdown-item" href="/2G" data-i18n="nav.2G">2G · Or, Argent, Cristal</a></li>
+                <li><a class="dropdown-item" href="/3G" data-i18n="nav.3G">3G · Rubis, Saphir, Émeraude, RF/VF</a></li>
+                <li><a class="dropdown-item" href="/4G" data-i18n="nav.4G">4G · Diamant, Perle, Platine, HG/SS</a></li>
+                <li><a class="dropdown-item" href="/5G" data-i18n="nav.5G">5G · Noir, Blanc, N2/B2</a></li>
+                <li><a class="dropdown-item" href="/6G" data-i18n="nav.6G">6G · X, Y, ROSA</a></li>
+                <li><a class="dropdown-item" href="/7G" data-i18n="nav.7G">7G · Soleil, Lune, Let's Go</a></li>
+                <li><a class="dropdown-item" href="/8G" data-i18n="nav.8G">8G · Épée, Bouclier, DEPS, Arceus</a></li>
+                <li><a class="dropdown-item" href="/9G" data-i18n="nav.9G">9G · Écarlate, Violet, Z-A</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.methodes">Méthodes</h6></li>
+                <li><a class="dropdown-item" href="/masuda" data-i18n="nav.masuda">Masuda</a></li>
+                <li><a class="dropdown-item" href="/charmechroma" data-i18n="nav.charme">Charme Chroma</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/siteaide" data-i18n="nav.aide">Sites d'aide</a></li>
+            <li class="nav-item"><a class="nav-link" href="/streameryoutuber" data-i18n="nav.streamers">Streamers & YouTubers</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact" data-i18n="nav.contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link pc-nav-discord" href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" title="Discord">💬 Discord</a></li>
+            <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/compteur" data-i18n="nav.compteur">⬇ Compteur Shiny</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link pc-nav-compte" id="pc-nav-compte" href="/profil"><span>Se connecter</span></a>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-compte" id="pc-menu-compte"></ul>
+            </li>
+            <li class="nav-item dropdown pc-langues">
+              <button class="nav-link dropdown-toggle pc-btn-langue" type="button"
+                      data-bs-toggle="dropdown" aria-expanded="false" aria-label="Langue / Language">
+                <img id="pc-drapeau" src="/assets/picture/drapeau-fr.svg" alt="Français">
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-langue">
+                <li><button class="dropdown-item" type="button" data-langue="fr"
+                            onclick="pcChangerLangue('fr')"><img src="/assets/picture/drapeau-fr.svg" alt=""> Français</button></li>
+                <li><button class="dropdown-item" type="button" data-langue="en"
+                            onclick="pcChangerLangue('en')"><img src="/assets/picture/drapeau-en.svg" alt=""> English</button></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>  
+
+    <main id="main-page"><!--pc-contenu-->
+<div class="accueil-scene text-center pc-pf-page">
+  <div class="hero-scene-content">
+    <div class="container">
+      <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
+    </div>
+
+    <!-- recherche d'un joueur -->
+    <div class="blackO-text text-white response-container pc-pf-recherche">
+      <form id="pc-pf-chercher" class="pc-pf-ligne" autocomplete="off">
+        <input id="pc-pf-joueur" class="form-control" type="search" placeholder="🔎 Chercher un joueur (pseudo)">
+        <button class="btn btn-primary" type="submit">Chercher</button>
+      </form>
+      <div id="pc-pf-resultats" class="pc-pf-resultats"></div>
+    </div>
+
+    <!-- connexion (quand on n'est pas connecté) -->
+    <div class="blackO-text text-white response-container" id="pc-pf-connexion" hidden>
+      <h1>Mon profil PokéChroma</h1>
+      <p class="pc-intro">Connecte-toi avec le <b>même compte</b> que dans PokéChroma Counter pour
+        retrouver ton profil, tes shinies, tes badges et tes chasses en cours.</p>
+      <div class="pc-pf-boutons">
+        <button class="pc-pf-btn pc-pf-discord" type="button" onclick="pcConnexion('discord')">Se connecter avec Discord</button>
+        <button class="pc-pf-btn pc-pf-google" type="button" onclick="pcConnexion('google')">Se connecter avec Google</button>
+      </div>
+      <p class="pc-legende">Pas encore de compte ? Il est créé automatiquement à la première connexion,
+        ici ou dans le compteur. Voir la <a href="/confidentialite">politique de confidentialité</a>.</p>
+    </div>
+
+    <div id="pc-pf-chargement" class="blackO-text text-white response-container">
+      <p class="pc-intro">Chargement…</p>
+    </div>
+
+    <!-- profil -->
+    <div id="pc-pf-profil" hidden>
+      <div class="blackO-text text-white response-container pc-pf-entete" id="pc-pf-entete"></div>
+
+      <div class="blackO-text text-white response-container" id="pc-pf-edition" hidden>
+        <h2>Modifier mon profil</h2>
+        <div class="border-bottom"></div>
+        <form id="pc-pf-form" class="pc-pf-form" autocomplete="off">
+          <label>Pseudo <input id="pc-pf-e-pseudo" class="form-control" maxlength="24" minlength="2" required></label>
+          <label>Bio <textarea id="pc-pf-e-bio" class="form-control" maxlength="300" rows="3"></textarea></label>
+          <label>Pokémon de l'avatar (en chromatique) <input id="pc-pf-e-avatar" class="form-control" placeholder="ex. Gardevoir"></label>
+          <label class="pc-pf-case"><input id="pc-pf-e-discord" type="checkbox"> Utiliser plutôt mon avatar Discord</label>
+          <p id="pc-pf-e-erreur" class="pc-pf-erreur"></p>
+          <div class="pc-pf-boutons">
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+            <button class="btn btn-outline-light" type="button" id="pc-pf-e-annuler">Annuler</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="blackO-text text-white response-container" id="pc-pf-bloc-chasses" hidden>
+        <h2>Mes chasses en cours</h2>
+        <div class="border-bottom"></div>
+        <p class="pc-legende">Les chasses de PokéChroma Counter, mises à jour quand le compteur est connecté.</p>
+        <div id="pc-pf-chasses" class="pc-pf-grille"></div>
+      </div>
+
+      <div class="blackO-text text-white response-container">
+        <div class="pc-pf-titre-ligne">
+          <h2 id="pc-pf-titre-shinies">Shinies</h2>
+          <button class="btn btn-primary" type="button" id="pc-pf-ajouter" hidden>➕ Ajouter un shiny</button>
+        </div>
+        <div class="border-bottom"></div>
+        <form id="pc-pf-s-form" class="pc-ch-form" hidden autocomplete="off">
+          <label>Pokémon <input id="pc-pf-s-nom" class="form-control" required></label>
+          <label>Surnom <input id="pc-pf-s-surnom" class="form-control"></label>
+          <label>Jeu <select id="pc-pf-s-jeu" class="form-control"></select></label>
+          <label>Méthode <select id="pc-pf-s-methode" class="form-control"></select></label>
+          <label>Rencontres <input id="pc-pf-s-renc" class="form-control" type="number" min="0" inputmode="numeric"></label>
+          <label>Date <input id="pc-pf-s-date" class="form-control" type="date"></label>
+          <label>Ball <select id="pc-pf-s-ball" class="form-control"></select></label>
+          <label>Sexe <select id="pc-pf-s-sexe" class="form-control"><option value="">—</option><option value="M">♂</option><option value="F">♀</option></select></label>
+          <label>Lieu <input id="pc-pf-s-lieu" class="form-control"></label>
+          <label class="pc-pf-case"><input id="pc-pf-s-full" type="checkbox" checked> Full odds</label>
+          <label class="pc-pf-case"><input id="pc-pf-s-charme" type="checkbox"> Charme Chroma</label>
+          <p id="pc-pf-s-erreur" class="pc-pf-erreur"></p>
+          <div class="pc-pf-boutons">
+            <button class="btn btn-primary" type="submit">Ajouter</button>
+            <button class="btn btn-outline-light" type="button" id="pc-pf-s-annuler">Annuler</button>
+          </div>
+        </form>
+        <div class="pc-pf-ligne pc-pf-filtres">
+          <input id="pc-pf-filtre" class="form-control" type="search" placeholder="🔎 Pokémon, jeu, surnom…">
+          <select id="pc-pf-tri" class="form-control">
+            <option value="recent">Plus récents</option>
+            <option value="ancien">Plus anciens</option>
+            <option value="nom">Nom</option>
+            <option value="rencontres">Rencontres</option>
+          </select>
+        </div>
+        <div id="pc-pf-shinies" class="pc-pf-grille"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--/pc-contenu--></main>
+
+    <footer class="pc-footer">
+      <div class="pc-footer-grille">
+        <div>
+          <div class="pc-footer-marque">
+            <img src="/assets/picture/Logo.png" alt="">
+            <span>PokéChroma</span>
+          </div>
+          <p data-i18n="pied.texte">Des astuces simples, des guides clairs et des infos utiles pour tous les shiny
+             hunters, débutants comme confirmés ✨</p>
+        </div>
+        <div>
+          <h4 data-i18n="pied.liens">Liens</h4>
+          <ul>
+            <li><a href="/compteur">⬇ PokéChroma Counter</a></li>
+            <li><a href="/introshinyhunting" data-i18n="pied.debuter">Débuter le shiny hunting</a></li>
+            <li><a href="/shinyhuntingjeu" data-i18n="pied.jeux">Les jeux</a></li>
+            <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" data-i18n="pied.discord">💬 Rejoindre le Discord</a></li>
+            <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener" data-i18n="pied.kofi">❤ Soutenir sur Ko-fi</a></li>
+            <li><a href="/confidentialite" data-i18n="pied.confidentialite">Confidentialité</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="pied.mentions">Mentions légales</h4>
+          <p data-i18n="pied.fan">Le site est un projet de fan, pour des fans. Merci à <b>Sky_Lasth</b> pour l'aide
+             sur le code et le site.</p>
+          <p data-i18n="pied.illus">Certaines illustrations sont la propriété de The Pokémon Company. Brindibou shiny
+             appartient à <a href="https://pin.it/5vtTFbc6J" target="_blank" rel="noopener">milenagorosito</a>
+             sur Pinterest.</p>
+        </div>
+      </div>
+      <div class="pc-footer-bas">© <span id="pc-annee">2026</span> PokéChroma · <span data-i18n="pied.marques">Pokémon et les
+        noms associés sont des marques de Nintendo, Creatures et GAME FREAK.</span></div>
+    </footer>
+
+    <script src="/js/langue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <script src="/js/compte.js"></script>
+    <script>
+      // Application installable (PWA) : fonctionne hors ligne une fois visitée
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+      }
+      // Site installé (ou installation acceptée) : on garde aussi toutes les images des guides
+      const pcToutGarder = () => navigator.serviceWorker && navigator.serviceWorker.ready
+        .then((r) => r.active && r.active.postMessage("pc-tout-garder")).catch(() => {});
+      if (window.matchMedia("(display-mode: standalone)").matches || navigator.standalone) pcToutGarder();
+      window.addEventListener("appinstalled", pcToutGarder);
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        window.pcInvitation = e;
+        window.dispatchEvent(new Event("pc-installable"));
+      });
+    </script>
+    <script type="module" src="/Router/router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+<script src="./js/easteregg.js"></script>

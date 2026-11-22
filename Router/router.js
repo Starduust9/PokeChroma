@@ -21,6 +21,8 @@ const getRouteByUrl = (url) => {
   }
 };
 
+let premierChargement = true;
+
 // Fonction pour charger le contenu de la page
 const LoadContentPage = async () => {
   const path = window.location.pathname;
@@ -47,9 +49,13 @@ const LoadContentPage = async () => {
     document.querySelector("body").appendChild(scriptTag);
   }
 
-  // Changement du titre de la page
-  document.title = ((window.PC_LANGUE === "en" && actualRoute.titleEn) || actualRoute.title) +
-    " - " + websiteName;
+  // Changement du titre de la page (au premier chargement en français, on garde le titre
+  // complet écrit dans la page pré-remplie, meilleur pour Google)
+  if (!(premierChargement && window.PC_LANGUE !== "en" && document.querySelector("link[rel=canonical]"))) {
+    document.title = ((window.PC_LANGUE === "en" && actualRoute.titleEn) || actualRoute.title) +
+      " - " + websiteName;
+  }
+  premierChargement = false;
 
   // Page ouverte mise en avant dans le menu
   document.querySelectorAll(".pc-nav .nav-link, .pc-nav .dropdown-item").forEach((lien) => {

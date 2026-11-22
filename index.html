@@ -9,14 +9,25 @@
     <link rel="stylesheet" href="/scss/main.css"/>
     <link rel="stylesheet" href="/scss/pokechroma.css"/>
     <meta name="google-site-verification" content="b9bl0zc-K1b6ivHczMaCEDYzLEhgyuPErUrRr1GAr5g" />
-    <title>PokéChroma</title>
-    <meta name="description" content="PokéChroma : astuces, guides et outils pour le shiny hunting Pokémon, de la 1G à la 9G, et PokéChroma Counter, le compteur de shiny automatique.">
     <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
     <link rel="manifest" id="pc-manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#11131e">
     <link rel="apple-touch-icon" href="/assets/picture/icone-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="PokéChroma">
+    <!--pc-meta-->
+    <title>Le guide du shiny hunting Pokémon - PokéChroma</title>
+    <meta name="description" content="Astuces, guides et outils pour chasser les Pokémon chromatiques (shiny), de la 1G à la 9G : méthodes, taux, Masuda, Charme Chroma, et le compteur de shiny PokéChroma Counter.">
+    <link rel="canonical" href="https://pokechroma.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PokéChroma">
+    <meta property="og:title" content="Le guide du shiny hunting Pokémon - PokéChroma">
+    <meta property="og:description" content="Astuces, guides et outils pour chasser les Pokémon chromatiques (shiny), de la 1G à la 9G : méthodes, taux, Masuda, Charme Chroma, et le compteur de shiny PokéChroma Counter.">
+    <meta property="og:url" content="https://pokechroma.com/">
+    <meta property="og:image" content="https://pokechroma.com/assets/picture/partage.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <!--/pc-meta-->
 </head>
 <body>
   <header>
@@ -83,9 +94,68 @@
     </nav>
 </header>  
 
-    <main id="main-page">
-        <!-- Le contenu de la page sera ici -->
-    </main>
+    <main id="main-page"><!--pc-contenu-->
+<div class="accueil-scene text-center">
+    <div class="hero-scene-content">
+      <div class="container">
+        <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma" onclick="changeLogo(event)">
+      </div>
+      <style>
+        h1 {
+            font-size: 24px;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        .response-container {
+            border: 5px solid #4C678F; /* Définit la bordure de l'élément */
+            padding: 20px; /* Ajoute un espace intérieur pour améliorer l'apparence */
+            margin-bottom: 20px; /* Ajoute un espace en bas pour séparer les réponses */
+        }
+        .border-bottom {
+            color: #4C678F;
+        }
+
+      </style>
+      <div class="blackO-text response-container" style="width: 80%;">
+      <div class="d-flex flex-row justify-content-center text-white">
+        <h1><u>✨ Bienvenue sur PokéChroma ! ✨</u> <br><br></h1>
+      </div>
+        <div class="d-flex flex-row justify-content-center text-white">
+        <h3>Tu es fan de Pokémon et tu veux te lancer (ou progresser) dans la chasse aux shiny ? Tu es au bon endroit !<br><br>
+            Je suis un passionné comme toi, et j’ai créé ce site pour partager des astuces simples, des guides clairs et des infos utiles à tous les shiny hunters, débutants comme confirmés.<br><br>
+            Que tu sois en train de reset, de faire du Masuda, ou de chasser dans les hautes herbes, ici tu trouveras des conseils concrets et faciles à suivre pour briller comme un Pokémon chromatique ✨</h3>
+      </div>
+    </div>
+      <picture style="position: fixed; bottom: 100px; left: -140px; z-index: -1;">
+        <style>
+            .flipped {
+                transform: scaleX(-1);
+            }
+            .resized1 { 
+                height: 40vh;
+            }
+        </style>
+        <img src="/assets/picture/Regieleki.png" alt="Regieleki" class="flipped resized1">
+    </picture>
+    <picture style="position: fixed; bottom: 200px; right: -120px; z-index: -1;">
+        <style>
+            .flipped {
+                transform: scaleX(-1);
+            }
+            .resized2 {
+                height: 40vh;
+            }
+        </style>
+        <img src="/assets/picture/Xerneas.png" alt="Xerneas" class="flipped resized2">
+    </picture>
+    </div>
+</div>
+<audio id="shiny-sound">
+  <source src="/assets/picture/legendsarceusshinysound.mp3" type="audio/mpeg">
+</audio> 
+
+<!--/pc-contenu--></main>
 
     <footer class="pc-footer">
       <div class="pc-footer-grille">
