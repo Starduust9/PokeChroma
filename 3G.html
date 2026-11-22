@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="/scss/main.css"/>
     <link rel="stylesheet" href="/scss/pokechroma.css"/>
     <meta name="google-site-verification" content="b9bl0zc-K1b6ivHczMaCEDYzLEhgyuPErUrRr1GAr5g" />
+    <meta name="google-adsense-account" content="ca-pub-9465038992038625">
+    <!-- Google AdSense (annonces du site ; jamais dans le logiciel PokéChroma Counter) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9465038992038625"
+            crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
     <link rel="manifest" id="pc-manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#11131e">
@@ -277,6 +281,7 @@
             <li><a href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" data-i18n="pied.discord">💬 Rejoindre le Discord</a></li>
             <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener" data-i18n="pied.kofi">❤ Soutenir sur Ko-fi</a></li>
             <li><a href="/confidentialite" data-i18n="pied.confidentialite">Confidentialité</a></li>
+            <li><a href="/confidentialite" onclick="return pcChoixCookies()" data-i18n="pied.cookies">Gérer les cookies</a></li>
           </ul>
         </div>
         <div>
@@ -292,6 +297,18 @@
         noms associés sont des marques de Nintendo, Creatures et GAME FREAK.</span></div>
     </footer>
 
+    <script>
+      // « Gérer les cookies » : rouvre la fenêtre de consentement de Google (si elle est active)
+      function pcChoixCookies() {
+        window.googlefc = window.googlefc || {};
+        window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+        if (window.googlefc.showRevocationMessage) {
+          window.googlefc.callbackQueue.push(window.googlefc.showRevocationMessage);
+          return false;
+        }
+        return true;      // fenêtre pas encore active : on montre la page Confidentialité
+      }
+    </script>
     <script src="/js/langue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
     <script src="/js/compte.js"></script>

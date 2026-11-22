@@ -1,6 +1,6 @@
 // Service worker PokéChroma : le site (et « Mes compteurs ») marche hors connexion.
 // Pense à changer VERSION à chaque mise en ligne importante pour rafraîchir le cache.
-const VERSION = "pc-v28";
+const VERSION = "pc-v29";
 const A_GARDER = [
   "/",
   "/manifest.webmanifest",
