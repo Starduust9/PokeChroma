@@ -161,7 +161,7 @@
           <div><b>${nombre(jeux)}</b><span>${T("jeux", "games")}</span></div>
         </div>
         ${moi ? `<div class="pc-pf-boutons">
-          <button class="btn btn-primary" type="button" id="pc-pf-modifier">✏ ${T("Modifier", "Edit")}</button>
+          <button class="btn btn-primary" type="button" id="pc-pf-modifier">✏️ ${T("Modifier", "Edit")}</button>
           <button class="btn btn-outline-light" type="button" onclick="pcDeconnexion()">${T("Se déconnecter", "Sign out")}</button>
         </div>` : ""}
       </div>`;

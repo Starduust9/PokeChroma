@@ -411,3 +411,6 @@ body.pc-mode-app #main-page .hero-scene-content { padding-bottom: 20px; min-heig
 /* page profil : les blocs s'élargissent avec l'écran (plus de shinies par ligne) */
 #main-page .pc-pf-page .response-container { width: min(1700px, 94%) !important; }
 #main-page .pc-pf-stats { max-width: 620px; }
+/* en-tête du profil centré : l'avatar et les infos groupés au milieu */
+#main-page .pc-pf-entete { justify-content: center; }
+#main-page .pc-pf-infos { flex: 0 1 640px; }
