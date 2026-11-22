@@ -1,0 +1,13 @@
+# Cloudflare Pages : pages, scripts et styles toujours revérifiés (les mises à jour arrivent tout de suite)
+/*.js
+  Cache-Control: no-cache
+/*.css
+  Cache-Control: no-cache
+/*.html
+  Cache-Control: no-cache
+/*.json
+  Cache-Control: no-cache
+/*.webmanifest
+  Cache-Control: no-cache
+/sw.js
+  Cache-Control: no-cache

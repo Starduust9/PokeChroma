@@ -1,6 +1,6 @@
 // Service worker PokéChroma : le site (et « Mes compteurs ») marche hors connexion.
 // Pense à changer VERSION à chaque mise en ligne importante pour rafraîchir le cache.
-const VERSION = "pc-v12";
+const VERSION = "pc-v13";
 const A_GARDER = [
   "/",
   "/manifest.webmanifest",
@@ -188,7 +188,7 @@ self.addEventListener("fetch", (e) => {
 
   // Pages du site (/accueil, /3G…) : le réseau d'abord, sinon la coquille en cache
   if (req.mode === "navigate") {
-    e.respondWith(fetch(req).then((r) => {
+    e.respondWith(fetch(req, { cache: "no-cache" }).then((r) => {
       caches.open(VERSION).then((c) => c.put("/", r.clone()));
       return r;
     }).catch(() => caches.match("/")));
@@ -206,7 +206,7 @@ self.addEventListener("fetch", (e) => {
       return;
     }
     // Pages, scripts, styles : toujours la dernière version en ligne, le cache hors connexion
-    e.respondWith(fetch(req).then((r) => {
+    e.respondWith(fetch(req, { cache: "no-cache" }).then((r) => {
       if (r.ok) {
         const copie = r.clone();
         caches.open(VERSION).then((c) => c.put(req, copie));
