@@ -70,6 +70,7 @@ const LoadContentPage = async () => {
     window.navigator.standalone === true;
   document.body.classList.toggle("pc-mode-app", enApp);
   if (window.pcMajBarreApp) window.pcMajBarreApp(path);
+  if (window.pcPlacerPubs) window.pcPlacerPubs(path);     // publicités (pages choisies seulement)
   const titreApple = document.querySelector('meta[name="apple-mobile-web-app-title"]');
   if (titreApple) {
     titreApple.content = "PokéChroma";

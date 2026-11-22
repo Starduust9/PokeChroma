@@ -545,3 +545,11 @@ body.pc-mode-app { padding-bottom: 70px; }
   #main-page .pc-gd-gen-txt { text-align: center; align-items: center; }
   #main-page .pc-gd-gen-txt small { font-size: 12px; }
 }
+
+/* ---------------------------------------------------------------- publicités (discrètes, aux couleurs du site) */
+#main-page .pc-pub { width: min(1100px, 92%); margin: 0 auto 24px; padding: 10px 14px 14px; border-radius: 18px;
+  background: rgba(20, 22, 34, 0.75); border: 1px dashed #343955; text-align: center; min-height: 0; }
+#main-page .pc-pub-etiquette { display: block; font-size: 11px; color: #9aa0b4; text-transform: uppercase;
+  letter-spacing: .08em; margin-bottom: 6px; }
+#main-page .pc-pub-petite { max-width: 760px; }
+#main-page .pc-pub:has(ins[data-ad-status="unfilled"]) { display: none; }   /* pas d'annonce : rien */
