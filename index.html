@@ -13,12 +13,6 @@
     <meta name="description" content="PokéChroma : astuces, guides et outils pour le shiny hunting Pokémon, de la 1G à la 9G, et PokéChroma Counter, le compteur de shiny automatique.">
     <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
     <link rel="manifest" id="pc-manifest" href="/manifest.webmanifest">
-    <script>
-      // Deux applications installables : « Compteurs » (page /compteurs) et le site entier
-      if (location.pathname.indexOf("/compteurs") === 0) {
-        document.getElementById("pc-manifest").href = "/manifest-compteurs.webmanifest";
-      }
-    </script>
     <meta name="theme-color" content="#11131e">
     <link rel="apple-touch-icon" href="/assets/picture/icone-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -66,7 +60,10 @@
             <li class="nav-item"><a class="nav-link" href="/streameryoutuber" data-i18n="nav.streamers">Streamers & YouTubers</a></li>
             <li class="nav-item"><a class="nav-link" href="/contact" data-i18n="nav.contact">Contact</a></li>
             <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/compteur" data-i18n="nav.compteur">⬇ Compteur Shiny</a></li>
-            <li class="nav-item"><a class="nav-link pc-nav-compte" id="pc-nav-compte" href="/profil"><span>Se connecter</span></a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link pc-nav-compte" id="pc-nav-compte" href="/profil"><span>Se connecter</span></a>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-compte" id="pc-menu-compte"></ul>
+            </li>
             <li class="nav-item dropdown pc-langues">
               <button class="nav-link dropdown-toggle pc-btn-langue" type="button"
                       data-bs-toggle="dropdown" aria-expanded="false" aria-label="Langue / Language">

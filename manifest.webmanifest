@@ -1,8 +1,8 @@
 {
-  "name": "PokéChroma – Guides de shiny hunting",
+  "name": "PokéChroma",
   "short_name": "PokéChroma",
-  "description": "Les guides de shiny hunting de PokéChroma, même sans connexion.",
-  "start_url": "/accueil",
+  "description": "Tes chasses shiny, ton profil, tes amis et tous les guides de PokéChroma, même sans connexion.",
+  "start_url": "/compteurs?app=1",
   "scope": "/",
   "display": "standalone",
   "background_color": "#11131e",

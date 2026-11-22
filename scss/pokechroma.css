@@ -320,13 +320,13 @@ footer.pc-footer { margin-top: 0 !important; }
 
 
 /* ---------------------------------------------------------------- application « Compteurs » installée */
-body.pc-mode-app header, body.pc-mode-app footer,
+body.pc-mode-app footer,
 body.pc-mode-app #main-page .hero-scene-content > .container,
 body.pc-mode-app #main-page .pc-actions-compteurs,
 body.pc-mode-app #main-page #pc-aide-installation,
 body.pc-mode-app #main-page picture { display: none !important; }
 body.pc-mode-app #main-page .response-container:first-of-type { margin-top: 14px !important; }
-body.pc-mode-app #main-page .hero-scene-content { padding-bottom: 20px; min-height: 100vh; }
+body.pc-mode-app #main-page .hero-scene-content { padding-bottom: 90px; min-height: 100vh; }
 
 #main-page .pc-accordeon a { color: var(--pc-or); text-decoration: underline; text-underline-offset: 3px; }
 #main-page .pc-accordeon a:hover { color: #fff; }
@@ -414,3 +414,111 @@ body.pc-mode-app #main-page .hero-scene-content { padding-bottom: 20px; min-heig
 /* en-tête du profil centré : l'avatar et les infos groupés au milieu */
 #main-page .pc-pf-entete { justify-content: center; }
 #main-page .pc-pf-infos { flex: 0 1 640px; }
+
+/* ---------------------------------------------------------------- mes chasses (comme le compteur PC) */
+#main-page .pc-ch-page .response-container { width: min(1500px, 94%) !important; }
+#main-page .pc-ch-entete { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+#main-page .pc-ch-entete h1 { margin: 0; }
+#main-page .pc-ch-etat { margin: 2px 0 0; color: var(--pc-doux); font-size: 14px; }
+#main-page .pc-ch-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin: 14px 0; }
+#main-page .pc-ch-stats div { background: #282a36; border-radius: 12px; padding: 8px; text-align: center; }
+#main-page .pc-ch-stats b { display: block; font-size: 20px; color: #ffd75e; }
+#main-page .pc-ch-stats span { font-size: 12px; color: #9aa0b4; }
+#main-page .pc-ch-connexion { background: #282a36; border-radius: 14px; padding: 12px 16px; margin-bottom: 12px; text-align: center; }
+#main-page .pc-ch-connexion p { margin: 0; }
+#main-page .pc-ch-connexion .pc-pf-boutons { margin: 10px 0 0; }
+#main-page .pc-ch-form { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  background: #282a36; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+#main-page .pc-ch-form label { display: grid; gap: 4px; font-weight: bold; font-size: 14px; }
+#main-page .pc-ch-form .pc-pf-case { display: flex; align-items: center; gap: 8px; align-self: end; padding-bottom: 8px; }
+#main-page .pc-ch-form .pc-pf-boutons { grid-column: 1 / -1; margin: 4px 0 0; justify-content: flex-start; }
+#main-page .pc-ch-grille { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+#main-page .pc-ch-vide { grid-column: 1 / -1; text-align: center; }
+#main-page .pc-ch-carte { background: #282a36; border: 1px solid #343748; border-radius: 16px; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 6px; transition: border-color .15s; }
+#main-page .pc-ch-carte:hover { border-color: #ffd75e; }
+#main-page .pc-ch-carte [data-action="ouvrir"] { cursor: pointer; }
+#main-page .pc-ch-haut { display: flex; align-items: center; gap: 10px; min-width: 0; }
+#main-page .pc-ch-bulle { width: 60px; height: 60px; border-radius: 12px; background: #1e1f29; flex: none;
+  display: flex; align-items: center; justify-content: center; overflow: hidden; }
+#main-page .pc-ch-sprite { width: 56px; height: 56px; object-fit: contain; }
+#main-page .pc-ch-lettre { display: flex; align-items: center; justify-content: center; color: #b49cff;
+  font-weight: bold; font-size: 22px; }
+#main-page .pc-ch-noms { display: flex; flex-direction: column; min-width: 0; }
+#main-page .pc-ch-noms b { color: #f8f8f2; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#main-page .pc-ch-noms span { color: #9aa0b4; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#main-page .pc-ch-cpt { color: #ffd75e; font-size: 30px; font-weight: bold; line-height: 1.1; margin-top: 4px; }
+#main-page .pc-ch-sous { color: #9aa0b4; font-size: 12px; }
+#main-page .pc-ch-puces { display: flex; gap: 6px; flex-wrap: wrap; }
+#main-page .pc-ch-puce { font-size: 12px; padding: 1px 9px; border-radius: 999px; background: rgba(154,160,180,.18); color: #c8c9d6; }
+#main-page .pc-ch-p-or { background: rgba(255,215,94,.2); color: #ffd75e; }
+#main-page .pc-ch-p-violet { background: rgba(201,168,255,.2); color: #c9a8ff; }
+#main-page .pc-ch-boutons { display: grid; grid-template-columns: 1fr 2fr; gap: 8px; margin-top: 6px; }
+#main-page .pc-ch-boutons button, #main-page .pc-ch-envoyer { border: 0; border-radius: 10px; padding: 9px; font-weight: bold;
+  background: #1e1f29; color: #f8f8f2; font-size: 16px; touch-action: manipulation; }
+#main-page .pc-ch-boutons .pc-ch-plus { background: #ffd75e; color: #1e1f29; }
+#main-page .pc-ch-boutons button:active { transform: scale(.97); }
+#main-page .pc-ch-envoyer { font-size: 14px; background: #2f3350; }
+#main-page .pc-ch-sous-titre { margin-top: 22px; font-size: 20px; }
+#main-page .pc-ch-finies { margin-top: 18px; }
+#main-page .pc-ch-finies summary { cursor: pointer; color: #ffd75e; font-weight: bold; margin-bottom: 10px; }
+/* écran de comptage */
+.pc-ch-focus { position: fixed; inset: 0; z-index: 2000; background: #15161f; overflow-y: auto;
+  display: flex; justify-content: center; padding: env(safe-area-inset-top) 12px env(safe-area-inset-bottom); }
+.pc-ch-focus[hidden] { display: none; }
+body.pc-ch-plein { overflow: hidden; }
+.pc-ch-f-boite { width: min(520px, 100%); text-align: center; color: #f8f8f2; padding: 12px 0 24px; position: relative; }
+.pc-ch-f-haut { display: flex; align-items: center; gap: 10px; }
+.pc-ch-f-titre { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.pc-ch-f-titre b { font-size: 20px; }
+.pc-ch-f-titre span { color: #9aa0b4; font-size: 14px; }
+.pc-ch-f-fermer { width: 44px; height: 44px; border-radius: 12px; border: 0; background: #282a36; color: #f8f8f2; font-size: 22px; }
+.pc-ch-f-menu { display: grid; gap: 6px; background: #282a36; border-radius: 14px; padding: 10px; margin-top: 10px; }
+.pc-ch-f-menu button { border: 0; border-radius: 10px; background: #1e1f29; color: #f8f8f2; padding: 10px; text-align: left; }
+.pc-ch-f-menu .pc-danger { color: #ff5c7a; }
+.pc-ch-f-image { margin: 14px auto 4px; width: 150px; height: 150px; border-radius: 22px; background: #282a36;
+  display: flex; align-items: center; justify-content: center; }
+.pc-ch-f-sprite { width: 140px; height: 140px; object-fit: contain; }
+.pc-ch-f-cpt { color: #ffd75e; font-size: clamp(56px, 18vw, 88px); font-weight: bold; line-height: 1; margin-top: 6px; }
+.pc-ch-f-sous { color: #9aa0b4; font-size: 14px; margin-top: 4px; }
+.pc-ch-f-plus { display: block; width: 100%; margin: 18px 0 10px; border: 0; border-radius: 22px; background: #ffd75e;
+  color: #1e1f29; font-size: 48px; font-weight: bold; padding: 34px 0; touch-action: manipulation; user-select: none; }
+.pc-ch-f-plus:active { transform: scale(.98); filter: brightness(.95); }
+.pc-ch-f-ligne { display: flex; gap: 10px; }
+.pc-ch-f-ligne > button { flex: 1; border: 0; border-radius: 14px; background: #282a36; color: #f8f8f2; font-size: 20px;
+  font-weight: bold; padding: 16px 0; touch-action: manipulation; }
+.pc-ch-f-ligne .pc-ch-f-shiny { color: #ffd75e; }
+.pc-ch-f-ligne .form-control { flex: 2; }
+.pc-ch-f-shiny-boite { background: #282a36; border-radius: 14px; padding: 14px; margin-top: 12px; display: grid; gap: 10px; }
+.pc-ch-f-shiny-boite p { margin: 0; }
+.pc-ch-f-shiny-boite .pc-ch-f-ligne > button { font-size: 15px; padding: 8px; }
+.pc-ch-f-phases { color: #9aa0b4; font-size: 13px; margin-top: 14px; }
+.pc-ch-f-fini { color: #ffd75e; font-size: 22px; font-weight: bold; margin: 20px 0; }
+
+/* ---------------------------------------------------------------- menu du compte, amis, application installée */
+.pc-nav .pc-nav-avatar { position: relative; display: inline-flex; }
+.pc-pastille { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px;
+  padding: 0 5px; border-radius: 999px; background: #ff4d5e; color: #fff; font-size: 11px; font-weight: bold; line-height: 1; }
+.pc-nav .pc-nav-avatar .pc-pastille, .pc-app-barre .pc-app-ic .pc-pastille { position: absolute; top: -5px; right: -8px; }
+.pc-menu-compte .dropdown-item { display: flex; align-items: center; gap: 6px; }
+#main-page .pc-pf-titre-ligne { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+#main-page .pc-pf-titre-ligne h2 { margin: 0; }
+#main-page .pc-j-liste { display: grid; gap: 8px; margin-top: 12px; }
+#main-page .pc-j-ligne { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  background: #282a36; border-radius: 14px; padding: 8px 12px; }
+#main-page .pc-j-ligne .pc-pf-joueur { background: none; border: 0; padding: 0; }
+#main-page .pc-j-boutons { display: flex; gap: 6px; }
+.pc-app-barre { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1500; display: grid; grid-template-columns: repeat(4, 1fr);
+  background: rgba(17, 19, 30, 0.97); border-top: 1px solid #343748; padding: 6px 4px calc(6px + env(safe-area-inset-bottom)); }
+.pc-app-barre a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #9aa0b4; text-decoration: none;
+  font-size: 11px; padding: 4px 0; border-radius: 12px; }
+.pc-app-barre a.actif { color: #ffd75e; background: rgba(255, 215, 94, 0.1); }
+.pc-app-barre .pc-app-ic { position: relative; font-size: 22px; line-height: 1; }
+body.pc-mode-app { padding-bottom: 70px; }
+/* champs de saisie lisibles partout (texte clair, exemple gris clair) */
+#main-page .form-control, .pc-ch-focus .form-control { background: #1a1c28; color: #f8f8f2; border-color: #3a3f5c; }
+#main-page .form-control::placeholder, .pc-ch-focus .form-control::placeholder { color: #9aa0b4; opacity: 1; }
+#main-page .form-control:focus, .pc-ch-focus .form-control:focus { background: #1f2231; color: #fff; border-color: #ffd75e;
+  box-shadow: 0 0 0 .2rem rgba(255, 215, 94, .2); }
+#main-page select.form-control option, #main-page select.form-control optgroup { background: #1a1c28; color: #f8f8f2; }
+#main-page input[type="search"].form-control::-webkit-search-cancel-button { filter: invert(1); }

@@ -163,10 +163,100 @@
         ${moi ? `<div class="pc-pf-boutons">
           <button class="btn btn-primary" type="button" id="pc-pf-modifier">✏️ ${T("Modifier", "Edit")}</button>
           <button class="btn btn-outline-light" type="button" onclick="pcDeconnexion()">${T("Se déconnecter", "Sign out")}</button>
-        </div>` : ""}
+        </div>` : session ? `<div class="pc-pf-boutons" id="pc-pf-ami"></div>` : ""}
       </div>`;
     const bt = $("pc-pf-modifier");
     if (bt) bt.addEventListener("click", ouvrirEdition);
+    if (!moi && session) boutonAmi();
+  }
+
+  // ---------------------------------------------------------------- ami (profil d'un autre joueur)
+  async function boutonAmi() {
+    const z = $("pc-pf-ami");
+    if (!z) return;
+    const uid = session.user.id;
+    const [rAmi, rDem] = await Promise.all([
+      supa.from("amis").select("ami_id").eq("profil_id", uid).eq("ami_id", profil.id),
+      supa.from("demandes_amis").select("de_id,a_id")
+        .or(`and(de_id.eq.${uid},a_id.eq.${profil.id}),and(de_id.eq.${profil.id},a_id.eq.${uid})`),
+    ]);
+    const ami = rAmi.data && rAmi.data.length;
+    const envoyee = (rDem.data || []).some((d) => d.de_id === uid);
+    const recue = (rDem.data || []).some((d) => d.de_id === profil.id);
+    if (ami) {
+      z.innerHTML = `<span class="pc-pf-badge" style="--c:#6fd3a0">✓ ${T("Ami", "Friend")}</span>
+        <button class="btn btn-outline-light btn-sm" type="button" data-ami="retirer">${T("Retirer des amis", "Remove friend")}</button>`;
+    } else if (recue) {
+      z.innerHTML = `<button class="btn btn-primary" type="button" data-ami="accepter">✓ ${T("Accepter sa demande d'ami", "Accept friend request")}</button>
+        <button class="btn btn-outline-light" type="button" data-ami="refuser">${T("Refuser", "Decline")}</button>`;
+    } else if (envoyee) {
+      z.innerHTML = `<span class="pc-legende">⏳ ${T("Demande d'ami envoyée", "Friend request sent")}</span>
+        <button class="btn btn-outline-light btn-sm" type="button" data-ami="annuler">${T("Annuler", "Cancel")}</button>`;
+    } else {
+      z.innerHTML = `<button class="btn btn-primary" type="button" data-ami="demander">👥 ${T("Ajouter en ami", "Add friend")}</button>`;
+    }
+    z.onclick = async (e) => {
+      const b = e.target.closest("[data-ami]");
+      if (!b) return;
+      b.disabled = true;
+      const a = b.dataset.ami;
+      if (a === "demander") await supa.from("demandes_amis").insert({ de_id: uid, a_id: profil.id });
+      if (a === "annuler") await supa.from("demandes_amis").delete().eq("de_id", uid).eq("a_id", profil.id);
+      if (a === "refuser") await supa.from("demandes_amis").delete().eq("de_id", profil.id).eq("a_id", uid);
+      if (a === "accepter") await supa.rpc("accepter_ami", { p_de: profil.id });
+      if (a === "retirer" && confirm(T("Retirer ce joueur de tes amis ?", "Remove this player from your friends?")))
+        await supa.rpc("retirer_ami", { p_ami: profil.id });
+      boutonAmi();
+      if (window.pcMajDemandes) window.pcMajDemandes();
+    };
+  }
+
+  // ---------------------------------------------------------------- ajouter un shiny (son profil)
+  function preparerAjout() {
+    if (!moi) return;
+    $("pc-pf-ajouter").hidden = false;
+    const selJeu = $("pc-pf-s-jeu"), selM = $("pc-pf-s-methode"), selB = $("pc-pf-s-ball");
+    selJeu.add(new Option("—", ""));
+    for (const [gen, jeux] of window.pcJeux) {
+      const g = document.createElement("optgroup");
+      g.label = gen;
+      jeux.forEach(([fr, en]) => g.appendChild(new Option(EN ? en : fr, EN ? en : fr)));
+      selJeu.appendChild(g);
+    }
+    selM.add(new Option("—", ""));
+    (EN ? window.pcMethodes.en : window.pcMethodes.fr).forEach((m) => selM.add(new Option(m, m)));
+    selB.add(new Option("—", ""));
+    BALLS.forEach(([fr, en]) => selB.add(new Option(EN ? en : fr, EN ? en : fr)));
+    $("pc-pf-s-date").value = new Date().toISOString().slice(0, 10);
+    $("pc-pf-ajouter").addEventListener("click", () => {
+      $("pc-pf-s-form").hidden = !$("pc-pf-s-form").hidden;
+      if (!$("pc-pf-s-form").hidden) $("pc-pf-s-nom").focus();
+    });
+    $("pc-pf-s-annuler").addEventListener("click", () => { $("pc-pf-s-form").hidden = true; });
+    $("pc-pf-s-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const msg = $("pc-pf-s-erreur");
+      const pokemon = $("pc-pf-s-nom").value.trim();
+      if (!pokemon) return;
+      const renc = $("pc-pf-s-renc").value.trim();
+      const ligne = {
+        profil_id: profil.id, id_local: "site:" + Date.now().toString(36), pokemon,
+        surnom: $("pc-pf-s-surnom").value.trim(), jeu: $("pc-pf-s-jeu").value, methode: $("pc-pf-s-methode").value,
+        rencontres: /^\d+$/.test(renc) ? parseInt(renc, 10) : null, date: $("pc-pf-s-date").value || null,
+        ball: $("pc-pf-s-ball").value, sexe: $("pc-pf-s-sexe").value, lieu: $("pc-pf-s-lieu").value.trim(),
+        full_odds: $("pc-pf-s-full").checked, charme: $("pc-pf-s-charme").checked, auto: false,
+        maj_le: new Date().toISOString(),
+      };
+      const { data, error } = await supa.from("chromatiques").insert(ligne).select().single();
+      if (error) { msg.textContent = T("Impossible d'ajouter : ", "Couldn't add: ") + error.message; return; }
+      msg.textContent = "";
+      shinies.push(data || ligne);
+      $("pc-pf-s-form").reset();
+      $("pc-pf-s-date").value = new Date().toISOString().slice(0, 10);
+      $("pc-pf-s-form").hidden = true;
+      entete();
+      afficherShinies();
+    });
   }
 
   // ---------------------------------------------------------------- modification (son profil)
@@ -261,6 +351,7 @@
   entete();
   afficherChasses();
   afficherShinies();
+  preparerAjout();
   afficher("pc-pf-profil");
   if (moi && !profil.pseudo) ouvrirEdition();       // nouveau compte : on choisit d'abord son pseudo
 })();

@@ -1,0 +1,36 @@
+<div class="accueil-scene text-center pc-pf-page">
+  <div class="hero-scene-content">
+    <div class="container pc-ch-logo">
+      <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
+    </div>
+
+    <div class="blackO-text text-white response-container">
+      <h1>Joueurs</h1>
+      <form id="pc-pf-chercher" class="pc-pf-ligne" autocomplete="off" style="margin-top: 12px;">
+        <input id="pc-pf-joueur" class="form-control" type="search" placeholder="🔎 Chercher un joueur (pseudo)">
+        <button class="btn btn-primary" type="submit">Chercher</button>
+      </form>
+      <div id="pc-pf-resultats" class="pc-pf-resultats"></div>
+    </div>
+
+    <div class="blackO-text text-white response-container" id="pc-j-connexion" hidden>
+      <p class="pc-intro">Connecte-toi pour voir tes amis et tes demandes d'amis.</p>
+      <div class="pc-pf-boutons">
+        <button class="pc-pf-btn pc-pf-discord" type="button" onclick="pcConnexion('discord')">Discord</button>
+        <button class="pc-pf-btn pc-pf-google" type="button" onclick="pcConnexion('google')">Google</button>
+      </div>
+    </div>
+
+    <div class="blackO-text text-white response-container" id="pc-j-bloc-demandes" hidden>
+      <h2>Demandes d'amis reçues</h2>
+      <div class="border-bottom"></div>
+      <div id="pc-j-demandes" class="pc-j-liste"></div>
+    </div>
+
+    <div class="blackO-text text-white response-container" id="pc-j-bloc-amis" hidden>
+      <h2 id="pc-j-titre-amis">Mes amis</h2>
+      <div class="border-bottom"></div>
+      <div id="pc-j-amis" class="pc-j-liste"></div>
+    </div>
+  </div>
+</div>

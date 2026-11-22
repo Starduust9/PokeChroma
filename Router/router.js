@@ -62,10 +62,11 @@ const LoadContentPage = async () => {
   // Application « Compteurs » installée : plein écran, sans le menu du site
   const enApp = window.matchMedia("(display-mode: standalone)").matches ||
     window.navigator.standalone === true;
-  document.body.classList.toggle("pc-mode-app", enApp && path.indexOf("/compteurs") === 0);
+  document.body.classList.toggle("pc-mode-app", enApp);
+  if (window.pcMajBarreApp) window.pcMajBarreApp(path);
   const titreApple = document.querySelector('meta[name="apple-mobile-web-app-title"]');
   if (titreApple) {
-    titreApple.content = path.indexOf("/compteurs") === 0 ? "Compteurs" : "PokéChroma";
+    titreApple.content = "PokéChroma";
   }
 
   const annee = document.getElementById("pc-annee");

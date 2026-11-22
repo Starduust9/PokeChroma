@@ -58,8 +58,29 @@
       </div>
 
       <div class="blackO-text text-white response-container">
-        <h2 id="pc-pf-titre-shinies">Shinies</h2>
+        <div class="pc-pf-titre-ligne">
+          <h2 id="pc-pf-titre-shinies">Shinies</h2>
+          <button class="btn btn-primary" type="button" id="pc-pf-ajouter" hidden>➕ Add a shiny</button>
+        </div>
         <div class="border-bottom"></div>
+        <form id="pc-pf-s-form" class="pc-ch-form" hidden autocomplete="off">
+          <label>Pokémon <input id="pc-pf-s-nom" class="form-control" required></label>
+          <label>Nickname <input id="pc-pf-s-surnom" class="form-control"></label>
+          <label>Game <select id="pc-pf-s-jeu" class="form-control"></select></label>
+          <label>Method <select id="pc-pf-s-methode" class="form-control"></select></label>
+          <label>Encounters <input id="pc-pf-s-renc" class="form-control" type="number" min="0" inputmode="numeric"></label>
+          <label>Date <input id="pc-pf-s-date" class="form-control" type="date"></label>
+          <label>Ball <select id="pc-pf-s-ball" class="form-control"></select></label>
+          <label>Gender <select id="pc-pf-s-sexe" class="form-control"><option value="">—</option><option value="M">♂</option><option value="F">♀</option></select></label>
+          <label>Location <input id="pc-pf-s-lieu" class="form-control"></label>
+          <label class="pc-pf-case"><input id="pc-pf-s-full" type="checkbox" checked> Full odds</label>
+          <label class="pc-pf-case"><input id="pc-pf-s-charme" type="checkbox"> Shiny Charm</label>
+          <p id="pc-pf-s-erreur" class="pc-pf-erreur"></p>
+          <div class="pc-pf-boutons">
+            <button class="btn btn-primary" type="submit">Add</button>
+            <button class="btn btn-outline-light" type="button" id="pc-pf-s-annuler">Cancel</button>
+          </div>
+        </form>
         <div class="pc-pf-ligne pc-pf-filtres">
           <input id="pc-pf-filtre" class="form-control" type="search" placeholder="🔎 Pokémon, game, nickname…">
           <select id="pc-pf-tri" class="form-control">

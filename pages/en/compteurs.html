@@ -1,53 +1,70 @@
-<div class="accueil-scene text-center">
+<div class="accueil-scene text-center pc-ch-page">
   <div class="hero-scene-content">
-    <div class="container">
+    <div class="container pc-ch-logo">
       <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
     </div>
 
     <div class="blackO-text text-white response-container">
-      <h1>My counters</h1>
-      <p class="pc-intro">Simple hunting counters, on your phone or your PC, that work even
-        <b>offline</b>. Your counters stay on your device.</p>
-      <div class="pc-actions-compteurs">
-        <button id="pc-installer" class="btn btn-primary" hidden>📲 Install the app</button>
-        <a class="pc-lien-aide" href="/compteurs" onclick="document.getElementById('pc-aide-installation').scrollIntoView({behavior: 'smooth'}); return false;">How to install the app?</a>
+      <div class="pc-ch-entete">
+        <div>
+          <h1>My hunts</h1>
+          <p id="pc-ch-etat" class="pc-ch-etat"></p>
+        </div>
+        <button id="pc-ch-nouvelle" class="btn btn-primary" type="button">➕ New hunt</button>
       </div>
-    </div>
+      <div id="pc-ch-stats" class="pc-ch-stats"></div>
+      <div id="pc-ch-connexion" class="pc-ch-connexion" hidden>
+        <p>Sign in with the same account as in PokéChroma Counter to find your PC hunts here and
+          keep going on your phone.</p>
+        <div class="pc-pf-boutons">
+          <button class="pc-pf-btn pc-pf-discord" type="button" onclick="pcConnexion('discord')">Discord</button>
+          <button class="pc-pf-btn pc-pf-google" type="button" onclick="pcConnexion('google')">Google</button>
+        </div>
+      </div>
 
-    <div class="blackO-text text-white response-container">
-      <h2>New counter</h2>
-      <div class="border-bottom"></div>
-      <form id="pc-c-form" class="pc-c-form">
-        <input id="pc-c-nom" class="form-control" type="text" placeholder="Pokémon (e.g. Gastly)" required>
-        <select id="pc-c-jeu" class="form-control"></select>
-        <select id="pc-c-taux" class="form-control" title="Odds"></select>
-        <button class="btn btn-primary" type="submit">➕ Create</button>
+      <form id="pc-ch-form" class="pc-ch-form" hidden autocomplete="off">
+        <label>Pokémon <input id="pc-ch-f-nom" class="form-control" required placeholder="e.g. Gastly" list="pc-ch-noms"></label>
+        <label>Game <select id="pc-ch-f-jeu" class="form-control"></select></label>
+        <label>Method <select id="pc-ch-f-methode" class="form-control"></select></label>
+        <label>Odds <select id="pc-ch-f-taux" class="form-control"></select></label>
+        <label class="pc-pf-case" id="pc-ch-f-charme-l"><input id="pc-ch-f-charme" type="checkbox"> Shiny Charm</label>
+        <div class="pc-pf-boutons">
+          <button class="btn btn-primary" type="submit">Create the hunt</button>
+          <button class="btn btn-outline-light" type="button" id="pc-ch-f-annuler">Cancel</button>
+        </div>
       </form>
-      <p class="pc-legende">Tip: on PC, <b>Space</b> or <b>+</b> adds an encounter to the first
-        counter, <b>−</b> removes one.</p>
-    </div>
 
-    <div class="blackO-text text-white response-container">
-      <h2>My hunts</h2>
-      <div class="border-bottom"></div>
-      <div id="pc-compteurs" class="pc-grille"></div>
+      <div id="pc-ch-grille" class="pc-ch-grille"></div>
+
+      <div id="pc-ch-bloc-locales" hidden>
+        <h2 class="pc-ch-sous-titre">On this phone only</h2>
+        <p class="pc-legende">These counters are not on your account. Send them to find them
+          everywhere, including the PC counter.</p>
+        <div id="pc-ch-locales" class="pc-ch-grille"></div>
+      </div>
+
+      <details id="pc-ch-bloc-finies" class="pc-ch-finies" hidden>
+        <summary id="pc-ch-titre-finies">Finished hunts</summary>
+        <div id="pc-ch-finies" class="pc-ch-grille"></div>
+      </details>
     </div>
 
     <div class="blackO-text text-white response-container" id="pc-aide-installation">
-      <h2>How to install the PokéChroma app?</h2>
+      <h2>Install the PokéChroma app</h2>
       <div class="border-bottom"></div>
-      <p>Once installed, the app opens like a real app, from your phone's home screen or your PC's
-        Start menu, and it works offline.</p>
+      <p>Your hunts, your profile, your friends and every guide of the site in one app, on your
+        phone's home screen or your PC's Start menu. It also works offline.</p>
+      <div class="pc-actions-compteurs">
+        <button id="pc-installer" class="btn btn-primary" hidden>📲 Install the app</button>
+      </div>
       <div class="accordion pc-accordeon" id="pc-accordeon">
         <div class="accordion-item">
           <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#pc-a-android">Android</button></h3>
           <div id="pc-a-android" class="accordion-collapse collapse" data-bs-parent="#pc-accordeon">
             <div class="accordion-body">
-              <p><b>Option 1:</b> open PokéChroma in Google Chrome, tap the three dots at the top right,
-                then “Add to Home screen” and “Install”.</p>
-              <p><b>Option 2:</b> on this page, tap the “📲 Install the app” button at the top, if it
-                shows up.</p>
+              <p>In Google Chrome, tap the “📲 Install the app” button, or the three dots at the top
+                right, then “Add to Home screen” and “Install”.</p>
             </div>
           </div>
         </div>
@@ -56,7 +73,7 @@
             data-bs-toggle="collapse" data-bs-target="#pc-a-ios">iPhone / iPad (iOS)</button></h3>
           <div id="pc-a-ios" class="accordion-collapse collapse" data-bs-parent="#pc-accordeon">
             <div class="accordion-body">
-              <p>Open PokéChroma in Safari (or Chrome), tap the Share icon
+              <p>In Safari (or Chrome), tap the Share icon
                 <svg class="pc-icone-partage" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Share"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>, then “Add to Home Screen” and “Add”.</p>
             </div>
           </div>
@@ -67,8 +84,7 @@
           <div id="pc-a-pc" class="accordion-collapse collapse" data-bs-parent="#pc-accordeon">
             <div class="accordion-body">
               <p>In Chrome or Edge, click the install icon on the right of the address bar (a small
-                screen with an arrow), or the “📲 Install the app” button on this page, then
-                “Install”.</p>
+                screen with an arrow), or the “📲 Install the app” button.</p>
               <p>For <b>automatic</b> counting with your capture card, use
                 <a href="/compteur">PokéChroma Counter</a> for Windows instead.</p>
             </div>
@@ -78,3 +94,6 @@
     </div>
   </div>
 </div>
+
+<!-- counting screen (one hunt, full screen) -->
+<div id="pc-ch-focus" class="pc-ch-focus" hidden></div>

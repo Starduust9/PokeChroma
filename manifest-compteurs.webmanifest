@@ -1,9 +1,9 @@
 {
-  "name": "PokéChroma Compteurs",
-  "short_name": "Compteurs",
-  "description": "Tes compteurs de chasse shiny, même sans connexion.",
+  "name": "PokéChroma",
+  "short_name": "PokéChroma",
+  "description": "Tes chasses shiny, ton profil, tes amis et tous les guides de PokéChroma, même sans connexion.",
   "start_url": "/compteurs?app=1",
-  "scope": "/compteurs",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#11131e",
   "theme_color": "#11131e",
