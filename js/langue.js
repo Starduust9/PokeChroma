@@ -29,6 +29,8 @@
     "nav.aide": "Helpful sites",
     "nav.streamers": "Streamers & YouTubers",
     "nav.contact": "Contact",
+    "nav.compteurs": "My counters",
+    "pied.confidentialite": "Privacy policy",
     "nav.compteur": "⬇ Shiny Counter",
     "pied.texte": "Simple tips, clear guides and useful info for every shiny hunter, from beginners to veterans ✨",
     "pied.liens": "Links",

@@ -12,10 +12,15 @@
     <title>PokéChroma</title>
     <meta name="description" content="PokéChroma : astuces, guides et outils pour le shiny hunting Pokémon, de la 1G à la 9G, et PokéChroma Counter, le compteur de shiny automatique.">
     <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#11131e">
+    <link rel="apple-touch-icon" href="/assets/picture/icone-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="PokéChroma">
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg pc-nav" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-xl pc-nav" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/accueil">
           <img src="/assets/picture/Logo.png" alt="Logo PokéChroma" id="logo">
@@ -27,7 +32,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <ul class="navbar-nav ms-auto mb-2 mb-xl-0 align-items-xl-center">
             <li class="nav-item"><a class="nav-link" href="/introshinyhunting" data-i18n="nav.debuter">Débuter le shiny hunting</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="/shinyhuntingjeu" role="button"
@@ -53,6 +58,7 @@
             </li>
             <li class="nav-item"><a class="nav-link" href="/siteaide" data-i18n="nav.aide">Sites d'aide</a></li>
             <li class="nav-item"><a class="nav-link" href="/streameryoutuber" data-i18n="nav.streamers">Streamers & YouTubers</a></li>
+            <li class="nav-item"><a class="nav-link" href="/compteurs" data-i18n="nav.compteurs">Mes compteurs</a></li>
             <li class="nav-item"><a class="nav-link" href="/contact" data-i18n="nav.contact">Contact</a></li>
             <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/compteur" data-i18n="nav.compteur">⬇ Compteur Shiny</a></li>
             <li class="nav-item dropdown pc-langues">
@@ -95,6 +101,7 @@
             <li><a href="/shinyhuntingjeu" data-i18n="pied.jeux">Les jeux</a></li>
             <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
             <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener" data-i18n="pied.kofi">❤ Soutenir sur Ko-fi</a></li>
+            <li><a href="/confidentialite" data-i18n="pied.confidentialite">Confidentialité</a></li>
           </ul>
         </div>
         <div>
@@ -111,6 +118,17 @@
     </footer>
 
     <script src="/js/langue.js"></script>
+    <script>
+      // Application installable (PWA) : fonctionne hors ligne une fois visitée
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+      }
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        window.pcInvitation = e;
+        window.dispatchEvent(new Event("pc-installable"));
+      });
+    </script>
     <script type="module" src="/Router/router.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

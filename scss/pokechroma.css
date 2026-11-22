@@ -58,7 +58,7 @@ main { flex: 1 0 auto; margin-bottom: 0 !important; }
 .pc-nav .pc-btn-compteur:hover { background: #ffe27a; }
 .pc-nav .pc-btn-compteur.active::after { display: none; }
 .pc-nav .navbar-toggler { border-color: rgba(255, 255, 255, 0.25); }
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .pc-nav .navbar-collapse { padding: 8px 0 12px; }
   .pc-nav .pc-btn-compteur { display: inline-block; margin: 6px 0 0; }
   .pc-nav .dropdown-menu { position: static !important; width: 100% !important; }
@@ -174,7 +174,7 @@ footer.pc-footer {
 
 /* petits ajustements */
 .pc-nav .nav-link { white-space: nowrap; }
-@media (min-width: 992px) and (max-width: 1250px) {
+@media (min-width: 1200px) and (max-width: 1350px) {
   .pc-nav .nav-link { font-size: 14px; padding: 8px 9px !important; }
   .pc-nav .pc-marque { font-size: 20px; }
 }
@@ -204,7 +204,7 @@ footer.pc-footer {
   background: var(--pc-or); border-color: var(--pc-or); color: #1b1d2b !important;
   font-weight: bold; border-radius: 10px; padding: 10px 22px;
 }
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .pc-nav .nav-link.active::after { right: auto; width: 36px; }
 }
 
@@ -283,3 +283,38 @@ footer.pc-footer { margin-top: 0 !important; }
 .pc-nav .pc-menu-langue { min-width: 160px; }
 .pc-nav .pc-menu-langue .dropdown-item { display: flex; align-items: center; gap: 10px; }
 .pc-nav .pc-menu-langue .dropdown-item.active { background: rgba(255, 216, 74, 0.16); color: var(--pc-or); }
+
+/* ---------------------------------------------------------------- Mes compteurs */
+#main-page .pc-actions-compteurs { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+#main-page .pc-lien-aide { font-size: 15px; }
+#main-page .pc-c-form .form-control::placeholder { color: #8e8ca0; }
+#main-page .pc-c-form { display: grid; gap: 10px; grid-template-columns: 2fr 2fr 1fr auto; margin-top: 10px; }
+@media (max-width: 700px) { #main-page .pc-c-form { grid-template-columns: 1fr; } }
+#main-page .pc-compteur { text-align: center; position: relative; }
+#main-page .pc-compteur-haut { display: flex; justify-content: space-between; align-items: flex-start; text-align: left; }
+#main-page .pc-compteur-haut p { font-size: 13px !important; margin-top: 4px; }
+#main-page .pc-c-menu { background: none; border: 0; color: var(--pc-doux); font-size: 22px; line-height: 1; padding: 0 4px; }
+#main-page .pc-c-menu:hover { color: var(--pc-or); }
+#main-page .pc-compteur-valeur { font-size: 46px; font-weight: bold; color: var(--pc-or); margin: 8px 0 10px;
+  font-variant-numeric: tabular-nums; }
+#main-page .pc-compteur-boutons { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; }
+#main-page .pc-compteur-boutons button, #main-page .pc-compteur-options button {
+  border: 0; border-radius: 12px; padding: 12px; font-weight: bold; font-size: 18px;
+  background: #2c3046; color: #fff; touch-action: manipulation; }
+#main-page .pc-compteur-boutons .pc-plus { background: var(--pc-or); color: #1b1d2b; font-size: 22px; }
+#main-page .pc-compteur-boutons button:active { transform: scale(0.97); }
+#main-page .pc-compteur-options { display: grid; gap: 8px; margin-top: 10px; }
+#main-page .pc-compteur-options button { font-size: 14px; padding: 9px; font-weight: normal; }
+#main-page .pc-compteur-options .pc-danger { background: rgba(255, 107, 129, 0.15); color: #ff9aa9; }
+#main-page .pc-phases { font-size: 13px !important; color: var(--pc-doux); margin-top: 8px; }
+#main-page .pc-accordeon .accordion-item { background: var(--pc-carte); border: 1px solid #343955; color: #e6e6f0; }
+#main-page .pc-accordeon .accordion-button { background: var(--pc-carte); color: #fff; font-weight: bold; box-shadow: none; }
+#main-page .pc-accordeon .accordion-button:not(.collapsed) { color: var(--pc-or); background: #262a40; }
+#main-page .pc-accordeon .accordion-button::after { filter: invert(1); }
+#main-page .pc-accordeon .accordion-body p { font-size: 15px; }
+#main-page .pc-icone-partage { display: inline-block; border: 1px solid var(--pc-doux); border-radius: 4px; padding: 0 4px; }
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .pc-nav .nav-link { font-size: 13.5px; padding: 8px 7px !important; }
+  .pc-nav .pc-btn-compteur { padding: 7px 10px !important; }
+}
+

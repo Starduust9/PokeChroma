@@ -10,6 +10,8 @@ export const allRoutes = [
     new Route("/siteaide", "Site d'aide", "/pages/siteaide.html", "", "Helpful sites"),
     new Route("/streameryoutuber", "Streamer Youtuber", "/pages/streameryoutuber.html", "", "Streamers & YouTubers"),
     new Route("/compteur", "PokéChroma Counter", "/pages/compteur.html", "/js/compteur.js", "PokéChroma Counter"),
+    new Route("/compteurs", "Mes compteurs", "/pages/compteurs.html", "/js/compteurs.js", "My counters"),
+    new Route("/confidentialite", "Confidentialité", "/pages/confidentialite.html", "", "Privacy policy"),
     new Route("/1G", "1G", "/pages/page-gen/1G.html", "", "Gen 1"),
     new Route("/2G", "2G", "/pages/page-gen/2G.html", "", "Gen 2"),
     new Route("/3G", "3G", "/pages/page-gen/3G.html", "", "Gen 3"),

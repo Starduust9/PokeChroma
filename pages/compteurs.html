@@ -1,0 +1,82 @@
+<div class="accueil-scene text-center">
+  <div class="hero-scene-content">
+    <div class="container">
+      <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
+    </div>
+
+    <div class="blackO-text text-white response-container">
+      <h1>Mes compteurs</h1>
+      <p class="pc-intro">Des compteurs de chasse simples, sur téléphone ou sur PC, qui marchent
+        même <b>sans connexion</b>. Tes compteurs restent sur ton appareil.</p>
+      <div class="pc-actions-compteurs">
+        <button id="pc-installer" class="btn btn-primary" hidden>📲 Installer l'application</button>
+        <a class="pc-lien-aide" href="/compteurs" onclick="document.getElementById('pc-aide-installation').scrollIntoView({behavior: 'smooth'}); return false;">Comment installer l'application ?</a>
+      </div>
+    </div>
+
+    <div class="blackO-text text-white response-container">
+      <h2>Nouveau compteur</h2>
+      <div class="border-bottom"></div>
+      <form id="pc-c-form" class="pc-c-form">
+        <input id="pc-c-nom" class="form-control" type="text" placeholder="Pokémon (ex. Fantominus)" required>
+        <select id="pc-c-jeu" class="form-control"></select>
+        <select id="pc-c-taux" class="form-control" title="Taux"></select>
+        <button class="btn btn-primary" type="submit">➕ Créer</button>
+      </form>
+      <p class="pc-legende">Astuce : sur PC, la touche <b>Espace</b> ou <b>+</b> ajoute une rencontre au
+        premier compteur, <b>−</b> en retire une.</p>
+    </div>
+
+    <div class="blackO-text text-white response-container">
+      <h2>Mes chasses</h2>
+      <div class="border-bottom"></div>
+      <div id="pc-compteurs" class="pc-grille"></div>
+    </div>
+
+    <div class="blackO-text text-white response-container" id="pc-aide-installation">
+      <h2>Comment installer l'application PokéChroma ?</h2>
+      <div class="border-bottom"></div>
+      <p>Une fois installée, l'application s'ouvre comme une vraie app, depuis l'écran d'accueil de
+        ton téléphone ou le menu Démarrer de ton PC, et elle marche hors connexion.</p>
+      <div class="accordion pc-accordeon" id="pc-accordeon">
+        <div class="accordion-item">
+          <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#pc-a-android">Android</button></h3>
+          <div id="pc-a-android" class="accordion-collapse collapse" data-bs-parent="#pc-accordeon">
+            <div class="accordion-body">
+              <p><b>Possibilité n°1 :</b> ouvre PokéChroma dans Google Chrome, appuie sur les trois
+                petits points en haut à droite, puis sur « Ajouter à l'écran d'accueil » et
+                « Installer ».</p>
+              <p><b>Possibilité n°2 :</b> sur cette page, appuie sur le bouton
+                « 📲 Installer l'application » en haut, s'il apparaît.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#pc-a-ios">iPhone / iPad (iOS)</button></h3>
+          <div id="pc-a-ios" class="accordion-collapse collapse" data-bs-parent="#pc-accordeon">
+            <div class="accordion-body">
+              <p>Ouvre PokéChroma dans Safari (ou Chrome), appuie sur l'icône Partager
+                <span class="pc-icone-partage">⎙</span>, puis sur « Sur l'écran d'accueil » et
+                « Ajouter ».</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#pc-a-pc">Windows / Mac / Linux / Chrome OS</button></h3>
+          <div id="pc-a-pc" class="accordion-collapse collapse" data-bs-parent="#pc-accordeon">
+            <div class="accordion-body">
+              <p>Dans Chrome ou Edge, clique sur l'icône d'installation à droite de la barre d'adresse
+                (un petit écran avec une flèche), ou sur le bouton « 📲 Installer l'application » de
+                cette page, puis sur « Installer ».</p>
+              <p>Pour le comptage <b>automatique</b> avec ta carte de capture, utilise plutôt
+                <a href="/compteur">PokéChroma Counter</a> pour Windows.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
