@@ -37,6 +37,7 @@
     "pied.debuter": "Getting started",
     "pied.jeux": "Games",
     "pied.kofi": "❤ Support on Ko-fi",
+    "pied.discord": "💬 Join the Discord",
     "pied.mentions": "Legal notice",
     "pied.fan": "This site is a fan project, made for fans. Thanks to <b>Sky_Lasth</b> for the help with the code and the site.",
     "pied.illus": "Some illustrations belong to The Pokémon Company. The shiny Rowlet artwork belongs to <a href=\"https://pin.it/5vtTFbc6J\" target=\"_blank\" rel=\"noopener\">milenagorosito</a> on Pinterest.",
