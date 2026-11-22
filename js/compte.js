@@ -51,9 +51,18 @@
   };
   window.pcImageBall = (fichier) => fichier ? SPRITES + "items/" + fichier + ".png" : "";
   // image du profil : l'avatar Discord si choisi (ou s'il n'y a pas de Pokémon), sinon le Pokémon
+  // version animée des images Discord : avatar « a_… » en GIF, décoration en APNG
+  window.pcDiscordAnime = function (url) {
+    if (!url) return url;
+    const base = url.split("?")[0];
+    const nom = base.split("/").pop();
+    if (base.includes("/avatars/") && nom.startsWith("a_")) return base.replace(/\.\w+$/, ".gif") + "?size=128";
+    if (base.includes("/avatar-decoration-presets/")) return base + "?size=240&passthrough=true";
+    return url;
+  };
   window.pcImageProfil = function (p) {
     const discord = p.avatar_discord || !p.avatar;
-    if (discord && p.discord_avatar) return p.discord_avatar;
+    if (discord && p.discord_avatar) return window.pcDiscordAnime(p.discord_avatar);
     return p.avatar ? window.pcSprite(p.avatar) : (p.discord_avatar || p.photo_compte || "");
   };
 

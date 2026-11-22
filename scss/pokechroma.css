@@ -403,3 +403,8 @@ body.pc-mode-app #main-page .hero-scene-content { padding-bottom: 20px; min-heig
   #main-page .pc-pf-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #main-page .pc-pf-grille { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+/* le bloc du profil prend toute la largeur (sinon il se resserre sur son contenu) */
+#main-page #pc-pf-profil { width: 100%; align-self: stretch; }
+#main-page .pc-pf-grille { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+#main-page .pc-pf-sprite { width: 84px; height: 84px; }
+#main-page .pc-pf-carte { padding: 10px 8px; }

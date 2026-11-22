@@ -137,7 +137,7 @@
   // ---------------------------------------------------------------- en-tête
   function entete() {
     const img = window.pcImageProfil(profil);
-    const avecDiscord = img && img === profil.discord_avatar;
+    const avecDiscord = img && img === window.pcDiscordAnime(profil.discord_avatar);
     const pastilles = badges.filter((b) => BADGES[b]).map((b) => {
       const [ic, nom, coul, tfr, ten] = BADGES[b];
       return `<span class="pc-pf-badge" style="--c:${coul}" title="${esc(T(tfr, ten))}">${ic} ${esc(nom)}</span>`;
@@ -148,7 +148,7 @@
     const jeux = new Set(shinies.map((s) => s.jeu).filter(Boolean)).size;
     $("pc-pf-entete").innerHTML = `
       <div class="pc-pf-avatar">${img ? `<img src="${esc(img)}" alt="" onerror="pcSpriteSecours(this)">` : ""}
-        ${avecDiscord && profil.discord_decoration ? `<img class="pc-pf-deco" src="${esc(profil.discord_decoration)}" alt="">` : ""}</div>
+        ${avecDiscord && profil.discord_decoration ? `<img class="pc-pf-deco" src="${esc(window.pcDiscordAnime(profil.discord_decoration))}" alt="">` : ""}</div>
       <div class="pc-pf-infos">
         <h1>${esc(profil.pseudo || T("Choisis ton pseudo", "Pick a username"))}${tag}</h1>
         <div class="pc-pf-badges">${pastilles}</div>
