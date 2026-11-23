@@ -1,0 +1,199 @@
+{
+  "_info": "Tutoriels PokéChroma : utilisés par le site, l'application mobile et le logiciel PC (copie tutos.json à côté de CompteurShiny.py).",
+  "tutos": [
+    {
+      "id": "compteur-2d",
+      "icone": "🎮",
+      "fr": {
+        "titre": "Compter une chasse (jeux 2D)",
+        "intro": "PokéChroma Counter lit l'image de ta carte de capture et fait +1 tout seul à chaque rencontre.",
+        "etapes": [
+          "Branche ta console sur ta carte de capture (Elgato…) et ouvre le jeu sur le PC.",
+          "Dans le compteur, clique sur « Nouvelle chasse » : choisis le Pokémon, le jeu et ta méthode.",
+          "Clique sur « Calibrer » pendant que tu es en combat contre ce Pokémon (non chromatique) : le compteur apprend à le reconnaître.",
+          "Clique sur « Lancer la chasse » : chaque nouveau combat ajoute +1 tout seul. Tu peux aussi corriger avec −1 / +1.",
+          "Touches pratiques : F9 met en pause, F10 reprend, Page préc. / Page suiv. font +1 / −1 sur toutes les chasses ouvertes."
+        ],
+        "lien": ["/compteur", "Télécharger le compteur"]
+      },
+      "en": {
+        "titre": "Count a hunt (2D games)",
+        "intro": "PokéChroma Counter reads your capture card's picture and adds +1 on its own for every encounter.",
+        "etapes": [
+          "Plug your console into your capture card (Elgato…) and open the game on your PC.",
+          "In the counter, click “New hunt”: pick the Pokémon, the game and your method.",
+          "Click “Calibrate” while you are battling that Pokémon (not shiny): the counter learns to recognise it.",
+          "Click “Start hunt”: every new battle adds +1 on its own. You can also fix it with −1 / +1.",
+          "Handy keys: F9 pauses, F10 resumes, Page Up / Page Down add +1 / −1 to every open hunt."
+        ],
+        "lien": ["/compteur", "Download the counter"]
+      }
+    },
+    {
+      "id": "compteur-3d",
+      "icone": "🌍",
+      "fr": {
+        "titre": "Chasse en 3D (Légendes Z-A…)",
+        "intro": "Dans les jeux en monde ouvert, le compteur repère les Pokémon autour de toi et compte chaque apparition.",
+        "etapes": [
+          "Crée une chasse sur un jeu 3D (Légendes Pokémon Z-A, Arceus, Écarlate / Violet…).",
+          "Clique sur « Calibrer » : choisis la source vidéo, soit la fenêtre de ton logiciel de capture (Elgato, projecteur OBS…), soit la carte directement.",
+          "Vérifie l'aperçu : la zone du jeu est encadrée en jaune, les Pokémon détectés en vert.",
+          "Lance la chasse et fais ton circuit : chaque Pokémon repéré compte +1. Tu peux poser la fenêtre de chasse sur la fenêtre Elgato.",
+          "Pas encore de détecteur pour ton Pokémon ? Tu peux en entraîner un dans le logiciel et le partager avec la communauté (badge Partageur)."
+        ],
+        "lien": ["/compteur", "Télécharger le compteur"]
+      },
+      "en": {
+        "titre": "3D hunts (Legends Z-A…)",
+        "intro": "In open-world games, the counter spots the Pokémon around you and counts every appearance.",
+        "etapes": [
+          "Create a hunt on a 3D game (Pokémon Legends Z-A, Arceus, Scarlet / Violet…).",
+          "Click “Calibrate”: choose the video source, either your capture software's window (Elgato, OBS projector…) or the card directly.",
+          "Check the preview: the game area is framed in yellow, detected Pokémon in green.",
+          "Start the hunt and run your loop: every Pokémon spotted counts +1. You can put the hunt window on top of the Elgato window.",
+          "No detector for your Pokémon yet? You can train one in the software and share it with the community (Sharer badge)."
+        ],
+        "lien": ["/compteur", "Download the counter"]
+      }
+    },
+    {
+      "id": "shiny",
+      "icone": "✨",
+      "fr": {
+        "titre": "Quand le shiny apparaît",
+        "intro": "Le compteur te prévient tout de suite : son, message et notification Discord si tu l'as réglée.",
+        "etapes": [
+          "Quand un chromatique est détecté, la chasse se met en pause et l'alerte sonne.",
+          "Si c'est bien le Pokémon chassé, choisis « Chasse terminée » ; si c'est un autre, écris son nom : c'est une nouvelle phase, le compteur repart à 0 et le total est gardé.",
+          "Fausse alerte ? Clique sur « Fausse alerte, continuer » : la chasse reprend.",
+          "Tu as eu le shiny sans détection ? Le bouton « Chromatique obtenu ! » l'enregistre à la main.",
+          "Le shiny s'ajoute tout seul à « Mes chromatiques », avec la date et le nombre de rencontres."
+        ]
+      },
+      "en": {
+        "titre": "When the shiny appears",
+        "intro": "The counter warns you right away: sound, message and Discord notification if you set it up.",
+        "etapes": [
+          "When a shiny is detected, the hunt pauses and the alert rings.",
+          "If it is the Pokémon you were hunting, choose “Hunt complete”; if it is another one, type its name: it becomes a new phase, the counter goes back to 0 and the total is kept.",
+          "False alarm? Click “False alarm, continue”: the hunt resumes.",
+          "Got the shiny without detection? The “Got the shiny!” button saves it by hand.",
+          "The shiny is added to “My shinies” on its own, with the date and the number of encounters."
+        ]
+      }
+    },
+    {
+      "id": "collection",
+      "icone": "🏆",
+      "fr": {
+        "titre": "Mes chromatiques et mon profil",
+        "intro": "Ta collection de shinies, tes badges et tes statistiques, au même endroit.",
+        "etapes": [
+          "Clique sur ton pseudo en haut du compteur pour ouvrir ton profil.",
+          "« Modifier le profil » : pseudo, bio et Pokémon en avatar (ou ton avatar Discord).",
+          "Ajoute un shiny à la main avec « Ajouter un chromatique », ou importe ta liste Pokémon Elements avec « Importer (CSV) ».",
+          "Recherche, filtre et tri pour retrouver un shiny ; le bouton statistiques montre tes shinies par jeu, génération ou Ball.",
+          "Les badges se débloquent tout seuls (premier shiny, full odds, générations…)."
+        ],
+        "lien": ["/profil", "Voir mon profil sur le site"]
+      },
+      "en": {
+        "titre": "My shinies and my profile",
+        "intro": "Your shiny collection, your badges and your stats, all in one place.",
+        "etapes": [
+          "Click your username at the top of the counter to open your profile.",
+          "“Edit profile”: username, bio and a Pokémon as your avatar (or your Discord avatar).",
+          "Add a shiny by hand with “Add a shiny”, or import your Pokémon Elements list with “Import (CSV)”.",
+          "Search, filter and sort to find a shiny; the stats button shows your shinies by game, generation or Ball.",
+          "Badges unlock on their own (first shiny, full odds, generations…)."
+        ],
+        "lien": ["/profil", "See my profile on the website"]
+      }
+    },
+    {
+      "id": "compte",
+      "icone": "☁",
+      "fr": {
+        "titre": "Mon compte et la synchro",
+        "intro": "Avec un compte (Discord ou Google), tes chasses et ton profil te suivent partout : PC, téléphone et site.",
+        "etapes": [
+          "Dans le compteur, ouvre ton profil et clique sur « Se connecter » (Discord ou Google). Sur le site ou l'appli : bouton « Se connecter » en haut.",
+          "Utilise le même compte partout : tes chasses du PC apparaissent dans « Mes chasses » sur le téléphone, et inversement.",
+          "Un +1 fait sur le téléphone arrive sur le PC en une minute ; le bouton « Actualiser » à côté de « Mes chasses » le récupère tout de suite.",
+          "Ajoute des amis dans « Joueurs » et regarde leurs profils et leurs shinies.",
+          "Le compte est facultatif : sans lui, tout marche, mais seulement sur l'appareil utilisé."
+        ],
+        "lien": ["/joueurs", "Voir les joueurs"]
+      },
+      "en": {
+        "titre": "My account and sync",
+        "intro": "With an account (Discord or Google), your hunts and profile follow you everywhere: PC, phone and website.",
+        "etapes": [
+          "In the counter, open your profile and click “Sign in” (Discord or Google). On the website or the app: “Sign in” button at the top.",
+          "Use the same account everywhere: your PC hunts show up in “My hunts” on your phone, and the other way round.",
+          "A +1 made on the phone reaches the PC within a minute; the “Refresh” button next to “My hunts” gets it right away.",
+          "Add friends in “Players” and look at their profiles and shinies.",
+          "An account is optional: without it everything works, but only on the device you use."
+        ],
+        "lien": ["/joueurs", "See the players"]
+      }
+    },
+    {
+      "id": "appli",
+      "icone": "📱",
+      "fr": {
+        "titre": "L'appli sur téléphone",
+        "intro": "Tes chasses dans la poche, même sans internet, plus tous les guides du site.",
+        "etapes": [
+          "Ouvre pokechroma.com/compteurs sur ton téléphone. iPhone : dans Safari, Partager puis « Sur l'écran d'accueil ». Android : dans Chrome, bouton « Installer l'application ».",
+          "L'appli s'ouvre sur « Mes chasses » : « Nouvelle chasse », puis touche une carte pour l'écran de comptage avec le gros +1.",
+          "Le bouton « ✨ Shiny ! » termine la chasse ou crée une nouvelle phase ; le menu ⋯ permet le pas de +5, le Charme Chroma ou de modifier le nombre.",
+          "Sans réseau, continue à compter : tout part tout seul quand internet revient.",
+          "En bas : Chasses, Profil, Joueurs et Guides, lisibles même hors connexion."
+        ],
+        "lien": ["/compteurs", "Ouvrir Mes chasses"]
+      },
+      "en": {
+        "titre": "The app on your phone",
+        "intro": "Your hunts in your pocket, even offline, plus every guide of the website.",
+        "etapes": [
+          "Open pokechroma.com/compteurs on your phone. iPhone: in Safari, Share then “Add to Home Screen”. Android: in Chrome, “Install the app” button.",
+          "The app opens on “My hunts”: “New hunt”, then tap a card for the counting screen with the big +1.",
+          "The “✨ Shiny!” button finishes the hunt or starts a new phase; the ⋯ menu offers a +5 step, the Shiny Charm or editing the count.",
+          "No network? Keep counting: everything is sent on its own when you are back online.",
+          "At the bottom: Hunts, Profile, Players and Guides, readable even offline."
+        ],
+        "lien": ["/compteurs", "Open My hunts"]
+      }
+    },
+    {
+      "id": "site",
+      "icone": "📖",
+      "fr": {
+        "titre": "Le site et ses guides",
+        "intro": "Tout pour bien chasser : les bases, chaque jeu de la 1G à la 9G et les méthodes.",
+        "etapes": [
+          "« Débuter le shiny hunting » explique les taux, les méthodes et les conseils de base.",
+          "« Les jeux » : une page par génération (1G à 9G), avec les taux, les méthodes et les Shiny Lock.",
+          "« Masuda » et « Charme Chroma » détaillent les deux grandes façons d'augmenter tes chances.",
+          "En haut à droite : la langue (français / anglais) et ton compte.",
+          "Rejoins le Discord PokéChroma pour montrer tes shinies, tes chasses en cours et poser tes questions."
+        ],
+        "lien": ["/guides", "Voir tous les guides"]
+      },
+      "en": {
+        "titre": "The website and its guides",
+        "intro": "Everything to hunt well: the basics, every game from Gen 1 to 9 and the methods.",
+        "etapes": [
+          "“Getting started” explains the odds, the methods and the basic tips.",
+          "“Games”: one page per generation (Gen 1 to 9), with odds, methods and Shiny Locks.",
+          "“Masuda” and “Shiny Charm” detail the two main ways to boost your chances.",
+          "Top right: the language (French / English) and your account.",
+          "Join the PokéChroma Discord to show your shinies and ongoing hunts and ask your questions."
+        ],
+        "lien": ["/guides", "See every guide"]
+      }
+    }
+  ]
+}

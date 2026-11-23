@@ -32,6 +32,8 @@
     "nav.compteurs": "My counters",
     "pied.confidentialite": "Privacy policy",
     "pied.cookies": "Manage cookies",
+    "pied.aide": "❓ Help and tutorials",
+    "nav.aide2": "❓ Help",
     "nav.compteur": "⬇ Shiny Counter",
     "pied.texte": "Simple tips, clear guides and useful info for every shiny hunter, from beginners to veterans ✨",
     "pied.liens": "Links",

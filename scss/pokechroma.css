@@ -553,3 +553,45 @@ body.pc-mode-app { padding-bottom: 70px; }
   letter-spacing: .08em; margin-bottom: 6px; }
 #main-page .pc-pub-petite { max-width: 760px; }
 #main-page .pc-pub:has(ins[data-ad-status="unfilled"]) { display: none; }   /* pas d'annonce : rien */
+
+/* ---------------------------------------------------------------- ❓ Aide et tutoriels */
+.pc-nav .pc-nav-aide { background: rgba(255, 216, 74, 0.12); border: 1px solid rgba(255, 216, 74, 0.35);
+  border-radius: 10px; color: var(--pc-or); font-size: 18px; width: 42px; height: 38px; line-height: 1; }
+.pc-nav .pc-nav-aide-texte { background: none; border: 0; }
+#main-page .pc-ch-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+body.pc-aide-ouverte { overflow: hidden; }
+.pc-aide { position: fixed; inset: 0; z-index: 2100; background: rgba(8, 9, 15, 0.72); display: flex;
+  align-items: center; justify-content: center; padding: 16px; }
+.pc-aide[hidden] { display: none; }
+.pc-aide-boite { width: min(980px, 100%); max-height: min(720px, 100%); display: flex; flex-direction: column;
+  background: #1e1f29; border: 1px solid #343748; border-radius: 20px; padding: 18px 20px; color: #f8f8f2;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .5); }
+.pc-aide-haut { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pc-aide-haut h2 { margin: 0; color: #ffd75e; font-size: 22px; font-weight: bold; }
+.pc-aide-fermer { width: 38px; height: 38px; border: 0; border-radius: 10px; background: #282a36; color: #f8f8f2; font-size: 18px; }
+.pc-aide-sous { color: #9aa0b4; margin: 4px 0 14px; font-size: 14px; }
+.pc-aide-corps { display: grid; grid-template-columns: 270px 1fr; gap: 14px; min-height: 0; flex: 1; }
+.pc-aide-menu { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
+.pc-aide-menu button { display: flex; align-items: center; gap: 10px; text-align: left; border: 1px solid #343748;
+  border-radius: 12px; background: #282a36; color: #f8f8f2; padding: 10px 12px; font-size: 14px; }
+.pc-aide-menu button span { font-size: 18px; width: 24px; text-align: center; }
+.pc-aide-menu button.actif { background: #ffd75e; color: #1e1f29; border-color: #ffd75e; font-weight: bold; }
+.pc-aide-tuto { background: #282a36; border-radius: 16px; padding: 18px 20px; overflow-y: auto; }
+.pc-aide-tuto h3 { color: #ffd75e; font-size: 20px; font-weight: bold; margin: 0 0 6px; }
+.pc-aide-intro { color: #c8c9d6; margin-bottom: 14px; }
+.pc-aide-tuto ol { padding-left: 0; list-style: none; counter-reset: etape; display: grid; gap: 10px; margin-bottom: 16px; }
+.pc-aide-tuto li { counter-increment: etape; display: grid; grid-template-columns: 28px 1fr; gap: 10px; line-height: 1.45; }
+.pc-aide-tuto li::before { content: counter(etape); display: flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 8px; background: rgba(255, 215, 94, .18); color: #ffd75e; font-weight: bold; font-size: 13px; }
+.pc-aide-retour { display: none; border: 0; background: none; color: #9aa0b4; padding: 0; margin-bottom: 10px; }
+@media (max-width: 700px) {
+  .pc-aide { padding: 0; align-items: stretch; }
+  .pc-aide-boite { border-radius: 0; max-height: none; height: 100%; padding: 16px; }
+  .pc-aide-corps { grid-template-columns: 1fr; }
+  .pc-aide-tuto { display: none; }
+  .pc-aide.pc-aide-detail .pc-aide-menu { display: none; }
+  .pc-aide.pc-aide-detail .pc-aide-tuto { display: block; }
+  .pc-aide-retour { display: inline-block; }
+}
+.pc-aide-tuto .btn-primary { background: #ffd75e; border-color: #ffd75e; color: #1e1f29; font-weight: bold; border-radius: 10px; }
+.pc-aide-tuto .btn-primary:hover { background: #ffe27a; border-color: #ffe27a; color: #1e1f29; }

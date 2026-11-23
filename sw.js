@@ -1,6 +1,6 @@
 // Service worker PokéChroma : le site (et « Mes compteurs ») marche hors connexion.
 // Pense à changer VERSION à chaque mise en ligne importante pour rafraîchir le cache.
-const VERSION = "pc-v30";
+const VERSION = "pc-v33";
 const A_GARDER = [
   "/",
   "/manifest.webmanifest",
@@ -13,9 +13,12 @@ const A_GARDER = [
   "/assets/picture/drapeau-fr.svg",
   "/assets/picture/drapeau-en.svg",
   "/assets/picture/Logo.png",
+  "/assets/data/tutos.json",
+  "/assets/data/noms_pokemon.json",
   "/Router/Route.js",
   "/Router/allRoutes.js",
   "/Router/router.js",
+  "/js/aide.js",
   "/js/compte.js",
   "/js/compteur.js",
   "/js/compteurs.js",

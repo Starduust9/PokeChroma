@@ -41,6 +41,7 @@
           <img src="/assets/picture/Logo.png" alt="Logo PokéChroma" id="logo">
           <span class="pc-marque">PokéChroma</span>
         </a>
+        <button class="pc-nav-aide d-xl-none ms-auto me-2" type="button" onclick="return pcAide()" aria-label="Aide" title="Aide">❓</button>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Menu">
@@ -80,6 +81,7 @@
               <a class="nav-link pc-nav-compte" id="pc-nav-compte" href="/profil"><span>Se connecter</span></a>
               <ul class="dropdown-menu dropdown-menu-end pc-menu-compte" id="pc-menu-compte"></ul>
             </li>
+            <li class="nav-item d-none d-xl-block"><button class="nav-link pc-nav-aide-texte" type="button" onclick="return pcAide()" data-i18n="nav.aide2">❓ Aide</button></li>
             <li class="nav-item dropdown pc-langues">
               <button class="nav-link dropdown-toggle pc-btn-langue" type="button"
                       data-bs-toggle="dropdown" aria-expanded="false" aria-label="Langue / Language">
@@ -210,6 +212,7 @@
             <li><a href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" data-i18n="pied.discord">💬 Rejoindre le Discord</a></li>
             <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener" data-i18n="pied.kofi">❤ Soutenir sur Ko-fi</a></li>
             <li><a href="/confidentialite" data-i18n="pied.confidentialite">Confidentialité</a></li>
+            <li><a href="/guides" onclick="return pcAide()" data-i18n="pied.aide">❓ Aide et tutoriels</a></li>
             <li><a href="/confidentialite" onclick="return pcChoixCookies()" data-i18n="pied.cookies">Gérer les cookies</a></li>
           </ul>
         </div>
@@ -242,6 +245,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
     <script src="/js/compte.js"></script>
     <script src="/js/pubs.js"></script>
+    <script src="/js/aide.js"></script>
     <script>
       // Application installable (PWA) : fonctionne hors ligne une fois visitée
       if ("serviceWorker" in navigator) {
