@@ -149,7 +149,7 @@
           "Ouvre pokechroma.com/compteurs sur ton téléphone. iPhone : dans Safari, Partager puis « Sur l'écran d'accueil ». Android : dans Chrome, bouton « Installer l'application ».",
           "L'appli s'ouvre sur « Mes chasses » : « Nouvelle chasse », puis touche une carte pour l'écran de comptage avec le gros +1.",
           "Le bouton « ✨ Shiny ! » termine la chasse ou crée une nouvelle phase ; le menu ⋯ permet le pas de +5, le Charme Chroma ou de modifier le nombre.",
-          "Sans réseau, continue à compter : tout part tout seul quand internet revient.",
+          "Pas de réseau ? Continue à compter : tes chasses sont gardées sur le téléphone et envoyées sur ton compte dès qu'internet revient.",
           "En bas : Chasses, Profil, Joueurs et Guides, lisibles même hors connexion."
         ],
         "lien": ["/compteurs", "Ouvrir Mes chasses"]
@@ -161,7 +161,7 @@
           "Open pokechroma.com/compteurs on your phone. iPhone: in Safari, Share then “Add to Home Screen”. Android: in Chrome, “Install the app” button.",
           "The app opens on “My hunts”: “New hunt”, then tap a card for the counting screen with the big +1.",
           "The “✨ Shiny!” button finishes the hunt or starts a new phase; the ⋯ menu offers a +5 step, the Shiny Charm or editing the count.",
-          "No network? Keep counting: everything is sent on its own when you are back online.",
+          "No network? Keep counting: your hunts are saved on your phone and sent to your account as soon as you are back online.",
           "At the bottom: Hunts, Profile, Players and Guides, readable even offline."
         ],
         "lien": ["/compteurs", "Open My hunts"]
