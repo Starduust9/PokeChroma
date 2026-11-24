@@ -477,6 +477,10 @@ body.pc-ch-plein { overflow: hidden; }
 .pc-ch-f-menu { display: grid; gap: 6px; background: #282a36; border-radius: 14px; padding: 10px; margin-top: 10px; }
 .pc-ch-f-menu button { border: 0; border-radius: 10px; background: #1e1f29; color: #f8f8f2; padding: 10px; text-align: left; }
 .pc-ch-f-menu .pc-danger { color: #ff5c7a; }
+.pc-ch-f-pas { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 4px 2px; color: #9aa0b4; font-size: 14px; }
+.pc-ch-f-pas span { flex-basis: 100%; }
+.pc-ch-f-menu .pc-ch-f-pas button { flex: 1; text-align: center; padding: 8px 0; }
+.pc-ch-f-menu .pc-ch-f-pas .pc-ch-f-pas-actif { background: #ffd75e; color: #1e1f29; font-weight: bold; }
 .pc-ch-f-image { margin: 14px auto 4px; width: 150px; height: 150px; border-radius: 22px; background: #282a36;
   display: flex; align-items: center; justify-content: center; }
 .pc-ch-f-sprite { width: 140px; height: 140px; object-fit: contain; }

@@ -62,6 +62,8 @@
     return { max: ch.max, bonus };
   }
   const chaine = (c) => +((c.options || {}).chaine) || 0;
+  // rencontres ajoutées par appui (+1, +2, +5 pour les Hordes…) : dans les options, comme sur le PC
+  const pas = (c) => Math.max(1, Math.min(1000, +((c.options || {}).pas) || +c.pas || 1));
   const tauxNombre = (c) => { const m = /1\s*\/\s*(\d+)/.exec(c.taux || ""); return m ? +m[1] : 8192; };
   // le texte « 1/1365 (Charme Chroma) » ou « 1/683 (Masuda) » du compteur PC : le vrai taux
   // de base est retrouvé
@@ -169,7 +171,7 @@
         vus.add(r.id_local);
         if (S.attente.includes(r.id_local)) continue;           // changé ici, pas encore envoyé
         const ici = S.rows[r.id_local];
-        S.rows[r.id_local] = Object.assign({}, r, { pas: ici ? ici.pas : 1 });
+        S.rows[r.id_local] = Object.assign({}, r, ici && ici.pas ? { pas: ici.pas } : {});
       }
       for (const id of Object.keys(S.rows)) if (!vus.has(id) && !S.attente.includes(id)) delete S.rows[id];
       S.derniere = new Date();
@@ -292,8 +294,8 @@
       </div>
       ${puces.length ? `<div class="pc-ch-puces">${puces.join("")}</div>` : ""}
       ${c.termine ? "" : `<div class="pc-ch-boutons">
-        <button type="button" data-action="moins" aria-label="−1">−${c.pas || 1}</button>
-        <button type="button" class="pc-ch-plus" data-action="plus" aria-label="+1">+${c.pas || 1}</button>
+        <button type="button" data-action="moins" aria-label="−1">−${pas(c)}</button>
+        <button type="button" class="pc-ch-plus" data-action="plus" aria-label="+1">+${pas(c)}</button>
       </div>`}
       ${local && S.uid ? `<button type="button" class="pc-ch-envoyer" data-action="envoyer">☁ ${T("Envoyer sur mon compte", "Send to my account")}</button>` : ""}
     </div>`;
@@ -382,7 +384,9 @@
         <button type="button" class="pc-ch-f-fermer" data-action="menu" aria-label="Options">⋯</button>
       </div>
       <div class="pc-ch-f-menu" hidden>
-        <button type="button" data-action="pas">${T("Pas de", "Step of")} +${(c.pas || 1) === 1 ? 5 : 1}</button>
+        <div class="pc-ch-f-pas"><span>${T("Rencontres par appui", "Encounters per tap")}</span>
+          ${[1, 2, 3, 5].map((v) => `<button type="button" data-action="pas" data-v="${v}"${pas(c) === v ? ' class="pc-ch-f-pas-actif"' : ""}>+${v}</button>`).join("")}
+          <button type="button" class="pc-ch-f-pas-autre${[1, 2, 3, 5].includes(pas(c)) ? "" : " pc-ch-f-pas-actif"}" data-action="pas" data-v="autre" aria-label="${T("Choisir mon nombre", "Choose my number")}">✏️</button></div>
         <button type="button" data-action="editer">✏️ ${T("Modifier la chasse", "Edit the hunt")}</button>
         ${charmePossible(c.jeu) ? `<button type="button" data-action="charme">✨ ${c.charme ? T("Retirer le Charme Chroma", "Remove the Shiny Charm") : T("Ajouter le Charme Chroma", "Add the Shiny Charm")}</button>` : ""}
         ${c.termine ? `<button type="button" data-action="reprendre">↺ ${T("Reprendre la chasse", "Resume the hunt")}</button>` : ""}
@@ -396,9 +400,9 @@
       <div class="pc-ch-f-sous">⏱ ${duree(c.temps)}</div>
       ${blocChaine(c)}${blocOptions(c)}
       ${c.termine ? `<p class="pc-ch-f-fini">✨ ${T("Chasse terminée !", "Hunt finished!")}</p>` : `
-      <button type="button" class="pc-ch-f-plus" data-action="plus">+${c.pas || 1}</button>
+      <button type="button" class="pc-ch-f-plus" data-action="plus">+${pas(c)}</button>
       <div class="pc-ch-f-ligne">
-        <button type="button" data-action="moins">−${c.pas || 1}</button>
+        <button type="button" data-action="moins">−${pas(c)}</button>
         <button type="button" class="pc-ch-f-shiny" data-action="shiny">✨ ${T("Shiny !", "Shiny!")}</button>
       </div>`}
       ${(c.phases || []).length ? `<p class="pc-ch-f-phases">${T("Phases", "Phases")} : ${c.phases.map((p) =>
@@ -507,8 +511,8 @@
     switch (nom) {
       case "ouvrir": ouvrirFocus(id); break;
       case "fermer": fermerFocus(); break;
-      case "plus": noterTemps(); changer(id, (c) => { c.compteur = (+c.compteur || 0) + (c.pas || 1); avancerChaine(c, c.pas || 1); }); vibrer(); break;
-      case "moins": changer(id, (c) => { const avant = +c.compteur || 0; c.compteur = Math.max(0, avant - (c.pas || 1)); avancerChaine(c, c.compteur - avant); }); break;
+      case "plus": noterTemps(); changer(id, (c) => { c.compteur = (+c.compteur || 0) + pas(c); avancerChaine(c, pas(c)); }); vibrer(); break;
+      case "moins": changer(id, (c) => { const avant = +c.compteur || 0; c.compteur = Math.max(0, avant - pas(c)); avancerChaine(c, c.compteur - avant); }); break;
       case "editer": {
         const f = el.closest(".pc-ch-f-boite").querySelector(".pc-ch-f-edit");
         f.hidden = !f.hidden;
@@ -520,7 +524,16 @@
       case "casser": changer(id, (c) => { c.options = Object.assign({}, c.options, { chaine: 0 }); }); break;
       case "envoyer": envoyerSurCompte(id); break;
       case "menu": { const m = el.closest(".pc-ch-f-boite").querySelector(".pc-ch-f-menu"); m.hidden = !m.hidden; break; }
-      case "pas": changer(id, (c) => { c.pas = (c.pas || 1) === 1 ? 5 : 1; }); break;
+      case "pas": {
+        let v = el.dataset.v;
+        if (v === "autre") {
+          v = prompt(T("Rencontres ajoutées à chaque appui (ex. 5 pour les Hordes) :", "Encounters added per tap (e.g. 5 for Hordes):"));
+          if (v === null || !/^\s*\d+\s*$/.test(v)) break;
+        }
+        v = Math.max(1, Math.min(1000, parseInt(v, 10) || 1));
+        changer(id, (c) => { c.options = Object.assign({}, c.options, { pas: v }); delete c.pas; });
+        break;
+      }
       case "charme": changer(id, (c) => { c.charme = !c.charme; }); break;
       case "modifier": {
         const v = prompt(T("Nouveau nombre de rencontres :", "New encounter count:"));
@@ -629,7 +642,7 @@
     if (!pokemon) return;
     const jeu = selJeu.value, charme = $("pc-ch-f-charme").checked;
     const c = { id_local: nouvelId(pokemon, jeu), pokemon, jeu, compteur: 0, phases: [], temps: 0, termine: null,
-      methode: selMeth.value, charme, taux: `1/${+selTaux.value}`, options: {}, pas: 1 };
+      methode: selMeth.value, charme, taux: `1/${+selTaux.value}`, options: {} };
     c.taux = tauxAffiche(c);
     creer(c);
     $("pc-ch-f-nom").value = "";
