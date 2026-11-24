@@ -36,8 +36,8 @@
     ["1G", [["Pokémon Jaune", "Pokémon Yellow"], ["Pokémon Rouge", "Pokémon Red"], ["Pokémon Bleu", "Pokémon Blue"]]],
   ];
   window.pcMethodes = {
-    en: ["Encounters", "Resets", "Runaways", "Eggs", "Masuda", "Poké Radar (chain)", "Chain fishing", "SOS chain", "Mass outbreaks", "Sparkling Power (sandwich)"],
-    fr: ["Rencontres", "Resets", "Fuites", "Œufs", "Masuda", "Pokéradar (chaîne)", "Pêche à la chaîne", "Chaîne SOS", "Apparitions massives", "Pouvoir Brillance (sandwich)"] };
+    en: ["Encounters", "Resets", "Runaways", "Eggs", "Masuda", "Poké Radar (chain)", "Chain fishing", "SOS chain", "Catch combo (Let's Go)", "Number battled (Sword / Shield)", "Dynamax Adventure", "Mass outbreaks", "Sparkling Power (sandwich)"],
+    fr: ["Rencontres", "Resets", "Fuites", "Œufs", "Masuda", "Pokéradar (chaîne)", "Pêche à la chaîne", "Chaîne SOS", "Combo de captures (Let's Go)", "Compteur de K.O. (Épée / Bouclier)", "Raid Dynamax Aventure", "Apparitions massives", "Pouvoir Brillance (sandwich)"] };
 
   // ---- sprites des Pokémon (mêmes images que dans le compteur : PokeAPI)
   const SPRITES = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/";

@@ -43,7 +43,17 @@
       : bonus ? "Masuda" : T("Charme Chroma", "Shiny Charm");
     return `1/${avecTirages(base, k)} (${quoi})`;
   }
-  const chance = (c) => 1 - Math.pow(1 - 1 / tauxBase(c), c.compteur * tirages(c));
+  // chaîne en cours (Pokéradar, pêche, SOS…) : réglée sur le PC, le texte envoyé par le
+  // compteur PC (« 1/100 (chaîne 20) ») est gardé tel quel. Dynamax Aventure : 1/300 (1/100 avec
+  // le Charme Chroma), quel que soit le jeu
+  const tauxDuPC = (c) => /cha[iî]ne \d|chain \d/i.test(c.taux || "");
+  const dynamax = (c) => /dynamax/i.test(c.methode || "");
+  const tauxActuel = (c) => (dynamax(c) ? (c.charme ? 100 : 300) : tauxDuPC(c) ? tauxNombre(c)
+    : avecTirages(tauxBase(c), tirages(c)));
+  const chance = (c) => 1 - Math.pow(1 - 1 / tauxActuel(c), c.compteur);
+  const tauxAffiche = (c) => (dynamax(c)
+    ? `1/${tauxActuel(c)} (${c.charme ? T("Charme Chroma", "Shiny Charm") : T("Dynamax Aventure", "Dynamax Adventure")})`
+    : tauxDuPC(c) ? c.taux : texteTaux(tauxBase(c), c.charme, masuda(c)));
   const nb = (x) => Number(x || 0).toLocaleString(EN ? "en-US" : "fr-FR");
   const total = (c) => (c.compteur || 0) + (c.phases || []).reduce((t, p) => t + (+p.rencontres || 0), 0);
   const maintenant = () => new Date().toISOString();
@@ -234,7 +244,7 @@
       <div data-action="ouvrir">
         <div class="pc-ch-cpt">${nb(c.compteur)}</div>
         <div class="pc-ch-sous">${phase === 1 ? T("rencontres", "encounters") : T(`phase ${phase} · total ${nb(total(c))}`, `phase ${phase} · total ${nb(total(c))}`)}</div>
-        <div class="pc-ch-sous">${T("Taux", "Odds")} ${esc(texteTaux(tauxBase(c), c.charme, masuda(c)))}</div>
+        <div class="pc-ch-sous">${T("Taux", "Odds")} ${esc(tauxAffiche(c))}</div>
       </div>
       ${puces.length ? `<div class="pc-ch-puces">${puces.join("")}</div>` : ""}
       ${c.termine ? "" : `<div class="pc-ch-boutons">
@@ -335,7 +345,7 @@
       <div class="pc-ch-f-image">${sprite(c.pokemon, "pc-ch-f-sprite")}</div>
       <div class="pc-ch-f-cpt">${nb(c.compteur)}</div>
       <div class="pc-ch-f-sous">${phase === 1 ? T("rencontres", "encounters") : T(`rencontres · total ${nb(total(c))}`, `encounters · total ${nb(total(c))}`)}</div>
-      <div class="pc-ch-f-sous">${T("Taux", "Odds")} ${esc(texteTaux(tauxBase(c), c.charme, masuda(c)))} · ${pct} % ${T("de chances de l'avoir croisé", "chance to have met it")}</div>
+      <div class="pc-ch-f-sous">${T("Taux", "Odds")} ${esc(tauxAffiche(c))} · ${pct} % ${T("de chances de l'avoir croisé", "chance to have met it")}</div>
       <div class="pc-ch-f-sous">⏱ ${duree(c.temps)}</div>
       ${c.termine ? `<p class="pc-ch-f-fini">✨ ${T("Chasse terminée !", "Hunt finished!")}</p>` : `
       <button type="button" class="pc-ch-f-plus" data-action="plus">+${c.pas || 1}</button>
