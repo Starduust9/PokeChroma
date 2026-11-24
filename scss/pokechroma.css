@@ -613,3 +613,15 @@ body.pc-aide-ouverte { overflow: hidden; }
 }
 .pc-aide-tuto .btn-primary { background: #ffd75e; border-color: #ffd75e; color: #1e1f29; font-weight: bold; border-radius: 10px; }
 .pc-aide-tuto .btn-primary:hover { background: #ffe27a; border-color: #ffe27a; color: #1e1f29; }
+
+/* choix de la Ball avec images (ajouter un shiny) */
+.pc-ball-bouton { display: flex; align-items: center; gap: 8px; text-align: left; cursor: pointer; }
+.pc-ball-bouton img, .pc-ball-grille img { width: 28px; height: 28px; image-rendering: pixelated; flex: none; }
+.pc-ball-vide { display: inline-block; width: 28px; text-align: center; color: #9aa0b4; flex: none; }
+.pc-ball-grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 4px; max-height: 260px;
+  overflow-y: auto; background: #1e1f29; border: 1px solid #3a3c4a; border-radius: 10px; padding: 6px; margin-top: 4px; }
+.pc-ball-grille[hidden] { display: none; }
+.pc-ball-grille button { display: flex; align-items: center; gap: 6px; border: 0; border-radius: 8px; background: transparent;
+  color: #f8f8f2; padding: 4px 6px; font-size: 14px; font-weight: normal; text-align: left; }
+.pc-ball-grille button:hover { background: #282a36; }
+.pc-ball-grille .pc-ball-actif { background: #ffd75e; color: #1e1f29; font-weight: bold; }

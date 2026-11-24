@@ -212,6 +212,36 @@
     };
   }
 
+  // ---- choix de la Ball avec son image (la liste native ne sait pas montrer d'images)
+  function choixBall(sel) {
+    sel.hidden = true;
+    const bouton = document.createElement("button");
+    bouton.type = "button";
+    bouton.className = "form-control pc-ball-bouton";
+    const grille = document.createElement("div");
+    grille.className = "pc-ball-grille";
+    grille.hidden = true;
+    const img = (f) => `<img src="${esc(window.pcImageBall(f))}" alt="" onerror="this.style.visibility='hidden'">`;
+    grille.innerHTML = `<button type="button" data-ball=""><span class="pc-ball-vide">—</span>${T("Aucune", "None")}</button>` +
+      BALLS.map(([fr, en, f]) => `<button type="button" data-ball="${esc(EN ? en : fr)}">${img(f)}${esc(EN ? en : fr)}</button>`).join("");
+    const maj = () => {
+      const b = BALLS.find(([fr, en]) => (EN ? en : fr) === sel.value);
+      bouton.innerHTML = b ? `${img(b[2])}<span>${esc(sel.value)}</span>` : `<span class="pc-ball-vide">—</span><span>${T("Choisir la Ball", "Choose the Ball")}</span>`;
+      grille.querySelectorAll("[data-ball]").forEach((x) => x.classList.toggle("pc-ball-actif", x.dataset.ball === sel.value));
+    };
+    bouton.addEventListener("click", () => { grille.hidden = !grille.hidden; });
+    grille.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-ball]");
+      if (!b) return;
+      sel.value = b.dataset.ball;
+      grille.hidden = true;
+      maj();
+    });
+    sel.after(bouton, grille);
+    if (sel.form) sel.form.addEventListener("reset", () => setTimeout(maj, 0));
+    maj();
+  }
+
   // ---------------------------------------------------------------- ajouter un shiny (son profil)
   function preparerAjout() {
     if (!moi) return;
@@ -228,6 +258,7 @@
     (EN ? window.pcMethodes.en : window.pcMethodes.fr).forEach((m) => selM.add(new Option(m, m)));
     selB.add(new Option("—", ""));
     BALLS.forEach(([fr, en]) => selB.add(new Option(EN ? en : fr, EN ? en : fr)));
+    choixBall(selB);
     $("pc-pf-s-date").value = new Date().toISOString().slice(0, 10);
     $("pc-pf-ajouter").addEventListener("click", () => {
       $("pc-pf-s-form").hidden = !$("pc-pf-s-form").hidden;
