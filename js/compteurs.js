@@ -12,12 +12,12 @@
 
   // ------------------------------------------------------------ jeux et taux (comme le compteur PC)
   const JEUX = window.pcJeux;
-  const METHODES = EN ? window.pcMethodes.en : window.pcMethodes.fr;
   const n = (t) => window.pcNormaliser ? window.pcNormaliser(t) : String(t || "").toLowerCase();
   function generation(jeu) {
     const j = n(jeu);
     for (const [gen, jeux] of JEUX) if (jeux.some(([fr, en]) => n(fr) === j || n(en) === j)) return parseInt(gen, 10);
-    return null;
+    const f = famille(jeu);
+    return f ? f.gen : null;
   }
   const tauxDefaut = (jeu) => ((generation(jeu) || 0) >= 6 ? 4096 : 8192);
   function charmePossible(jeu) {
@@ -27,33 +27,70 @@
     if (g === 5) return n(jeu).includes("2");
     return true;
   }
-  // tirages par rencontre : Charme Chroma +2, Masuda +5 (+4 en 4G) — comme le compteur PC
-  const masuda = (c) => (/masuda/i.test(c.methode || "") ? (generation(c.jeu) === 4 ? 4 : 5) : 0);
-  const tirages = (c) => (c.charme ? 3 : 1) + masuda(c);
-  const avecTirages = (t, k) => Math.round(1 / (1 - Math.pow(1 - 1 / t, k)));
-  const avecCharme = (t) => avecTirages(t, 3);
+  // catalogue des méthodes (assets/data/methodes.json, le même fichier que le compteur PC)
+  let CAT = { familles: [], methodes: [], groupes: [], options_famille: {} };
+  const catalogue = fetch("/assets/data/methodes.json").then((r) => r.json())
+    .then((d) => { CAT = Object.assign(CAT, d); }).catch(() => {});
+  const nom = (o) => (o ? (EN ? o.en : o.fr) || o.fr || "" : "");
+  const court = (o) => (o ? (EN ? o.court_en : o.court_fr) || o.court_fr || "" : "");
+  function famille(jeu) {
+    const complet = n(jeu);
+    if (!complet) return null;
+    const mots = new Set([...String(jeu).split(/[\s\-_()/,.&+:]+/), ...String(jeu).split(/[\s()/,:]+/)].filter(Boolean).map(n));
+    return CAT.familles.find((f) => (f.cles || []).some((c) => mots.has(c) || (c.length >= 5 && complet.includes(c)))) || null;
+  }
+  function methodeDe(c) {
+    const m = n(c.methode);
+    if (!m) return null;
+    return CAT.methodes.find((x) => [n(x.fr), n(x.en), x.id].includes(m))
+      || CAT.methodes.find((x) => (x.alias || []).some((a) => m.includes(a))) || null;
+  }
+  const possible = (m, jeu) => { if (!m || m.familles === "*") return true; const f = famille(jeu); return !f || m.familles.includes(f.id); };
+  function optionsDe(c) {
+    const m = methodeDe(c), f = famille(c.jeu);
+    return [...((m && m.options) || []), ...((f && CAT.options_famille[f.id]) || [])];
+  }
+  function valeurOption(c, o) {
+    const v = (c.options || {})[o.id];
+    return o.choix.some((x) => x.v === v) ? v : (o.defaut || 0);
+  }
+  function chaineDe(c) {
+    const m = methodeDe(c), ch = m && m.chaine;
+    if (!ch) return null;
+    const bonus = (k) => (ch.par != null ? ch.par * Math.min(k, ch.max)
+      : Math.max(0, ...(ch.paliers || []).filter(([mini]) => k >= mini).map(([, b]) => b)));
+    return { max: ch.max, bonus };
+  }
+  const chaine = (c) => +((c.options || {}).chaine) || 0;
   const tauxNombre = (c) => { const m = /1\s*\/\s*(\d+)/.exec(c.taux || ""); return m ? +m[1] : 8192; };
   // le texte « 1/1365 (Charme Chroma) » ou « 1/683 (Masuda) » du compteur PC : le vrai taux
   // de base est retrouvé
   const tauxBase = (c) => (/\(/.test(c.taux || "") ? tauxDefaut(c.jeu) : tauxNombre(c));
-  function texteTaux(base, charme, bonus = 0) {
-    const k = (charme ? 3 : 1) + bonus;
-    if (k === 1) return `1/${base}`;
-    const quoi = bonus && charme ? `Masuda + ${T("Charme Chroma", "Shiny Charm")}`
-      : bonus ? "Masuda" : T("Charme Chroma", "Shiny Charm");
-    return `1/${avecTirages(base, k)} (${quoi})`;
+  const avecTirages = (t, k) => (k <= 1 ? t : Math.round(1 / (1 - Math.pow(1 - 1 / t, k))));
+  function tauxEtRaisons(c) {
+    const m = methodeDe(c) || {}, f = famille(c.jeu) || {};
+    const charme = !!c.charme && m.charme !== false;
+    const CHARME = T("Charme Chroma", "Shiny Charm");
+    if (m.fixe) return charme && m.fixe_charme ? [m.fixe_charme, [CHARME]] : [m.fixe, [nom(m)]];
+    let bonus = 0;
+    const raisons = [];
+    if (m.bonus) {
+      bonus += +((m.bonus_gen || {})[String(generation(c.jeu))] ?? m.bonus);
+      raisons.push(nom(m).split(" (")[0]);
+    }
+    const ch = chaineDe(c);
+    if (ch) { bonus += ch.bonus(chaine(c)); raisons.push(T(`chaîne ${chaine(c)}`, `chain ${chaine(c)}`)); }
+    for (const o of optionsDe(c)) {
+      const v = valeurOption(c, o);
+      if (v) { bonus += +v; raisons.push(court(o.choix.find((x) => x.v === v)) || nom(o)); }
+    }
+    if (m.variable) raisons.push(T("variable", "variable"));
+    if (charme) raisons.push(CHARME);
+    return [avecTirages(tauxBase(c), 1 + (charme ? (f.charme_tirages || 2) : 0) + bonus), raisons];
   }
-  // chaîne en cours (Pokéradar, pêche, SOS…) : réglée sur le PC, le texte envoyé par le
-  // compteur PC (« 1/100 (chaîne 20) ») est gardé tel quel. Dynamax Aventure : 1/300 (1/100 avec
-  // le Charme Chroma), quel que soit le jeu
-  const tauxDuPC = (c) => /cha[iî]ne \d|chain \d/i.test(c.taux || "");
-  const dynamax = (c) => /dynamax/i.test(c.methode || "");
-  const tauxActuel = (c) => (dynamax(c) ? (c.charme ? 100 : 300) : tauxDuPC(c) ? tauxNombre(c)
-    : avecTirages(tauxBase(c), tirages(c)));
+  const tauxActuel = (c) => tauxEtRaisons(c)[0];
+  const tauxAffiche = (c) => { const [t, r] = tauxEtRaisons(c); return `1/${t}${r.length ? ` (${r.join(" + ")})` : ""}`; };
   const chance = (c) => 1 - Math.pow(1 - 1 / tauxActuel(c), c.compteur);
-  const tauxAffiche = (c) => (dynamax(c)
-    ? `1/${tauxActuel(c)} (${c.charme ? T("Charme Chroma", "Shiny Charm") : T("Dynamax Aventure", "Dynamax Adventure")})`
-    : tauxDuPC(c) ? c.taux : texteTaux(tauxBase(c), c.charme, masuda(c)));
   const nb = (x) => Number(x || 0).toLocaleString(EN ? "en-US" : "fr-FR");
   const total = (c) => (c.compteur || 0) + (c.phases || []).reduce((t, p) => t + (+p.rencontres || 0), 0);
   const maintenant = () => new Date().toISOString();
@@ -92,7 +129,7 @@
   const sauverCompte = () => { if (S.uid) ecrireJSON("pc-chasses-" + S.uid, { rows: S.rows, attente: S.attente }); };
 
   // ------------------------------------------------------------ synchronisation avec le compte
-  const COLONNES = ["id_local", "pokemon", "jeu", "compteur", "total", "phases", "temps", "termine", "methode", "taux", "charme", "maj_le"];
+  const COLONNES = ["id_local", "pokemon", "jeu", "compteur", "total", "phases", "temps", "termine", "methode", "taux", "charme", "options", "maj_le"];
   async function synchroniser() {
     const supa = window.pcSupa;
     if (!supa || !S.uid || !navigator.onLine) { afficherEtat(); return; }
@@ -104,12 +141,18 @@
       if (envoi.length) {
         const lignes = envoi.map((id) => {
           const r = S.rows[id], l = { profil_id: S.uid };
-          COLONNES.forEach((k) => { l[k] = r[k] ?? (k === "phases" ? [] : k === "termine" ? null : r[k]); });
+          COLONNES.forEach((k) => { l[k] = r[k] ?? (k === "phases" ? [] : k === "termine" ? null : k === "options" ? {} : r[k]); });
           l.total = total(r);
+          if (S.sansOptions) delete l.options;
           return l;
         });
         const versions = envoi.map((id) => S.rows[id].maj_le);
-        const { error } = await supa.from("chasses").upsert(lignes, { onConflict: "profil_id,id_local" });
+        let { error } = await supa.from("chasses").upsert(lignes, { onConflict: "profil_id,id_local" });
+        if (error && /options/.test(error.message || "") && !S.sansOptions) {
+          S.sansOptions = true;            // serveur pas encore à jour : on envoie sans les options
+          lignes.forEach((l) => delete l.options);
+          ({ error } = await supa.from("chasses").upsert(lignes, { onConflict: "profil_id,id_local" }));
+        }
         if (error) throw error;
         // n'enlever de l'attente que ce qui n'a pas rechangé pendant l'envoi
         S.attente = S.attente.filter((id) => { const i = envoi.indexOf(id); return i < 0 || S.rows[id].maj_le !== versions[i]; });
@@ -165,6 +208,7 @@
     const t = trouver(id);
     if (!t) return;
     fn(t.c);
+    t.c.taux = tauxAffiche(t.c);
     t.c.maj_le = maintenant();
     t.c.total = total(t.c);
     if (t.compte) {
@@ -327,6 +371,8 @@
     const t = trouver(S.focus);
     const z = $("pc-ch-focus");
     if (!t || !z) { if (z) fermerFocus(); return; }
+    // formulaire « Modifier la chasse » ouvert : on ne l'efface pas pendant la saisie (synchro)
+    if (z.querySelector(".pc-ch-f-edit:not([hidden])")) return;
     const c = t.c, phase = (c.phases || []).length + 1;
     const pct = (chance(c) * 100).toFixed(1).replace(".", EN ? "." : ",");
     z.innerHTML = `<div class="pc-ch-f-boite" data-id="${esc(c.id_local)}">
@@ -337,16 +383,18 @@
       </div>
       <div class="pc-ch-f-menu" hidden>
         <button type="button" data-action="pas">${T("Pas de", "Step of")} +${(c.pas || 1) === 1 ? 5 : 1}</button>
-        <button type="button" data-action="modifier">✏️ ${T("Modifier le nombre", "Edit the count")}</button>
+        <button type="button" data-action="editer">✏️ ${T("Modifier la chasse", "Edit the hunt")}</button>
         ${charmePossible(c.jeu) ? `<button type="button" data-action="charme">✨ ${c.charme ? T("Retirer le Charme Chroma", "Remove the Shiny Charm") : T("Ajouter le Charme Chroma", "Add the Shiny Charm")}</button>` : ""}
         ${c.termine ? `<button type="button" data-action="reprendre">↺ ${T("Reprendre la chasse", "Resume the hunt")}</button>` : ""}
         <button type="button" class="pc-danger" data-action="supprimer">🗑 ${T("Supprimer la chasse", "Delete the hunt")}</button>
       </div>
+      ${formEdition(c)}
       <div class="pc-ch-f-image">${sprite(c.pokemon, "pc-ch-f-sprite")}</div>
       <div class="pc-ch-f-cpt">${nb(c.compteur)}</div>
       <div class="pc-ch-f-sous">${phase === 1 ? T("rencontres", "encounters") : T(`rencontres · total ${nb(total(c))}`, `encounters · total ${nb(total(c))}`)}</div>
       <div class="pc-ch-f-sous">${T("Taux", "Odds")} ${esc(tauxAffiche(c))} · ${pct} % ${T("de chances de l'avoir croisé", "chance to have met it")}</div>
       <div class="pc-ch-f-sous">⏱ ${duree(c.temps)}</div>
+      ${blocChaine(c)}${blocOptions(c)}
       ${c.termine ? `<p class="pc-ch-f-fini">✨ ${T("Chasse terminée !", "Hunt finished!")}</p>` : `
       <button type="button" class="pc-ch-f-plus" data-action="plus">+${c.pas || 1}</button>
       <div class="pc-ch-f-ligne">
@@ -366,17 +414,114 @@
     </div>`;
   }
 
+  // ---- modifier une chasse : Pokémon, jeu, méthode, taux de base, Charme, rencontres, chaîne
+  const TAUX_BASE = [[8192, T("1/8192 · jeux 1G à 5G", "1/8192 · Gen 1 to 5 games")],
+    [4096, T("1/4096 · à partir de X / Y", "1/4096 · from X / Y on")]];
+  function optionsJeux(choisi) {
+    let h = `<option value="">${T("— Jeu (facultatif) —", "— Game (optional) —")}</option>`;
+    let trouve = !choisi;
+    for (const [gen, jeux] of JEUX) {
+      h += `<optgroup label="${esc(gen)}">` + jeux.map(([fr, en]) => {
+        const v = EN ? en : fr, sel = n(v) === n(choisi) || n(fr) === n(choisi) || n(en) === n(choisi);
+        if (sel) trouve = true;
+        return `<option value="${esc(v)}"${sel ? " selected" : ""}>${esc(v)}</option>`;
+      }).join("") + "</optgroup>";
+    }
+    // jeu écrit à la main sur le PC (ex. « Legend ZA ») : gardé tel quel
+    return trouve ? h : h + `<option value="${esc(choisi)}" selected>${esc(choisi)}</option>`;
+  }
+  function optionsMethodes(jeu, choisie) {
+    const m0 = methodeDe({ methode: choisie });
+    let h = `<option value="">${T("— Méthode (facultatif) —", "— Method (optional) —")}</option>`;
+    for (const g of CAT.groupes) {
+      const ms = CAT.methodes.filter((m) => m.groupe === g.id && possible(m, jeu));
+      if (ms.length) h += `<optgroup label="${esc(nom(g))}">` + ms.map((m) =>
+        `<option value="${esc(nom(m))}"${m === m0 ? " selected" : ""}>${esc(nom(m))}</option>`).join("") + "</optgroup>";
+    }
+    return h;
+  }
+  function formEdition(c) {
+    const base = tauxBase(c), auto = base === tauxDefaut(c.jeu);
+    return `<form class="pc-ch-form pc-ch-f-edit" hidden autocomplete="off">
+      <label>${T("Pokémon", "Pokémon")} <input class="form-control" name="pokemon" required value="${esc(c.pokemon)}" list="pc-ch-noms"></label>
+      <label>${T("Jeu", "Game")} <select class="form-control" name="jeu">${optionsJeux(c.jeu || "")}</select></label>
+      <label>${T("Méthode", "Method")} <select class="form-control" name="methode">${optionsMethodes(c.jeu, c.methode)}</select></label>
+      <label>${T("Taux de base", "Base odds")} <select class="form-control" name="taux">
+        <option value="auto"${auto ? " selected" : ""}>${T("Selon le jeu", "From the game")}</option>
+        ${TAUX_BASE.concat(TAUX_BASE.some(([v]) => v === base) ? [] : [[base, `1/${base}`]]).map(([v, l]) =>
+          `<option value="${v}"${!auto && v === base ? " selected" : ""}>${esc(l)}</option>`).join("")}</select></label>
+      <label>${T("Rencontres (phase en cours)", "Encounters (current phase)")} <input class="form-control" name="compteur" type="number" min="0" inputmode="numeric" value="${+c.compteur || 0}"></label>
+      <label class="pc-ch-f-edit-chaine"${chaineDe(c) ? "" : " hidden"}>${T("Chaîne actuelle", "Current chain")} <input class="form-control" name="chaine" type="number" min="0" inputmode="numeric" value="${chaine(c)}"></label>
+      <label class="pc-pf-case pc-ch-f-edit-charme"${charmePossible(c.jeu) ? "" : " hidden"}><input type="checkbox" name="charme"${c.charme ? " checked" : ""}> Charme Chroma</label>
+      <p class="pc-ch-f-edit-erreur" hidden></p>
+      <div class="pc-pf-boutons">
+        <button class="btn btn-primary" type="button" data-action="enregistrer">${T("Enregistrer", "Save")}</button>
+        <button class="btn btn-outline-light" type="button" data-action="editer">${T("Annuler", "Cancel")}</button>
+      </div></form>`;
+  }
+  function enregistrerEdition(id, form) {
+    const v = (k) => form.elements[k];
+    const pokemon = v("pokemon").value.trim(), jeu = v("jeu").value, methode = v("methode").value;
+    const err = form.querySelector(".pc-ch-f-edit-erreur");
+    const m = methodeDe({ methode });
+    if (!pokemon) { err.textContent = T("Indique le nom du Pokémon.", "Enter the Pokémon's name."); err.hidden = false; return; }
+    if (m && !possible(m, jeu)) {
+      err.textContent = T(`« ${nom(m)} » n'existe pas dans ce jeu.`, `“${nom(m)}” doesn't exist in this game.`);
+      err.hidden = false;
+      return;
+    }
+    const compteur = Math.max(0, parseInt(v("compteur").value, 10) || 0);
+    const k = Math.max(0, parseInt(v("chaine").value, 10) || 0);
+    const taux = v("taux").value === "auto" ? tauxDefaut(jeu) : +v("taux").value;
+    form.hidden = true;
+    changer(id, (c) => {
+      Object.assign(c, { pokemon, jeu, methode, compteur, charme: v("charme").checked && charmePossible(jeu) });
+      c.taux = `1/${taux}`;
+      c.options = Object.assign({}, c.options, { chaine: chaineDe(c) ? k : 0 });
+    });
+  }
+
+  function blocChaine(c) {
+    const ch = chaineDe(c);
+    if (!ch || c.termine) return "";
+    const k = chaine(c), pc = Math.min(100, (k / ch.max) * 100);
+    return `<div class="pc-ch-chaine">
+      <div class="pc-ch-chaine-haut"><span>${T("Chaîne actuelle", "Current chain")}</span>
+        <b class="${k >= ch.max ? "pc-ch-chaine-max" : ""}">${nb(k)}<small> / ${nb(ch.max)} max</small></b></div>
+      <div class="pc-ch-chaine-barre"><i style="width:${pc}%"></i></div>
+      <div class="pc-ch-f-ligne">
+        <button type="button" class="pc-ch-chaine-plus" data-action="plus">+1 ${T("chaîne", "chain")}</button>
+        <button type="button" data-action="casser">${T("Chaîne cassée", "Chain broken")}</button>
+      </div></div>`;
+  }
+  function blocOptions(c) {
+    const opts = optionsDe(c);
+    if (!opts.length || c.termine) return "";
+    return `<div class="pc-ch-chaine">${opts.map((o) => `<label class="pc-ch-option"><span>${esc(nom(o))}</span>
+      <select class="form-select form-select-sm" data-option="${esc(o.id)}">${o.choix.map((x) =>
+        `<option value="${x.v}"${x.v === valeurOption(c, o) ? " selected" : ""}>${esc(nom(x))}</option>`).join("")}</select></label>`).join("")}</div>`;
+  }
+
   // ------------------------------------------------------------ clics
   function action(nom, id, el) {
     switch (nom) {
       case "ouvrir": ouvrirFocus(id); break;
       case "fermer": fermerFocus(); break;
-      case "plus": noterTemps(); changer(id, (c) => { c.compteur = (+c.compteur || 0) + (c.pas || 1); }); vibrer(); break;
-      case "moins": changer(id, (c) => { c.compteur = Math.max(0, (+c.compteur || 0) - (c.pas || 1)); }); break;
+      case "plus": noterTemps(); changer(id, (c) => { c.compteur = (+c.compteur || 0) + (c.pas || 1); avancerChaine(c, c.pas || 1); }); vibrer(); break;
+      case "moins": changer(id, (c) => { const avant = +c.compteur || 0; c.compteur = Math.max(0, avant - (c.pas || 1)); avancerChaine(c, c.compteur - avant); }); break;
+      case "editer": {
+        const f = el.closest(".pc-ch-f-boite").querySelector(".pc-ch-f-edit");
+        f.hidden = !f.hidden;
+        el.closest(".pc-ch-f-boite").querySelector(".pc-ch-f-menu").hidden = true;
+        if (!f.hidden) f.elements.pokemon.focus();
+        break;
+      }
+      case "enregistrer": enregistrerEdition(id, el.closest("form")); break;
+      case "casser": changer(id, (c) => { c.options = Object.assign({}, c.options, { chaine: 0 }); }); break;
       case "envoyer": envoyerSurCompte(id); break;
       case "menu": { const m = el.closest(".pc-ch-f-boite").querySelector(".pc-ch-f-menu"); m.hidden = !m.hidden; break; }
       case "pas": changer(id, (c) => { c.pas = (c.pas || 1) === 1 ? 5 : 1; }); break;
-      case "charme": changer(id, (c) => { c.taux = `1/${tauxBase(c)}`; c.charme = !c.charme; }); break;
+      case "charme": changer(id, (c) => { c.charme = !c.charme; }); break;
       case "modifier": {
         const v = prompt(T("Nouveau nombre de rencontres :", "New encounter count:"));
         if (v !== null && /^\s*\d+\s*$/.test(v)) changer(id, (c) => { c.compteur = parseInt(v, 10); });
@@ -410,6 +555,10 @@
         break;
     }
   }
+  function avancerChaine(c, d) {             // méthode à chaîne : la chaîne suit les rencontres
+    if (!chaineDe(c) || !d) return;
+    c.options = Object.assign({}, c.options, { chaine: Math.max(0, chaine(c) + d) });
+  }
   const vibrer = () => { try { if (navigator.vibrate) navigator.vibrate(15); } catch (e) { /* rien */ } };
   const surClic = (e) => {
     const b = e.target.closest("[data-action]");
@@ -419,6 +568,19 @@
   };
   document.querySelector(".pc-ch-page").addEventListener("click", surClic);
   $("pc-ch-focus").addEventListener("click", surClic);
+  $("pc-ch-focus").addEventListener("change", (e) => {
+    const form = e.target.closest(".pc-ch-f-edit");
+    if (!form) return;
+    const jeu = form.elements.jeu.value;
+    if (e.target.name === "jeu") form.elements.methode.innerHTML = optionsMethodes(jeu, form.elements.methode.value);
+    form.querySelector(".pc-ch-f-edit-charme").hidden = !charmePossible(jeu);
+    form.querySelector(".pc-ch-f-edit-chaine").hidden = !chaineDe({ methode: form.elements.methode.value });
+  });
+  $("pc-ch-focus").addEventListener("change", (e) => {     // options (sandwich, Parfum…)
+    const sel = e.target.closest("[data-option]"), porteur = e.target.closest("[data-id]");
+    if (!sel || !porteur) return;
+    changer(porteur.dataset.id, (c) => { c.options = Object.assign({}, c.options, { [sel.dataset.option]: +sel.value }); });
+  });
 
   // ------------------------------------------------------------ nouvelle chasse
   const selJeu = $("pc-ch-f-jeu"), selTaux = $("pc-ch-f-taux"), selMeth = $("pc-ch-f-methode");
@@ -429,12 +591,25 @@
     jeux.forEach(([fr, en]) => g.appendChild(new Option(EN ? en : fr, EN ? en : fr)));
     selJeu.appendChild(g);
   }
-  selMeth.add(new Option(T("— Méthode (facultatif) —", "— Method (optional) —"), ""));
-  METHODES.forEach((m) => selMeth.add(new Option(m, m)));
+  function listeMethodes() {
+    const garde = selMeth.value;
+    selMeth.innerHTML = "";
+    selMeth.add(new Option(T("— Méthode (facultatif) —", "— Method (optional) —"), ""));
+    for (const g of CAT.groupes) {
+      const ms = CAT.methodes.filter((m) => m.groupe === g.id && possible(m, selJeu.value));
+      if (!ms.length) continue;
+      const og = document.createElement("optgroup");
+      og.label = nom(g);
+      ms.forEach((m) => og.appendChild(new Option(nom(m), nom(m))));
+      selMeth.appendChild(og);
+    }
+    if ([...selMeth.options].some((o) => o.value === garde)) selMeth.value = garde;
+  }
   [[8192, T("1/8192 · jeux 1G à 5G", "1/8192 · Gen 1 to 5 games")], [4096, T("1/4096 · à partir de X / Y", "1/4096 · from X / Y on")],
    [2731, "1/2731"], [1365, "1/1365"], [1024, "1/1024"], [683, "1/683"], [512, "1/512"], [273, "1/273"], [128, "1/128"]]
     .forEach(([v, l]) => selTaux.add(new Option(l, v)));
   const majForm = () => {
+    listeMethodes();
     selTaux.value = String(tauxDefaut(selJeu.value));
     const ok = charmePossible(selJeu.value);
     $("pc-ch-f-charme-l").hidden = !ok;
@@ -442,6 +617,7 @@
   };
   selJeu.addEventListener("change", majForm);
   majForm();
+  catalogue.then(() => { majForm(); dessiner(); });
   $("pc-ch-nouvelle").addEventListener("click", () => {
     $("pc-ch-form").hidden = !$("pc-ch-form").hidden;
     if (!$("pc-ch-form").hidden) $("pc-ch-f-nom").focus();
@@ -452,8 +628,10 @@
     const pokemon = $("pc-ch-f-nom").value.trim();
     if (!pokemon) return;
     const jeu = selJeu.value, charme = $("pc-ch-f-charme").checked;
-    creer({ id_local: nouvelId(pokemon, jeu), pokemon, jeu, compteur: 0, phases: [], temps: 0, termine: null,
-      methode: selMeth.value, charme, taux: texteTaux(+selTaux.value, false), pas: 1 });
+    const c = { id_local: nouvelId(pokemon, jeu), pokemon, jeu, compteur: 0, phases: [], temps: 0, termine: null,
+      methode: selMeth.value, charme, taux: `1/${+selTaux.value}`, options: {}, pas: 1 };
+    c.taux = tauxAffiche(c);
+    creer(c);
     $("pc-ch-f-nom").value = "";
     $("pc-ch-form").hidden = true;
   });

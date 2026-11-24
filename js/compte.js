@@ -36,8 +36,8 @@
     ["1G", [["Pokémon Jaune", "Pokémon Yellow"], ["Pokémon Rouge", "Pokémon Red"], ["Pokémon Bleu", "Pokémon Blue"]]],
   ];
   window.pcMethodes = {
-    en: ["Encounters", "Resets", "Runaways", "Eggs", "Masuda", "Poké Radar (chain)", "Chain fishing", "SOS chain", "Catch combo (Let's Go)", "Number battled (Sword / Shield)", "Dynamax Adventure", "Mass outbreaks", "Sparkling Power (sandwich)"],
-    fr: ["Rencontres", "Resets", "Fuites", "Œufs", "Masuda", "Pokéradar (chaîne)", "Pêche à la chaîne", "Chaîne SOS", "Combo de captures (Let's Go)", "Compteur de K.O. (Épée / Bouclier)", "Raid Dynamax Aventure", "Apparitions massives", "Pouvoir Brillance (sandwich)"] };
+    en: ["Encounters", "Resets", "Runaways", "Eggs", "Masuda", "Eggs from a shiny parent", "Poké Radar (chain)", "Chain fishing", "Friend Safari", "Hordes", "DexNav (chain)", "SOS chaining", "Catch combo (Let's Go)", "Number battled (Sword / Shield)", "Dynamax Adventure", "Mass outbreak (Arceus)", "Massive mass outbreak (Arceus)", "Mass outbreaks", "Sparkling Power (sandwich)"],
+    fr: ["Rencontres", "Resets", "Fuites", "Œufs", "Masuda", "Œufs d'un parent chromatique", "Pokéradar (chaîne)", "Pêche à la chaîne", "Safari des Amis", "Hordes", "Navidex (chaîne)", "Chaîne SOS", "Combo de captures (Let's Go)", "Compteur de K.O. (Épée / Bouclier)", "Raid Dynamax Aventure", "Apparition massive (Arceus)", "Apparition massive spéciale (Arceus)", "Apparitions massives", "Pouvoir Brillance (sandwich)"] };
 
   // ---- sprites des Pokémon (mêmes images que dans le compteur : PokeAPI)
   const SPRITES = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/";

@@ -492,6 +492,20 @@ body.pc-ch-plein { overflow: hidden; }
 .pc-ch-f-ligne .form-control { flex: 2; }
 .pc-ch-f-shiny-boite { background: #282a36; border-radius: 14px; padding: 14px; margin-top: 12px; display: grid; gap: 10px; }
 .pc-ch-f-shiny-boite p { margin: 0; }
+/* méthodes à chaîne (Pokéradar, pêche, SOS…) et options (sandwich, Parfum…) */
+.pc-ch-chaine { background: #1e1f29; border-radius: 14px; padding: 12px 14px; margin-top: 12px; text-align: left; }
+.pc-ch-chaine-haut { display: flex; justify-content: space-between; align-items: baseline; color: #9aa0b4; font-size: 14px; }
+.pc-ch-chaine-haut b { color: #f8f8f2; font-size: 22px; }
+.pc-ch-chaine-haut b small { color: #9aa0b4; font-size: 13px; font-weight: normal; }
+.pc-ch-chaine-haut b.pc-ch-chaine-max { color: #ffd75e; }
+.pc-ch-chaine-barre { height: 6px; background: #3a3c4a; border-radius: 3px; margin: 8px 0 10px; overflow: hidden; }
+.pc-ch-chaine-barre i { display: block; height: 100%; background: #ffd75e; border-radius: 3px; }
+.pc-ch-chaine .pc-ch-f-ligne > button { font-size: 15px; padding: 10px 0; }
+.pc-ch-chaine .pc-ch-f-ligne > .pc-ch-chaine-plus { background: #ffd75e; color: #1e1f29; }
+.pc-ch-option { display: flex; justify-content: space-between; align-items: center; gap: 10px; color: #9aa0b4; font-size: 14px; margin: 4px 0; }
+.pc-ch-option select { width: auto; max-width: 55%; background-color: #282a36; color: #ffd75e; border-color: #3a3c4a; }
+#main-page .pc-ch-f-edit { background: #282a36; border-radius: 14px; padding: 14px; margin-top: 10px; text-align: left; }
+.pc-ch-f-edit-erreur { grid-column: 1 / -1; color: #ff5c7a; margin: 0; font-size: 14px; }
 .pc-ch-f-shiny-boite .pc-ch-f-ligne > button { font-size: 15px; padding: 8px; }
 .pc-ch-f-phases { color: #9aa0b4; font-size: 13px; margin-top: 14px; }
 .pc-ch-f-fini { color: #ffd75e; font-size: 22px; font-weight: bold; margin: 20px 0; }

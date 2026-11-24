@@ -1,0 +1,79 @@
+{
+ "_info": "Méthodes de chasse et leurs taux, par jeu. Utilisé par le compteur PC (copie à côté de CompteurShiny.py), le site et l'appli. Taux = 1 / (1 - (1 - 1/base)^tirages) : 1 tirage de base, + Charme Chroma, + bonus de la méthode, de la chaîne et des options.",
+ "familles": [
+  {"id": "za", "gen": 9, "fr": "Légendes Z-A", "en": "Legends Z-A", "cles": ["za", "legendsza", "legendesza"]},
+  {"id": "sv", "gen": 9, "fr": "Écarlate / Violet", "en": "Scarlet / Violet", "cles": ["ecarlate", "violet", "scarlet"]},
+  {"id": "arceus", "gen": 8, "fr": "Légendes Arceus", "en": "Legends: Arceus", "cles": ["arceus", "legendsarceus"], "charme_tirages": 3},
+  {"id": "bdsp", "gen": 8, "fr": "Diamant Étincelant / Perle Scintillante", "en": "Brilliant Diamond / Shining Pearl", "cles": ["diamantetincelant", "perlescintillante", "brilliantdiamond", "shiningpearl", "bdsp"]},
+  {"id": "swsh", "gen": 8, "fr": "Épée / Bouclier", "en": "Sword / Shield", "cles": ["epee", "bouclier", "sword", "shield"]},
+  {"id": "lgpe", "gen": 7, "fr": "Let's Go Pikachu / Évoli", "en": "Let's Go Pikachu / Eevee", "cles": ["letsgo"]},
+  {"id": "usum", "gen": 7, "fr": "Ultra-Soleil / Ultra-Lune", "en": "Ultra Sun / Ultra Moon", "cles": ["ultrasoleil", "ultralune", "ultrasun", "ultramoon", "usum"]},
+  {"id": "sm", "gen": 7, "fr": "Soleil / Lune", "en": "Sun / Moon", "cles": ["soleil", "lune", "sun", "moon"]},
+  {"id": "oras", "gen": 6, "fr": "Rubis Oméga / Saphir Alpha", "en": "Omega Ruby / Alpha Sapphire", "cles": ["rubisomega", "saphiralpha", "omegaruby", "alphasapphire", "oras"]},
+  {"id": "xy", "gen": 6, "fr": "X / Y", "en": "X / Y", "cles": ["x", "y", "xy"]},
+  {"id": "b2w2", "gen": 5, "fr": "Noir 2 / Blanc 2", "en": "Black 2 / White 2", "cles": ["noir2", "blanc2", "black2", "white2", "b2w2"]},
+  {"id": "bw", "gen": 5, "fr": "Noir / Blanc", "en": "Black / White", "cles": ["noir", "blanc", "black", "white"]},
+  {"id": "g3", "gen": 3, "fr": "3G", "en": "Gen 3", "cles": ["rougefeu", "vertfeuille", "firered", "leafgreen", "frlg", "rubis", "saphir", "emeraude", "ruby", "sapphire", "emerald"]},
+  {"id": "hgss", "gen": 4, "fr": "Or HeartGold / Argent SoulSilver", "en": "HeartGold / SoulSilver", "cles": ["heartgold", "soulsilver", "hearthgold", "hgss"]},
+  {"id": "dppt", "gen": 4, "fr": "Diamant / Perle / Platine", "en": "Diamond / Pearl / Platinum", "cles": ["diamant", "perle", "platine", "diamond", "pearl", "platinum"]},
+  {"id": "gsc", "gen": 2, "fr": "Or / Argent / Cristal", "en": "Gold / Silver / Crystal", "cles": ["cristal", "crystal", "or", "argent", "gold", "silver"]},
+  {"id": "g1", "gen": 1, "fr": "1G", "en": "Gen 1", "cles": ["rouge", "bleu", "jaune", "red", "blue", "yellow"]}
+ ],
+ "options_famille": {
+  "arceus": [
+   {"id": "recherche", "fr": "Niveau de recherche du Pokémon", "en": "Pokédex research level", "defaut": 0, "choix": [
+    {"v": 0, "fr": "moins de 10", "en": "below 10"},
+    {"v": 1, "fr": "niveau 10", "en": "level 10", "court_fr": "recherche 10", "court_en": "research 10"},
+    {"v": 3, "fr": "recherche parfaite", "en": "perfect", "court_fr": "recherche parfaite", "court_en": "perfect research"}]}
+  ]
+ },
+ "methodes": [
+  {"id": "rencontres", "groupe": "toutes", "fr": "Rencontres", "en": "Encounters", "familles": "*"},
+  {"id": "resets", "groupe": "toutes", "fr": "Resets", "en": "Resets", "familles": "*"},
+  {"id": "fuites", "groupe": "toutes", "fr": "Fuites", "en": "Runaways", "familles": "*"},
+  {"id": "oeufs", "groupe": "toutes", "fr": "Œufs", "en": "Eggs", "familles": ["sv", "bdsp", "swsh", "usum", "sm", "oras", "xy", "b2w2", "bw", "hgss", "dppt", "g3", "gsc"]},
+  {"id": "masuda", "groupe": "toutes", "fr": "Masuda", "en": "Masuda", "familles": ["sv", "bdsp", "swsh", "usum", "sm", "oras", "xy", "b2w2", "bw", "hgss", "dppt"], "bonus": 5, "bonus_gen": {"4": 4}},
+  {"id": "parent_shiny", "groupe": "gsc", "fr": "Œufs d'un parent chromatique", "en": "Eggs from a shiny parent", "familles": ["gsc"], "fixe": 64, "charme": false},
+  {"id": "pokeradar", "groupe": "radar", "fr": "Pokéradar (chaîne)", "en": "Poké Radar (chain)", "familles": ["dppt", "xy", "bdsp"], "chaine": {"max": 40, "par": 1}, "alias": ["pokeradar", "pokradar"]},
+  {"id": "peche_chaine", "groupe": "xy", "fr": "Pêche à la chaîne", "en": "Chain fishing", "familles": ["xy", "oras"], "chaine": {"max": 20, "par": 2}},
+  {"id": "safari_amis", "groupe": "xy", "fr": "Safari des Amis", "en": "Friend Safari", "familles": ["xy"], "bonus": 4},
+  {"id": "hordes", "groupe": "xy", "fr": "Hordes", "en": "Hordes", "familles": ["xy", "oras"]},
+  {"id": "navidex", "groupe": "oras", "fr": "Navidex (chaîne)", "en": "DexNav (chain)", "familles": ["oras"], "chaine": {"max": 100, "par": 0}, "variable": true},
+  {"id": "sos", "groupe": "sm", "fr": "Chaîne SOS", "en": "SOS chaining", "familles": ["sm", "usum"], "chaine": {"max": 31, "paliers": [[11, 4], [21, 8], [31, 12]]}},
+  {"id": "combo", "groupe": "lgpe", "fr": "Combo de captures (Let's Go)", "en": "Catch combo (Let's Go)", "familles": ["lgpe"], "chaine": {"max": 31, "paliers": [[11, 3], [21, 7], [31, 11]]}, "options": [
+   {"id": "parfum", "fr": "Parfum", "en": "Lure", "defaut": 0, "choix": [
+    {"v": 0, "fr": "sans", "en": "none"},
+    {"v": 1, "fr": "actif", "en": "active", "court_fr": "Parfum", "court_en": "Lure"}]}]},
+  {"id": "ko", "groupe": "swsh", "fr": "Compteur de K.O. (Épée / Bouclier)", "en": "Number battled (Sword / Shield)", "familles": ["swsh"], "chaine": {"max": 500, "paliers": [[50, 1], [100, 2], [200, 3], [300, 4], [500, 5]]}, "alias": ["compteurdeko", "nombredeko", "kocount", "numberbattled"]},
+  {"id": "dynamax", "groupe": "swsh", "fr": "Raid Dynamax Aventure", "en": "Dynamax Adventure", "familles": ["swsh"], "fixe": 300, "fixe_charme": 100},
+  {"id": "apparition_arceus", "groupe": "arceus", "fr": "Apparition massive (Arceus)", "en": "Mass outbreak (Arceus)", "familles": ["arceus"], "bonus": 25},
+  {"id": "apparition_speciale", "groupe": "arceus", "fr": "Apparition massive spéciale (Arceus)", "en": "Massive mass outbreak (Arceus)", "familles": ["arceus"], "bonus": 12},
+  {"id": "apparition_sv", "groupe": "sv", "fr": "Apparitions massives", "en": "Mass outbreaks", "familles": ["sv"], "options": [
+   {"id": "battus", "fr": "Pokémon battus dans l'apparition", "en": "Pokémon defeated in the outbreak", "defaut": 2, "choix": [
+    {"v": 0, "fr": "moins de 30", "en": "under 30"},
+    {"v": 1, "fr": "30 à 59", "en": "30 to 59", "court_fr": "30+ battus", "court_en": "30+ defeated"},
+    {"v": 2, "fr": "60 et plus", "en": "60 or more", "court_fr": "60+ battus", "court_en": "60+ defeated"}]},
+   {"id": "sandwich", "fr": "Pouvoir Brillance (sandwich)", "en": "Sparkling Power (sandwich)", "defaut": 0, "choix": [
+    {"v": 0, "fr": "aucun", "en": "none"},
+    {"v": 1, "fr": "niveau 1", "en": "level 1", "court_fr": "Brillance 1", "court_en": "Sparkling 1"},
+    {"v": 2, "fr": "niveau 2", "en": "level 2", "court_fr": "Brillance 2", "court_en": "Sparkling 2"},
+    {"v": 3, "fr": "niveau 3", "en": "level 3", "court_fr": "Brillance 3", "court_en": "Sparkling 3"}]}]},
+  {"id": "sandwich", "groupe": "sv", "fr": "Pouvoir Brillance (sandwich)", "en": "Sparkling Power (sandwich)", "familles": ["sv"], "options": [
+   {"id": "sandwich", "fr": "Pouvoir Brillance (sandwich)", "en": "Sparkling Power (sandwich)", "defaut": 3, "choix": [
+    {"v": 1, "fr": "niveau 1", "en": "level 1", "court_fr": "Brillance 1", "court_en": "Sparkling 1"},
+    {"v": 2, "fr": "niveau 2", "en": "level 2", "court_fr": "Brillance 2", "court_en": "Sparkling 2"},
+    {"v": 3, "fr": "niveau 3", "en": "level 3", "court_fr": "Brillance 3", "court_en": "Sparkling 3"}]}]}
+ ],
+ "groupes": [
+  {"id": "toutes", "fr": "Tous les jeux", "en": "All games"},
+  {"id": "gsc", "fr": "Or / Argent / Cristal", "en": "Gold / Silver / Crystal"},
+  {"id": "radar", "fr": "Pokéradar (4G, X / Y, DEPS)", "en": "Poké Radar (Gen 4, X / Y, BDSP)"},
+  {"id": "xy", "fr": "X / Y et ROSA", "en": "X / Y and ORAS"},
+  {"id": "oras", "fr": "Rubis Oméga / Saphir Alpha", "en": "Omega Ruby / Alpha Sapphire"},
+  {"id": "sm", "fr": "Soleil / Lune et Ultra", "en": "Sun / Moon and Ultra"},
+  {"id": "lgpe", "fr": "Let's Go", "en": "Let's Go"},
+  {"id": "swsh", "fr": "Épée / Bouclier", "en": "Sword / Shield"},
+  {"id": "arceus", "fr": "Légendes Arceus", "en": "Legends: Arceus"},
+  {"id": "sv", "fr": "Écarlate / Violet", "en": "Scarlet / Violet"}
+ ]
+}
