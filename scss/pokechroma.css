@@ -625,3 +625,11 @@ body.pc-aide-ouverte { overflow: hidden; }
   color: #f8f8f2; padding: 4px 6px; font-size: 14px; font-weight: normal; text-align: left; }
 .pc-ball-grille button:hover { background: #282a36; }
 .pc-ball-grille .pc-ball-actif { background: #ffd75e; color: #1e1f29; font-weight: bold; }
+
+/* évolution actuelle d'un shiny : petit sprite en bas à droite de sa carte */
+#main-page .pc-pf-evo { position: absolute; right: 8px; bottom: 8px; width: 40px; height: 40px; display: flex;
+  align-items: center; justify-content: center; background: #1e1f29; border: 1.5px solid #ffd75e; border-radius: 10px; }
+#main-page .pc-pf-evo .pc-pf-evo-img { width: 34px; height: 34px; object-fit: contain; }
+
+/* sprites des anciens jeux (pixel art) : agrandis sans flou */
+#main-page img.pc-pixel { image-rendering: pixelated; }

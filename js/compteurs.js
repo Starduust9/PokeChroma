@@ -271,9 +271,10 @@
   }
 
   // ------------------------------------------------------------ affichage
-  function sprite(nom, classe) {
-    const src = window.pcSprite ? window.pcSprite(nom) : "";
-    return src ? `<img class="${classe}" src="${esc(src)}" alt="" loading="lazy" onerror="pcSpriteSecours(this)">`
+  function sprite(nom, classe, jeu) {
+    const src = window.pcSprite ? window.pcSprite(nom, jeu) : "";
+    const pixel = /\/versions\//.test(src) ? " pc-pixel" : "";
+    return src ? `<img class="${classe}${pixel}" src="${esc(src)}" alt="" loading="lazy" onerror="pcSpriteSecours(this)">`
       : `<span class="${classe} pc-ch-lettre">${esc((nom || "?").slice(0, 1).toUpperCase())}</span>`;
   }
   function carte(c, local) {
@@ -284,7 +285,7 @@
     if (S.attente.includes(c.id_local)) puces.push(`<span class="pc-ch-puce" title="${T("Sera envoyé dès que possible", "Will be sent as soon as possible")}">⏳ ${T("à envoyer", "pending")}</span>`);
     return `<div class="pc-ch-carte" data-id="${esc(c.id_local)}">
       <div class="pc-ch-haut" data-action="ouvrir">
-        <div class="pc-ch-bulle">${sprite(c.pokemon, "pc-ch-sprite")}</div>
+        <div class="pc-ch-bulle">${sprite(c.pokemon, "pc-ch-sprite", c.jeu)}</div>
         <div class="pc-ch-noms"><b>${esc(c.pokemon)}</b><span>${esc(c.jeu || "")}</span></div>
       </div>
       <div data-action="ouvrir">
@@ -393,7 +394,7 @@
         <button type="button" class="pc-danger" data-action="supprimer">🗑 ${T("Supprimer la chasse", "Delete the hunt")}</button>
       </div>
       ${formEdition(c)}
-      <div class="pc-ch-f-image">${sprite(c.pokemon, "pc-ch-f-sprite")}</div>
+      <div class="pc-ch-f-image">${sprite(c.pokemon, "pc-ch-f-sprite", c.jeu)}</div>
       <div class="pc-ch-f-cpt">${nb(c.compteur)}</div>
       <div class="pc-ch-f-sous">${phase === 1 ? T("rencontres", "encounters") : T(`rencontres · total ${nb(total(c))}`, `encounters · total ${nb(total(c))}`)}</div>
       <div class="pc-ch-f-sous">${T("Taux", "Odds")} ${esc(tauxAffiche(c))} · ${pct} % ${T("de chances de l'avoir croisé", "chance to have met it")}</div>

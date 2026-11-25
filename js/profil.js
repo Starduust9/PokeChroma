@@ -59,9 +59,10 @@
     const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
     return h ? `${h} h ${String(m).padStart(2, "0")}` : `${m} min`;
   };
-  const imgSprite = (nom, classe) => {
-    const src = window.pcSprite(nom);
-    return src ? `<img class="${classe}" src="${esc(src)}" alt="" loading="lazy" onerror="pcSpriteSecours(this)">`
+  const imgSprite = (nom, classe, jeu) => {
+    const src = window.pcSprite(nom, jeu);
+    const pixel = /\/versions\//.test(src) ? " pc-pixel" : "";
+    return src ? `<img class="${classe}${pixel}" src="${esc(src)}" alt="" loading="lazy" onerror="pcSpriteSecours(this)">`
       : `<div class="${classe} pc-pf-vide">?</div>`;
   };
 
@@ -101,7 +102,7 @@
   const params = new URLSearchParams(location.search);
   if (params.has("code") || params.has("error")) {
     if (params.get("error")) erreur(T("La connexion a été annulée.", "Sign-in was cancelled."));
-    history.replaceState({}, "", "/profil" + (params.get("u") ? "?u=" + encodeURIComponent(params.get("u")) : ""));
+    history.replaceState({}, "", location.pathname + (params.get("u") ? "?u=" + encodeURIComponent(params.get("u")) : ""));
     if (params.get("error")) return;
   }
   const cible = params.get("u");
@@ -276,10 +277,15 @@
         surnom: $("pc-pf-s-surnom").value.trim(), jeu: $("pc-pf-s-jeu").value, methode: $("pc-pf-s-methode").value,
         rencontres: /^\d+$/.test(renc) ? parseInt(renc, 10) : null, date: $("pc-pf-s-date").value || null,
         ball: $("pc-pf-s-ball").value, sexe: $("pc-pf-s-sexe").value, lieu: $("pc-pf-s-lieu").value.trim(),
+        evolution: ($("pc-pf-s-evo").value || "").trim(),
         full_odds: $("pc-pf-s-full").checked, charme: $("pc-pf-s-charme").checked, auto: false,
         maj_le: new Date().toISOString(),
       };
-      const { data, error } = await supa.from("chromatiques").insert(ligne).select().single();
+      let { data, error } = await supa.from("chromatiques").insert(ligne).select().single();
+      if (error && /evolution/.test(error.message || "")) {     // serveur pas encore à jour
+        delete ligne.evolution;
+        ({ data, error } = await supa.from("chromatiques").insert(ligne).select().single());
+      }
       if (error) { msg.textContent = T("Impossible d'ajouter : ", "Couldn't add: ") + error.message; return; }
       msg.textContent = "";
       shinies.push(data || ligne);
@@ -364,7 +370,7 @@
         ? `${s.approx ? "≈ " : ""}${nombre(s.rencontres)} ${esc(s.unite || T("rencontres", "encounters"))}` : "";
       return `<div class="pc-pf-carte">
         ${s.favori ? `<span class="pc-pf-favori" title="${T("Favori", "Favourite")}">★</span>` : ""}
-        ${imgSprite(s.pokemon, "pc-pf-sprite")}
+        ${imgSprite(s.pokemon, "pc-pf-sprite", s.jeu)}
         <h3>${esc(s.pokemon)} <span class="pc-pf-sexe">${sexe}</span></h3>
         ${s.surnom ? `<p class="pc-pf-surnom">« ${esc(s.surnom)} »</p>` : ""}
         <p class="pc-pf-jeu">${esc(s.jeu)}</p>
@@ -374,6 +380,7 @@
           ${s.full_odds ? `<span class="pc-taux">full odds</span>` : ""}
           ${s.charme ? `<span class="pc-pf-mini" title="${T("Charme Chroma", "Shiny Charm")}">✨</span>` : ""}
         </div>
+        ${s.evolution ? `<span class="pc-pf-evo" title="${esc(T("Évolué en ", "Evolved into ") + s.evolution)}">${imgSprite(s.evolution, "pc-pf-evo-img", s.jeu)}</span>` : ""}
       </div>`;
     }).join("") : `<p class="pc-legende">${shinies.length ? T("Aucun shiny ne correspond.", "No shiny matches.") : T("Aucun shiny pour le moment.", "No shiny yet.")}</p>`;
   }

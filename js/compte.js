@@ -60,13 +60,42 @@
     for (const mot of mots) if (NOMS[normaliser(mot)]) return NOMS[normaliser(mot)];
     return null;
   };
-  // image chromatique (rendu HOME) ; secours : pixel art chromatique
-  window.pcSprite = function (nom) {
+  // sprites du jeu (comme le compteur PC) : pixel art des anciens jeux, animés de Noir / Blanc,
+  // rendus HOME pour les jeux récents ou inconnus
+  const SPRITES_JEUX = [
+    [["diamantetincelant", "perlescintillante", "brilliantdiamond", "shiningpearl", "bdsp", "epee", "bouclier",
+      "sword", "shield", "arceus", "legends", "legendes", "ecarlate", "violet", "scarlet", "letsgo", "za",
+      "soleil", "lune", "sun", "moon", "ultra"], null],
+    [["rougefeu", "vertfeuille", "firered", "leafgreen", "frlg", "rf", "vf"], "versions/generation-iii/firered-leafgreen/shiny/{n}.png"],
+    [["emeraude", "emerald"], "versions/generation-iii/emerald/shiny/{n}.png"],
+    [["rubisomega", "saphiralpha", "omegaruby", "alphasapphire", "oras", "x", "y", "xy"], "versions/generation-vi/x-y/shiny/{n}.png"],
+    [["rubis", "saphir", "ruby", "sapphire"], "versions/generation-iii/ruby-sapphire/shiny/{n}.png"],
+    [["heartgold", "hearthgold", "soulsilver", "hgss"], "versions/generation-iv/heartgold-soulsilver/shiny/{n}.png"],
+    [["platine", "platinum"], "versions/generation-iv/platinum/shiny/{n}.png"],
+    [["diamant", "perle", "diamond", "pearl"], "versions/generation-iv/diamond-pearl/shiny/{n}.png"],
+    [["noir", "blanc", "black", "white", "n2b2", "bw"], "versions/generation-v/black-white/animated/shiny/{n}.gif"],
+    [["cristal", "crystal"], "versions/generation-ii/crystal/shiny/{n}.png"],
+    [["or", "argent", "gold", "silver"], "versions/generation-ii/gold/shiny/{n}.png"],
+  ];
+  function modeleSprite(jeu) {
+    const complet = normaliser(jeu);
+    if (!complet) return null;
+    const mots = new Set([...String(jeu).split(/[\s\-_()/,.&+:]+/), ...String(jeu).split(/[\s()/,:]+/)]
+      .filter(Boolean).map(normaliser));
+    const t = SPRITES_JEUX.find(([cles]) => cles.some((c) => mots.has(c) || (c.length >= 5 && complet.includes(c))));
+    return t ? t[1] : null;
+  }
+  // image chromatique : celle du jeu indiqué (s'il y en a une), sinon le rendu HOME
+  window.pcSprite = function (nom, jeu) {
     const num = window.pcNumero(nom);
-    return num ? SPRITES + "pokemon/other/home/shiny/" + num + ".png" : "";
+    if (!num) return "";
+    const modele = jeu ? modeleSprite(jeu) : null;
+    return SPRITES + "pokemon/" + (modele ? modele.replace("{n}", num) : "other/home/shiny/" + num + ".png");
   };
+  // image absente : sprite du jeu -> rendu HOME -> pixel art chromatique
   window.pcSpriteSecours = function (img) {
-    const m = /\/(\d+)\.png$/.exec(img.src);
+    const m = /\/(\d+)\.(png|gif)$/.exec(img.src);
+    if (m && img.src.indexOf("/versions/") > 0) { img.src = SPRITES + "pokemon/other/home/shiny/" + m[1] + ".png"; return; }
     img.onerror = null;
     if (m && img.src.indexOf("/home/") > 0) img.src = SPRITES + "pokemon/shiny/" + m[1] + ".png";
     else img.style.visibility = "hidden";
