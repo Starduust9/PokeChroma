@@ -247,18 +247,45 @@
   let EVOS = null;
   const evosPretes = () => EVOS ? Promise.resolve(EVOS) : fetch("/assets/data/evolutions.json")
     .then((r) => r.json()).then((d) => (EVOS = d)).catch(() => (EVOS = { especes: {}, formes: {} }));
+  const REGIONS_EN = { alola: "Alolan", galar: "Galarian", hisui: "Hisuian", paldea: "Paldean" };
+  function nomEspece(num, region) {
+    const e = EVOS.especes[String(num)] || {};
+    const base = (EN ? e.en : e.fr) || e.fr || String(num);
+    if (!region) return base;
+    if (EN) return `${REGIONS_EN[region] || region} ${base}`;
+    const lieu = region[0].toUpperCase() + region.slice(1);
+    return `${base} ${"AEIOU".includes(lieu[0]) ? "d'" : "de "}${lieu}`;
+  }
+  // évolutions possibles, formes régionales comprises (comme le compteur PC) : Ramoloss de Galar ->
+  // Flagadoss de Galar, Roigada de Galar ; Pikachu -> Raichu, Raichu d'Alola ; Miaouss de Galar -> Berserkatt
   function evolutionsDe(nom) {
     if (!EVOS) return [];
-    let num = window.pcNumero(nom);
+    const num = window.pcNumero(nom);
     if (!num) return [];
-    num = +(EVOS.formes[String(num)] || num);
+    const forme = (EVOS.formes || {})[String(num)];
+    const depart = forme ? [+forme[0], forme[1]] : [+num, null];
+    const regions = EVOS.regions || {}, exclusives = EVOS.exclusives || {};
     const enfants = {};
     for (const [k, e] of Object.entries(EVOS.especes)) if (e.de) (enfants[e.de] = enfants[e.de] || []).push(+k);
-    const res = [], file = (enfants[num] || []).slice().sort((a, b) => a - b);
+    const suivants = (sp, reg) => {
+      const res = [];
+      for (const c of (enfants[sp] || []).slice().sort((a, b) => a - b)) {
+        const seule = exclusives[String(c)];
+        if (seule) { if (reg === seule) res.push([c, null]); continue; }
+        const regsC = regions[String(c)] || [];
+        if (reg) { if (regsC.includes(reg)) res.push([c, reg]); continue; }
+        res.push([c, null]);
+        for (const autre of regsC) if (!(regions[String(sp)] || []).includes(autre)) res.push([c, autre]);
+      }
+      return res;
+    };
+    const res = [], vus = new Set(), file = suivants(...depart);
     while (file.length) {
-      const n = file.shift(), e = EVOS.especes[String(n)] || {};
-      res.push((EN ? e.en : e.fr) || e.fr || String(n));
-      file.push(...(enfants[n] || []).slice().sort((a, b) => a - b));
+      const [sp, reg] = file.shift(), cle = sp + ":" + reg;
+      if (vus.has(cle)) continue;
+      vus.add(cle);
+      res.push(nomEspece(sp, reg));
+      file.push(...suivants(sp, reg));
     }
     return res;
   }
