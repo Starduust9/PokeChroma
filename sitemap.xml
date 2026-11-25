@@ -1,24 +1,297 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://pokechroma.com/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/introshinyhunting</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/shinyhuntingjeu</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/1G</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/2G</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/3G</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/4G</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/5G</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/6G</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/7G</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/8G</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/9G</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/masuda</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/charmechroma</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/compteur</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/compteurs</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/guides</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/siteaide</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/streameryoutuber</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/contact</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://pokechroma.com/confidentialite</loc><lastmod>2026-11-24</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://pokechroma.com/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/introshinyhunting</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/introshinyhunting"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/introshinyhunting"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/introshinyhunting"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/introshinyhunting</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/introshinyhunting"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/introshinyhunting"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/introshinyhunting"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/shinyhuntingjeu</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/shinyhuntingjeu"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/shinyhuntingjeu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/shinyhuntingjeu"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/shinyhuntingjeu</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/shinyhuntingjeu"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/shinyhuntingjeu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/shinyhuntingjeu"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/1G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/1G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/1G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/1G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/1G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/1G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/1G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/1G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/2G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/2G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/2G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/2G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/2G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/2G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/2G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/2G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/3G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/3G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/3G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/3G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/3G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/3G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/3G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/3G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/4G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/4G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/4G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/4G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/4G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/4G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/4G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/4G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/5G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/5G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/5G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/5G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/5G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/5G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/5G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/5G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/6G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/6G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/6G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/6G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/6G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/6G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/6G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/6G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/7G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/7G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/7G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/7G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/7G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/7G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/7G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/7G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/8G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/8G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/8G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/8G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/8G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/8G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/8G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/8G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/9G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/9G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/9G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/9G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/9G</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/9G"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/9G"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/9G"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/masuda</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/masuda"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/masuda"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/masuda"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/masuda</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/masuda"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/masuda"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/masuda"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/charmechroma</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/charmechroma"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/charmechroma"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/charmechroma"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/charmechroma</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/charmechroma"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/charmechroma"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/charmechroma"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/compteur</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/compteur"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/compteur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/compteur"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/compteur</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/compteur"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/compteur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/compteur"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/compteurs</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/compteurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/compteurs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/compteurs"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/compteurs</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/compteurs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/compteurs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/compteurs"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/guides</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/guides"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/guides"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/guides"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/guides</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/guides"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/guides"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/guides"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/siteaide</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/siteaide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/siteaide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/siteaide"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/siteaide</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/siteaide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/siteaide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/siteaide"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/streameryoutuber</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/streameryoutuber"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/streameryoutuber"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/streameryoutuber"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/streameryoutuber</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/streameryoutuber"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/streameryoutuber"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/streameryoutuber"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/contact</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/contact"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/contact</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/contact"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/confidentialite</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/confidentialite"/>
+  </url>
+  <url>
+    <loc>https://pokechroma.com/en/confidentialite</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pokechroma.com/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pokechroma.com/en/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pokechroma.com/confidentialite"/>
+  </url>
 </urlset>

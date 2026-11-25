@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imprima&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/scss/main.css"/>
+    <link rel="stylesheet" href="/scss/pokechroma.css"/>
+    <meta name="google-site-verification" content="b9bl0zc-K1b6ivHczMaCEDYzLEhgyuPErUrRr1GAr5g" />
+    <meta name="google-adsense-account" content="ca-pub-9465038992038625">
+    <!-- Google AdSense (annonces du site ; jamais dans le logiciel PokéChroma Counter) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9465038992038625"
+            crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
+    <link rel="manifest" id="pc-manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#11131e">
+    <link rel="apple-touch-icon" href="/assets/picture/icone-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="PokéChroma">
+    <!--pc-meta-->
+    <title>The Shiny Charm - PokéChroma</title>
+    <meta name="description" content="How to get the Shiny Charm in every Pokémon game and how much it boosts your shiny odds.">
+    <link rel="canonical" href="https://pokechroma.com/en/charmechroma">
+    <link rel="alternate" hreflang="fr" href="https://pokechroma.com/charmechroma">
+    <link rel="alternate" hreflang="en" href="https://pokechroma.com/en/charmechroma">
+    <link rel="alternate" hreflang="x-default" href="https://pokechroma.com/charmechroma">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PokéChroma">
+    <meta property="og:title" content="The Shiny Charm - PokéChroma">
+    <meta property="og:description" content="How to get the Shiny Charm in every Pokémon game and how much it boosts your shiny odds.">
+    <meta property="og:url" content="https://pokechroma.com/en/charmechroma">
+    <meta property="og:image" content="https://pokechroma.com/assets/picture/partage.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <!--/pc-meta-->
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-xl pc-nav" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/en/accueil">
+          <img src="/assets/picture/Logo.png" alt="Logo PokéChroma" id="logo">
+          <span class="pc-marque">PokéChroma</span>
+        </a>
+        <button class="pc-nav-aide d-xl-none ms-auto me-2" type="button" onclick="return pcAide()" aria-label="Aide" title="Aide">❓</button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-xl-0 align-items-xl-center">
+            <li class="nav-item"><a class="nav-link" href="/en/introshinyhunting" data-i18n="nav.debuter" data-fr="Débuter le shiny hunting">Getting started</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/en/shinyhuntingjeu" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.jeux" data-fr="Les jeux">Games</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/en/shinyhuntingjeu" data-i18n="nav.tous" data-fr="Tous les jeux &amp; Shiny Lock">All games & Shiny Lock</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.parGen" data-fr="Par génération">By generation</h6></li>
+                <li><a class="dropdown-item" href="/en/1G" data-i18n="nav.1G" data-fr="1G · Rouge, Bleu, Jaune">Gen 1 · Red, Blue, Yellow</a></li>
+                <li><a class="dropdown-item" href="/en/2G" data-i18n="nav.2G" data-fr="2G · Or, Argent, Cristal">Gen 2 · Gold, Silver, Crystal</a></li>
+                <li><a class="dropdown-item" href="/en/3G" data-i18n="nav.3G" data-fr="3G · Rubis, Saphir, Émeraude, RF/VF">Gen 3 · Ruby, Sapphire, Emerald, FR/LG</a></li>
+                <li><a class="dropdown-item" href="/en/4G" data-i18n="nav.4G" data-fr="4G · Diamant, Perle, Platine, HG/SS">Gen 4 · Diamond, Pearl, Platinum, HG/SS</a></li>
+                <li><a class="dropdown-item" href="/en/5G" data-i18n="nav.5G" data-fr="5G · Noir, Blanc, N2/B2">Gen 5 · Black, White, B2/W2</a></li>
+                <li><a class="dropdown-item" href="/en/6G" data-i18n="nav.6G" data-fr="6G · X, Y, ROSA">Gen 6 · X, Y, ORAS</a></li>
+                <li><a class="dropdown-item" href="/en/7G" data-i18n="nav.7G" data-fr="7G · Soleil, Lune, Let&#x27;s Go">Gen 7 · Sun, Moon, Let's Go</a></li>
+                <li><a class="dropdown-item" href="/en/8G" data-i18n="nav.8G" data-fr="8G · Épée, Bouclier, DEPS, Arceus">Gen 8 · Sword, Shield, BDSP, Arceus</a></li>
+                <li><a class="dropdown-item" href="/en/9G" data-i18n="nav.9G" data-fr="9G · Écarlate, Violet, Z-A">Gen 9 · Scarlet, Violet, Z-A</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.methodes" data-fr="Méthodes">Methods</h6></li>
+                <li><a class="dropdown-item" href="/en/masuda" data-i18n="nav.masuda" data-fr="Masuda">Masuda</a></li>
+                <li><a class="dropdown-item" href="/en/charmechroma" data-i18n="nav.charme" data-fr="Charme Chroma">Shiny Charm</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/en/siteaide" data-i18n="nav.aide" data-fr="Sites d&#x27;aide">Helpful sites</a></li>
+            <li class="nav-item"><a class="nav-link" href="/en/streameryoutuber" data-i18n="nav.streamers" data-fr="Streamers &amp; YouTubers">Streamers & YouTubers</a></li>
+            <li class="nav-item"><a class="nav-link" href="/en/contact" data-i18n="nav.contact" data-fr="Contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link pc-nav-discord" href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" title="Discord">💬 Discord</a></li>
+            <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/en/compteur" data-i18n="nav.compteur" data-fr="⬇ Compteur Shiny">⬇ Shiny Counter</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link pc-nav-compte" id="pc-nav-compte" href="/en/profil"><span>Se connecter</span></a>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-compte" id="pc-menu-compte"></ul>
+            </li>
+            <li class="nav-item d-none d-xl-block"><button class="nav-link pc-nav-aide-texte" type="button" onclick="return pcAide()" data-i18n="nav.aide2" data-fr="❓ Aide">❓ Help</button></li>
+            <li class="nav-item dropdown pc-langues">
+              <button class="nav-link dropdown-toggle pc-btn-langue" type="button"
+                      data-bs-toggle="dropdown" aria-expanded="false" aria-label="Langue / Language">
+                <img id="pc-drapeau" src="/assets/picture/drapeau-fr.svg" alt="Français">
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-langue">
+                <li><button class="dropdown-item" type="button" data-langue="fr"
+                            onclick="pcChangerLangue('fr')"><img src="/assets/picture/drapeau-fr.svg" alt=""> Français</button></li>
+                <li><button class="dropdown-item" type="button" data-langue="en"
+                            onclick="pcChangerLangue('en')"><img src="/assets/picture/drapeau-en.svg" alt=""> English</button></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>  
+
+    <main id="main-page"><!--pc-contenu-->
+<div class="accueil-scene text-center">
+    <div class="hero-scene-content">
+        <div class="container">
+            <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
+        </div>
+
+        <div class="blackO-text text-white response-container" style="width: 80%;">
+            <h1>The Shiny Charm</h1>
+        </div>
+        <div class="blackO-text text-white response-container" style="width: 80%;">
+            <h2>What is the Shiny Charm?<br></h2>
+            <div class="border-bottom"></div>
+            <h3><br>The Shiny Charm is an item introduced in Pokémon Black 2 and White 2. You get it after completing the National Pokédex, and it greatly raises your odds of meeting a shiny Pokémon. 
+                    It is available in every main series game released since then.<br><br>
+                    You go from <span class="pc-taux">1/8192 to 3/8192 (about 1/2730)</span> chances of getting a shiny Pokémon in Gen 5, then from <span class="pc-taux">1/4096 to 3/4096 (about 1/1365)</span> from Gen 6 to the latest game.<br><br>
+                    Careful: once you have it, the Shiny Charm can't be turned off. So think it through before getting it.</h3>
+        </div>
+        <div class="blackO-text text-white response-container" style="width: 80%;">
+            <h2>How to get the Shiny Charm in each game + odds with and without it<br></h2>
+            <div class="border-bottom"></div>
+            <h3><br>Note that Mythical Pokémon are not needed to get it.</h3>
+            <div class="table-container">
+                <table class="table table-bordered table-black0 text-center align-middle">
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/5G/Pokémon_Blanche_2.jpeg" alt="White 2">
+                            <img style="height: 8vh;" src="/assets/logo jeux/5G/Pokémon_Noire_2.jpeg" alt="Black 2"></td>
+                        <td>Complete the National Pokédex<br><hr class="my-2"> Then talk to Prof. Juniper in Nuvema Town</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/8192</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/8192 (about 1/2730)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/6G/Pokémon_X.png" alt="X">
+                            <img style="height: 8vh;" src="/assets/logo jeux/6G/Pokémon_Y.png" alt="Y"></td>
+                        <td>Complete the National Pokédex<br><hr class="my-2"> Then talk to Prof. Sycamore in Lumiose City</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/4096</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/4096 (about 1/1365)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/6G/Pokémon_Rubis_Oméga.png" alt="Omega Ruby">
+                            <img style="height: 8vh;" src="/assets/logo jeux/6G/Pokémon_Saphir_Alpha.png" alt="Alpha Sapphire"></td>
+                        <td>Complete the National Pokédex<br><hr class="my-2"> Then talk to Prof. Birch in Littleroot Town</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/4096</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/4096 (about 1/1365)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/7G/Pokémon_Lune.png" alt="Moon">
+                            <img style="height: 8vh;" src="/assets/logo jeux/7G/Pokémon_Soleil.png" alt="Sun"></td>
+                        <td>Complete the regional Pokédex (same for USUM)<br><hr class="my-2"> Then, in the GAME FREAK building, a developer gives it to you</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/4096</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/4096 (about 1/1365)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/7G/Pokémon_Let's_Go_Pikachu.png" alt="Let's Go Pikachu">
+                            <img style="height: 8vh;" src="/assets/logo jeux/7G/Pokémon_Let's_Go_Évoli.png" alt="Let's Go Eevee"></td>
+                        <td>Complete the regional Pokédex<br><hr class="my-2"> Then, in the Celadon Condominiums, the GAME FREAK director gives it to you</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/4096</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/4096 (about 1/1365)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/8G/Pokémon_Épée.png" alt="Sword">
+                            <img style="height: 8vh;" src="/assets/logo jeux/8G/Pokémon_Bouclier.png" alt="Shield"></td>
+                        <td>Complete the regional Pokédex<br><hr class="my-2"> Then, in the Hotel Ionia, the GAME FREAK director gives it to you</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/4096</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/4096 (about 1/1365)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/8G/Pokémon_Perle_Scintillante.png" alt="Shining Pearl">
+                            <img style="height: 8vh;" src="/assets/logo jeux/8G/Pokémon_Diamant_Étincelant.png" alt="Brilliant Diamond"></td>
+                        <td>Complete the National Pokédex<br><hr class="my-2"> Then, in a house by Lake Valor, the game director gives it to you</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/4096</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/4096 (about 1/1365)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/8G/Légendes_Pokémon_Arceus.png" alt="Legends: Arceus"></td>
+                        <td>Research level 10 on all 238 Pokédex pages<br><hr class="my-2"> Then, in Cyllene's office at Galaxy Team HQ</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/4096</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/4096 (about 1/1365)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/9G/Pokémon_Violet.png" alt="Violet">
+                            <img style="height: 8vh;" src="/assets/logo jeux/9G/Pokémon_Écarlate.png" alt="Scarlet"></td>
+                        <td>Complete the regional Pokédex<br><hr class="my-2"> Then talk to Jacq in the biology classroom</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/4096</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/4096 (about 1/1365)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img style="height: 8vh;" src="/assets/logo jeux/9G/Légendes_Pokémon_Z-A_Nintendo_Switch_2_Edition.png" alt="Legends: Z-A"></td>
+                        <td>Research level 50 in Mable's research<br><hr class="my-2"> Then talk to Mable in the Pokémon Lab</td>
+                        <td class="text-center position-relative">
+                            <span class="pc-taux">1/4096</span>
+                            <hr class="my-2">
+                            <span class="pc-taux">✨ 3/4096 (about 1/1365)</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <picture style="position: fixed; bottom: 100px; left: -140px; z-index: -1;">
+            <img src="/assets/picture/Regieleki.png" alt="Regieleki" class="flipped resized1">
+        </picture>
+        <picture style="position: fixed; bottom: 200px; right: -120px; z-index: -1;">
+            <img src="/assets/picture/Xerneas.png" alt="Xerneas" class="flipped resized2">
+        </picture>
+    </div>
+</div>
+
+<!--/pc-contenu--></main>
+
+    <footer class="pc-footer">
+      <div class="pc-footer-grille">
+        <div>
+          <div class="pc-footer-marque">
+            <img src="/assets/picture/Logo.png" alt="">
+            <span>PokéChroma</span>
+          </div>
+          <p data-i18n="pied.texte" data-fr="Des astuces simples, des guides clairs et des infos utiles pour tous les shiny
+             hunters, débutants comme confirmés ✨">Simple tips, clear guides and useful info for every shiny hunter, from beginners to veterans ✨</p>
+        </div>
+        <div>
+          <h4 data-i18n="pied.liens" data-fr="Liens">Links</h4>
+          <ul>
+            <li><a href="/en/compteur">⬇ PokéChroma Counter</a></li>
+            <li><a href="/en/introshinyhunting" data-i18n="pied.debuter" data-fr="Débuter le shiny hunting">Getting started</a></li>
+            <li><a href="/en/shinyhuntingjeu" data-i18n="pied.jeux" data-fr="Les jeux">Games</a></li>
+            <li><a href="/en/contact" data-i18n="nav.contact" data-fr="Contact">Contact</a></li>
+            <li><a href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" data-i18n="pied.discord" data-fr="💬 Rejoindre le Discord">💬 Join the Discord</a></li>
+            <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener" data-i18n="pied.kofi" data-fr="❤ Soutenir sur Ko-fi">❤ Support on Ko-fi</a></li>
+            <li><a href="/en/confidentialite" data-i18n="pied.confidentialite" data-fr="Confidentialité">Privacy policy</a></li>
+            <li><a href="/en/guides" onclick="return pcAide()" data-i18n="pied.aide" data-fr="❓ Aide et tutoriels">❓ Help and tutorials</a></li>
+            <li><a href="/en/confidentialite" onclick="return pcChoixCookies()" data-i18n="pied.cookies" data-fr="Gérer les cookies">Manage cookies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="pied.mentions" data-fr="Mentions légales">Legal notice</h4>
+          <p data-i18n="pied.fan" data-fr="Le site est un projet de fan, pour des fans. Merci à &lt;b&gt;Sky_Lasth&lt;/b&gt; pour l&#x27;aide
+             sur le code et le site.">This site is a fan project, made for fans. Thanks to <b>Sky_Lasth</b> for the help with the code and the site.</p>
+          <p data-i18n="pied.illus" data-fr="Certaines illustrations sont la propriété de The Pokémon Company. Brindibou shiny
+             appartient à &lt;a href=&quot;https://pin.it/5vtTFbc6J&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;milenagorosito&lt;/a&gt;
+             sur Pinterest.">Some illustrations belong to The Pokémon Company. The shiny Rowlet artwork belongs to <a href="https://pin.it/5vtTFbc6J" target="_blank" rel="noopener">milenagorosito</a> on Pinterest.</p>
+        </div>
+      </div>
+      <div class="pc-footer-bas">© <span id="pc-annee">2026</span> PokéChroma · <span data-i18n="pied.marques" data-fr="Pokémon et les
+        noms associés sont des marques de Nintendo, Creatures et GAME FREAK.">Pokémon and related names are trademarks of Nintendo, Creatures and GAME FREAK.</span></div>
+    </footer>
+
+    <script>
+      // « Gérer les cookies » : rouvre la fenêtre de consentement de Google (si elle est active)
+      function pcChoixCookies() {
+        window.googlefc = window.googlefc || {};
+        window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+        if (window.googlefc.showRevocationMessage) {
+          window.googlefc.callbackQueue.push(window.googlefc.showRevocationMessage);
+          return false;
+        }
+        return true;      // fenêtre pas encore active : on montre la page Confidentialité
+      }
+    </script>
+    <script src="/js/langue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <script src="/js/compte.js"></script>
+    <script src="/js/pubs.js"></script>
+    <script src="/js/aide.js"></script>
+    <script>
+      // Application installable (PWA) : fonctionne hors ligne une fois visitée
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+      }
+      // Site installé (ou installation acceptée) : on garde aussi toutes les images des guides
+      const pcToutGarder = () => navigator.serviceWorker && navigator.serviceWorker.ready
+        .then((r) => r.active && r.active.postMessage("pc-tout-garder")).catch(() => {});
+      if (window.matchMedia("(display-mode: standalone)").matches || navigator.standalone) pcToutGarder();
+      window.addEventListener("appinstalled", pcToutGarder);
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        window.pcInvitation = e;
+        window.dispatchEvent(new Event("pc-installable"));
+      });
+    </script>
+    <script type="module" src="/Router/router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+<script src="/js/easteregg.js"></script>

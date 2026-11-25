@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imprima&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/scss/main.css"/>
+    <link rel="stylesheet" href="/scss/pokechroma.css"/>
+    <meta name="google-site-verification" content="b9bl0zc-K1b6ivHczMaCEDYzLEhgyuPErUrRr1GAr5g" />
+    <meta name="google-adsense-account" content="ca-pub-9465038992038625">
+    <!-- Google AdSense (annonces du site ; jamais dans le logiciel PokéChroma Counter) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9465038992038625"
+            crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icone" href="/assets/picture/favicon.ico">
+    <link rel="manifest" id="pc-manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#11131e">
+    <link rel="apple-touch-icon" href="/assets/picture/icone-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="PokéChroma">
+    <!--pc-meta-->
+    <title>Shiny hunting in Gen 2 (Gold, Silver, Crystal) - PokéChroma</title>
+    <meta name="description" content="Gen 2 shiny odds and methods: Pokémon Gold, Silver and Crystal, shiny breeding and tips.">
+    <link rel="canonical" href="https://pokechroma.com/en/2G">
+    <link rel="alternate" hreflang="fr" href="https://pokechroma.com/2G">
+    <link rel="alternate" hreflang="en" href="https://pokechroma.com/en/2G">
+    <link rel="alternate" hreflang="x-default" href="https://pokechroma.com/2G">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PokéChroma">
+    <meta property="og:title" content="Shiny hunting in Gen 2 (Gold, Silver, Crystal) - PokéChroma">
+    <meta property="og:description" content="Gen 2 shiny odds and methods: Pokémon Gold, Silver and Crystal, shiny breeding and tips.">
+    <meta property="og:url" content="https://pokechroma.com/en/2G">
+    <meta property="og:image" content="https://pokechroma.com/assets/picture/partage.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <!--/pc-meta-->
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-xl pc-nav" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/en/accueil">
+          <img src="/assets/picture/Logo.png" alt="Logo PokéChroma" id="logo">
+          <span class="pc-marque">PokéChroma</span>
+        </a>
+        <button class="pc-nav-aide d-xl-none ms-auto me-2" type="button" onclick="return pcAide()" aria-label="Aide" title="Aide">❓</button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-xl-0 align-items-xl-center">
+            <li class="nav-item"><a class="nav-link" href="/en/introshinyhunting" data-i18n="nav.debuter" data-fr="Débuter le shiny hunting">Getting started</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/en/shinyhuntingjeu" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.jeux" data-fr="Les jeux">Games</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/en/shinyhuntingjeu" data-i18n="nav.tous" data-fr="Tous les jeux &amp; Shiny Lock">All games & Shiny Lock</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.parGen" data-fr="Par génération">By generation</h6></li>
+                <li><a class="dropdown-item" href="/en/1G" data-i18n="nav.1G" data-fr="1G · Rouge, Bleu, Jaune">Gen 1 · Red, Blue, Yellow</a></li>
+                <li><a class="dropdown-item" href="/en/2G" data-i18n="nav.2G" data-fr="2G · Or, Argent, Cristal">Gen 2 · Gold, Silver, Crystal</a></li>
+                <li><a class="dropdown-item" href="/en/3G" data-i18n="nav.3G" data-fr="3G · Rubis, Saphir, Émeraude, RF/VF">Gen 3 · Ruby, Sapphire, Emerald, FR/LG</a></li>
+                <li><a class="dropdown-item" href="/en/4G" data-i18n="nav.4G" data-fr="4G · Diamant, Perle, Platine, HG/SS">Gen 4 · Diamond, Pearl, Platinum, HG/SS</a></li>
+                <li><a class="dropdown-item" href="/en/5G" data-i18n="nav.5G" data-fr="5G · Noir, Blanc, N2/B2">Gen 5 · Black, White, B2/W2</a></li>
+                <li><a class="dropdown-item" href="/en/6G" data-i18n="nav.6G" data-fr="6G · X, Y, ROSA">Gen 6 · X, Y, ORAS</a></li>
+                <li><a class="dropdown-item" href="/en/7G" data-i18n="nav.7G" data-fr="7G · Soleil, Lune, Let&#x27;s Go">Gen 7 · Sun, Moon, Let's Go</a></li>
+                <li><a class="dropdown-item" href="/en/8G" data-i18n="nav.8G" data-fr="8G · Épée, Bouclier, DEPS, Arceus">Gen 8 · Sword, Shield, BDSP, Arceus</a></li>
+                <li><a class="dropdown-item" href="/en/9G" data-i18n="nav.9G" data-fr="9G · Écarlate, Violet, Z-A">Gen 9 · Scarlet, Violet, Z-A</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header" data-i18n="nav.methodes" data-fr="Méthodes">Methods</h6></li>
+                <li><a class="dropdown-item" href="/en/masuda" data-i18n="nav.masuda" data-fr="Masuda">Masuda</a></li>
+                <li><a class="dropdown-item" href="/en/charmechroma" data-i18n="nav.charme" data-fr="Charme Chroma">Shiny Charm</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/en/siteaide" data-i18n="nav.aide" data-fr="Sites d&#x27;aide">Helpful sites</a></li>
+            <li class="nav-item"><a class="nav-link" href="/en/streameryoutuber" data-i18n="nav.streamers" data-fr="Streamers &amp; YouTubers">Streamers & YouTubers</a></li>
+            <li class="nav-item"><a class="nav-link" href="/en/contact" data-i18n="nav.contact" data-fr="Contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link pc-nav-discord" href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" title="Discord">💬 Discord</a></li>
+            <li class="nav-item"><a class="nav-link pc-btn-compteur" href="/en/compteur" data-i18n="nav.compteur" data-fr="⬇ Compteur Shiny">⬇ Shiny Counter</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link pc-nav-compte" id="pc-nav-compte" href="/en/profil"><span>Se connecter</span></a>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-compte" id="pc-menu-compte"></ul>
+            </li>
+            <li class="nav-item d-none d-xl-block"><button class="nav-link pc-nav-aide-texte" type="button" onclick="return pcAide()" data-i18n="nav.aide2" data-fr="❓ Aide">❓ Help</button></li>
+            <li class="nav-item dropdown pc-langues">
+              <button class="nav-link dropdown-toggle pc-btn-langue" type="button"
+                      data-bs-toggle="dropdown" aria-expanded="false" aria-label="Langue / Language">
+                <img id="pc-drapeau" src="/assets/picture/drapeau-fr.svg" alt="Français">
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end pc-menu-langue">
+                <li><button class="dropdown-item" type="button" data-langue="fr"
+                            onclick="pcChangerLangue('fr')"><img src="/assets/picture/drapeau-fr.svg" alt=""> Français</button></li>
+                <li><button class="dropdown-item" type="button" data-langue="en"
+                            onclick="pcChangerLangue('en')"><img src="/assets/picture/drapeau-en.svg" alt=""> English</button></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>  
+
+    <main id="main-page"><!--pc-contenu-->
+<div class="accueil-scene text-center">
+  <div class="hero-scene-content">
+    <div class="container">
+      <img class="img-fluid d-block mx-auto mt-3" src="/assets/picture/Pok-Chroma-14-04-2025.png" alt="PokéChroma">
+    </div>
+
+    <div class="blackO-text text-white response-container">
+      <h1>Getting a shiny in Gen 2</h1>
+      <div class="pc-jeux">
+        <img src="/assets/logo jeux/2G/Pokémon_Or.png" alt="Pokémon Gold">
+        <img src="/assets/logo jeux/2G/Pokémon_Argent.png" alt="Pokémon Silver">
+        <img src="/assets/logo jeux/2G/Pokémon_Cristal.png" alt="Pokémon Crystal">
+      </div>
+    </div>
+
+    <div class="blackO-text text-white response-container">
+      <h2>The beginnings of shiny hunting</h2>
+      <div class="border-bottom"></div>
+      <p>The first shiny arrives in Gen 2 with the famous Red Gyarados of the Lake of Rage, which
+        introduces players to shinies, since you must meet it during the story.</p>
+      <p>The special sound that plays when a shiny appears also dates from this moment, and it
+        has stayed throughout the whole series.</p>
+      <p>The chance of meeting a shiny Pokémon is <span class="pc-taux">1 in 8192</span>. There
+        is no method to raise it.</p>
+      <div class="pc-astuce">There is, however, a trick to get a shiny with a
+        <span class="pc-taux">1 in 64</span> chance: in this generation, being shiny depends on
+        IVs. Thanks to IV inheritance, if the parent of the opposite gender to the baby (or a
+        Ditto) is shiny, the egg has a <span class="pc-taux">1 in 64</span> chance of inheriting
+        the shiny trait. (Only in Gold, Silver and Crystal.)</div>
+    </div>
+
+    <div class="blackO-text text-white response-container">
+      <h2><img src="/assets/picture/Sprite_Œuf_OA.png" alt=""> Breeding basics in Gen 2
+        <img src="/assets/picture/Sprite_Œuf_OA.png" alt=""></h2>
+      <div class="border-bottom"></div>
+      <h4>The Day Care</h4>
+      <p>The Pokémon Day Care is on Route 34, just south of Goldenrod City.</p>
+      <h4>Getting an egg</h4>
+      <p>Good to know: the Pokémon that hatches is always the same species as its mother. Two
+        Pokémon of different species can produce an egg together, as long as they belong to the
+        same egg group.</p>
+      <p>Only Ditto can breed with any egg group, and the baby will be the species of the other
+        Pokémon.</p>
+      <p><a href="https://www.pokebip.com/page/general/reproduction/groupes-oeufs-2g" target="_blank"
+        rel="noopener">The list of Gen 2 egg groups</a> (in French).</p>
+    </div>
+
+    <div class="blackO-text text-white response-container">
+      <h2>Soft resetting</h2>
+      <div class="border-bottom"></div>
+      <p>Resetting is a technique to find a specific shiny Pokémon: you keep restarting the game
+        in front of a specific Pokémon until it is shiny.</p>
+      <p>It works on starters, legendaries, trades and static Pokémon. Watch out: the Raikou,
+        Entei and Suicune trio, who roam all over Johto, are generated at the first wild encounter
+        and not at the Burned Tower as in HGSS.</p>
+      <p>The soft reset lets you restart the game quickly without turning the console off, with
+        the button combination A + B + Start + Select.</p>
+    </div>
+
+    <picture style="position: fixed; bottom: 150px; left: -140px; z-index: -1;">
+      <img src="/assets/legendaire-gen/Sprite_Lugia_chromatique.png" alt="" class="flipped resized1">
+    </picture>
+    <picture style="position: fixed; bottom: 200px; right: -120px; z-index: -1;">
+      <img src="/assets/legendaire-gen/Sprite_Ho-oH_chromatique.png" alt="" class="flipped resized2">
+    </picture>
+  </div>
+</div>
+
+<!--/pc-contenu--></main>
+
+    <footer class="pc-footer">
+      <div class="pc-footer-grille">
+        <div>
+          <div class="pc-footer-marque">
+            <img src="/assets/picture/Logo.png" alt="">
+            <span>PokéChroma</span>
+          </div>
+          <p data-i18n="pied.texte" data-fr="Des astuces simples, des guides clairs et des infos utiles pour tous les shiny
+             hunters, débutants comme confirmés ✨">Simple tips, clear guides and useful info for every shiny hunter, from beginners to veterans ✨</p>
+        </div>
+        <div>
+          <h4 data-i18n="pied.liens" data-fr="Liens">Links</h4>
+          <ul>
+            <li><a href="/en/compteur">⬇ PokéChroma Counter</a></li>
+            <li><a href="/en/introshinyhunting" data-i18n="pied.debuter" data-fr="Débuter le shiny hunting">Getting started</a></li>
+            <li><a href="/en/shinyhuntingjeu" data-i18n="pied.jeux" data-fr="Les jeux">Games</a></li>
+            <li><a href="/en/contact" data-i18n="nav.contact" data-fr="Contact">Contact</a></li>
+            <li><a href="https://discord.gg/eFe39Yvekt" target="_blank" rel="noopener" data-i18n="pied.discord" data-fr="💬 Rejoindre le Discord">💬 Join the Discord</a></li>
+            <li><a href="https://ko-fi.com/pokechroma" target="_blank" rel="noopener" data-i18n="pied.kofi" data-fr="❤ Soutenir sur Ko-fi">❤ Support on Ko-fi</a></li>
+            <li><a href="/en/confidentialite" data-i18n="pied.confidentialite" data-fr="Confidentialité">Privacy policy</a></li>
+            <li><a href="/en/guides" onclick="return pcAide()" data-i18n="pied.aide" data-fr="❓ Aide et tutoriels">❓ Help and tutorials</a></li>
+            <li><a href="/en/confidentialite" onclick="return pcChoixCookies()" data-i18n="pied.cookies" data-fr="Gérer les cookies">Manage cookies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="pied.mentions" data-fr="Mentions légales">Legal notice</h4>
+          <p data-i18n="pied.fan" data-fr="Le site est un projet de fan, pour des fans. Merci à &lt;b&gt;Sky_Lasth&lt;/b&gt; pour l&#x27;aide
+             sur le code et le site.">This site is a fan project, made for fans. Thanks to <b>Sky_Lasth</b> for the help with the code and the site.</p>
+          <p data-i18n="pied.illus" data-fr="Certaines illustrations sont la propriété de The Pokémon Company. Brindibou shiny
+             appartient à &lt;a href=&quot;https://pin.it/5vtTFbc6J&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;milenagorosito&lt;/a&gt;
+             sur Pinterest.">Some illustrations belong to The Pokémon Company. The shiny Rowlet artwork belongs to <a href="https://pin.it/5vtTFbc6J" target="_blank" rel="noopener">milenagorosito</a> on Pinterest.</p>
+        </div>
+      </div>
+      <div class="pc-footer-bas">© <span id="pc-annee">2026</span> PokéChroma · <span data-i18n="pied.marques" data-fr="Pokémon et les
+        noms associés sont des marques de Nintendo, Creatures et GAME FREAK.">Pokémon and related names are trademarks of Nintendo, Creatures and GAME FREAK.</span></div>
+    </footer>
+
+    <script>
+      // « Gérer les cookies » : rouvre la fenêtre de consentement de Google (si elle est active)
+      function pcChoixCookies() {
+        window.googlefc = window.googlefc || {};
+        window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+        if (window.googlefc.showRevocationMessage) {
+          window.googlefc.callbackQueue.push(window.googlefc.showRevocationMessage);
+          return false;
+        }
+        return true;      // fenêtre pas encore active : on montre la page Confidentialité
+      }
+    </script>
+    <script src="/js/langue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <script src="/js/compte.js"></script>
+    <script src="/js/pubs.js"></script>
+    <script src="/js/aide.js"></script>
+    <script>
+      // Application installable (PWA) : fonctionne hors ligne une fois visitée
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+      }
+      // Site installé (ou installation acceptée) : on garde aussi toutes les images des guides
+      const pcToutGarder = () => navigator.serviceWorker && navigator.serviceWorker.ready
+        .then((r) => r.active && r.active.postMessage("pc-tout-garder")).catch(() => {});
+      if (window.matchMedia("(display-mode: standalone)").matches || navigator.standalone) pcToutGarder();
+      window.addEventListener("appinstalled", pcToutGarder);
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        window.pcInvitation = e;
+        window.dispatchEvent(new Event("pc-installable"));
+      });
+    </script>
+    <script type="module" src="/Router/router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+<script src="/js/easteregg.js"></script>

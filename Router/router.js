@@ -25,7 +25,9 @@ let premierChargement = true;
 
 // Fonction pour charger le contenu de la page
 const LoadContentPage = async () => {
-  const path = window.location.pathname;
+  // /en/5G -> route /5G (la langue est déjà choisie par langue.js)
+  const path = window.pcCheminSansLangue ? window.pcCheminSansLangue(window.location.pathname)
+    : window.location.pathname;
   // Récupération de l'URL actuelle
   const actualRoute = getRouteByUrl(path);
   // Récupération du contenu HTML de la route (version anglaise si elle existe)
@@ -37,6 +39,7 @@ const LoadContentPage = async () => {
   if (html === null) html = await fetch(actualRoute.pathHtml).then((data) => data.text());
   // Ajout du contenu HTML à l'élément avec l'ID "main-page"
   document.getElementById("main-page").innerHTML = html;
+  if (window.pcLiensLangue) window.pcLiensLangue(document.getElementById("main-page"));
 
   // Ajout du contenu JavaScript
   if (actualRoute.pathJS != "") {
@@ -51,7 +54,10 @@ const LoadContentPage = async () => {
 
   // Changement du titre de la page (au premier chargement en français, on garde le titre
   // complet écrit dans la page pré-remplie, meilleur pour Google)
-  if (!(premierChargement && window.PC_LANGUE !== "en" && document.querySelector("link[rel=canonical]"))) {
+  const canon = document.querySelector("link[rel=canonical]");
+  const pagePreRemplie = premierChargement && canon &&
+    new URL(canon.href).pathname.replace(/\/$/, "") === window.location.pathname.replace(/\/$/, "");
+  if (!pagePreRemplie) {
     document.title = ((window.PC_LANGUE === "en" && actualRoute.titleEn) || actualRoute.title) +
       " - " + websiteName;
   }
@@ -59,10 +65,11 @@ const LoadContentPage = async () => {
 
   // Page ouverte mise en avant dans le menu
   document.querySelectorAll(".pc-nav .nav-link, .pc-nav .dropdown-item").forEach((lien) => {
-    const actif = lien.getAttribute("href") === path ||
+    const sans = (h) => (window.pcCheminSansLangue ? window.pcCheminSansLangue(h || "") : h);
+    const actif = sans(lien.getAttribute("href")) === path ||
       (lien.classList.contains("dropdown-toggle") &&
        [...lien.parentElement.querySelectorAll(".dropdown-item")]
-         .some((d) => d.getAttribute("href") === path));
+         .some((d) => sans(d.getAttribute("href")) === path));
     lien.classList.toggle("active", actif);
   });
   // Application « Compteurs » installée : plein écran, sans le menu du site
