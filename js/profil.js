@@ -243,6 +243,65 @@
     maj();
   }
 
+  // ---- évolution actuelle : les évolutions possibles du Pokémon, à choisir en cliquant
+  let EVOS = null;
+  const evosPretes = () => EVOS ? Promise.resolve(EVOS) : fetch("/assets/data/evolutions.json")
+    .then((r) => r.json()).then((d) => (EVOS = d)).catch(() => (EVOS = { especes: {}, formes: {} }));
+  function evolutionsDe(nom) {
+    if (!EVOS) return [];
+    let num = window.pcNumero(nom);
+    if (!num) return [];
+    num = +(EVOS.formes[String(num)] || num);
+    const enfants = {};
+    for (const [k, e] of Object.entries(EVOS.especes)) if (e.de) (enfants[e.de] = enfants[e.de] || []).push(+k);
+    const res = [], file = (enfants[num] || []).slice().sort((a, b) => a - b);
+    while (file.length) {
+      const n = file.shift(), e = EVOS.especes[String(n)] || {};
+      res.push((EN ? e.en : e.fr) || e.fr || String(n));
+      file.push(...(enfants[n] || []).slice().sort((a, b) => a - b));
+    }
+    return res;
+  }
+  function choixEvolution(champ, champNom, champJeu) {
+    champ.hidden = true;
+    const bouton = document.createElement("button");
+    bouton.type = "button";
+    bouton.className = "form-control pc-ball-bouton";
+    const grille = document.createElement("div");
+    grille.className = "pc-ball-grille pc-evo-grille";
+    grille.hidden = true;
+    const img = (n) => { const src = window.pcSprite(n, champJeu.value); return src
+      ? `<img src="${esc(src)}" alt="" onerror="pcSpriteSecours(this)">` : `<span class="pc-ball-vide">?</span>`; };
+    const maj = () => {
+      bouton.innerHTML = champ.value ? `${img(champ.value)}<span>${esc(champ.value)}</span>`
+        : `<span class="pc-ball-vide">—</span><span>${T("Pas encore évolué", "Not evolved yet")}</span>`;
+    };
+    const remplir = () => {
+      const evos = evolutionsDe(champNom.value);
+      grille.innerHTML = `<button type="button" data-evo=""${champ.value ? "" : ' class="pc-ball-actif"'}><span class="pc-ball-vide">—</span>${T("Pas encore évolué", "Not evolved yet")}</button>` +
+        (evos.length ? evos.map((n) => `<button type="button" data-evo="${esc(n)}"${n === champ.value ? ' class="pc-ball-actif"' : ""}>${img(n)}${esc(n)}</button>`).join("")
+          : `<p class="pc-evo-rien">${champNom.value.trim() ? T("Ce Pokémon n'évolue pas (ou son nom est inconnu).", "This Pokémon doesn't evolve (or its name is unknown).")
+            : T("Écris d'abord le nom du Pokémon.", "Type the Pokémon's name first.")}</p>`);
+    };
+    bouton.addEventListener("click", async () => {
+      if (grille.hidden) { await evosPretes(); remplir(); }
+      grille.hidden = !grille.hidden;
+    });
+    grille.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-evo]");
+      if (!b) return;
+      champ.value = b.dataset.evo;
+      grille.hidden = true;
+      maj();
+    });
+    // autre Pokémon : l'évolution choisie ne va plus forcément
+    champNom.addEventListener("change", () => { champ.value = ""; grille.hidden = true; maj(); });
+    champJeu.addEventListener("change", maj);
+    champ.after(bouton, grille);
+    if (champ.form) champ.form.addEventListener("reset", () => setTimeout(maj, 0));
+    maj();
+  }
+
   // ---------------------------------------------------------------- ajouter un shiny (son profil)
   function preparerAjout() {
     if (!moi) return;
@@ -260,6 +319,7 @@
     selB.add(new Option("—", ""));
     BALLS.forEach(([fr, en]) => selB.add(new Option(EN ? en : fr, EN ? en : fr)));
     choixBall(selB);
+    choixEvolution($("pc-pf-s-evo"), $("pc-pf-s-nom"), $("pc-pf-s-jeu"));
     $("pc-pf-s-date").value = new Date().toISOString().slice(0, 10);
     $("pc-pf-ajouter").addEventListener("click", () => {
       $("pc-pf-s-form").hidden = !$("pc-pf-s-form").hidden;

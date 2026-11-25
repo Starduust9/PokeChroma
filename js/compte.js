@@ -100,6 +100,76 @@
     if (m && img.src.indexOf("/home/") > 0) img.src = SPRITES + "pokemon/shiny/" + m[1] + ".png";
     else img.style.visibility = "hidden";
   };
+  // ---- noms de Pokémon proposés pendant qu'on tape (nouvelle chasse, modifier une chasse,
+  // ajouter un shiny) : évite les fautes d'orthographe. Liste : assets/data/evolutions.json
+  let NOMS_SUGG = null;
+  const chargerNomsSugg = () => NOMS_SUGG ? Promise.resolve(NOMS_SUGG) : fetch("/assets/data/evolutions.json")
+    .then((r) => r.json()).then((d) => (NOMS_SUGG = Object.values(d.especes || {}).map((e) => ({
+      nom: (window.PC_LANGUE === "en" ? e.en : e.fr) || e.fr, cles: [normaliser(e.fr), normaliser(e.en)] }))
+      .filter((x) => x.nom)))
+    .catch(() => (NOMS_SUGG = []));
+  window.pcSuggestionsPokemon = function (texte, maxi = 8) {
+    const t = normaliser(texte);
+    if (!t || !NOMS_SUGG) return [];
+    const debut = NOMS_SUGG.filter((x) => x.cles.some((c) => c.startsWith(t))).map((x) => x.nom);
+    const dedans = NOMS_SUGG.filter((x) => !debut.includes(x.nom) && x.cles.some((c) => c.includes(t))).map((x) => x.nom);
+    return [...debut.sort((a, b) => a.length - b.length), ...dedans.sort((a, b) => a.length - b.length)].slice(0, maxi);
+  };
+  const champPokemon = (el) => el && el.matches && el.matches('input[data-pokemon], input[list="pc-ch-noms"], #pc-pf-s-nom');
+  let boite = null, champActif = null, choixSugg = [], selSugg = -1;
+  function fermerSugg() { if (boite) boite.hidden = true; choixSugg = []; selSugg = -1; }
+  function prendreSugg(nom) {
+    if (!champActif) return;
+    champActif.value = nom;
+    champActif.dispatchEvent(new Event("change", { bubbles: true }));
+    fermerSugg();
+  }
+  function montrerSugg() {
+    if (!champActif || !choixSugg.length) { fermerSugg(); return; }
+    if (!boite) {
+      boite = document.createElement("div");
+      boite.className = "pc-sugg";
+      document.body.appendChild(boite);
+      boite.addEventListener("mousedown", (e) => {        // avant que le champ perde le focus
+        const b = e.target.closest("[data-nom]");
+        if (b) { e.preventDefault(); prendreSugg(b.dataset.nom); }
+      });
+    }
+    const r = champActif.getBoundingClientRect();
+    Object.assign(boite.style, { left: `${r.left}px`, top: `${r.bottom + 2}px`,
+      width: `${Math.max(r.width, 220)}px` });
+    boite.innerHTML = choixSugg.map((n, i) => {
+      const src = window.pcSprite ? window.pcSprite(n) : "";
+      return `<div class="pc-sugg-l${i === selSugg ? " pc-sugg-sel" : ""}" data-nom="${window.pcEchapper(n)}">` +
+        (src ? `<img src="${window.pcEchapper(src)}" alt="" onerror="this.style.visibility='hidden'">` : "<span></span>") +
+        `${window.pcEchapper(n)}</div>`;
+    }).join("");
+    boite.hidden = false;
+  }
+  document.addEventListener("input", async (e) => {
+    if (!champPokemon(e.target)) return;
+    champActif = e.target;
+    champActif.setAttribute("autocomplete", "off");
+    await chargerNomsSugg();
+    const texte = champActif.value.trim();
+    choixSugg = window.pcSuggestionsPokemon(texte).filter((n) => n !== texte);
+    selSugg = -1;
+    montrerSugg();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!boite || boite.hidden || e.target !== champActif) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      selSugg = (selSugg + (e.key === "ArrowDown" ? 1 : -1) + choixSugg.length) % choixSugg.length;
+      montrerSugg();
+    } else if (e.key === "Enter" && selSugg >= 0) {
+      e.preventDefault();
+      prendreSugg(choixSugg[selSugg]);
+    } else if (e.key === "Escape") fermerSugg();
+  }, true);
+  document.addEventListener("focusout", (e) => { if (e.target === champActif) setTimeout(fermerSugg, 150); });
+  window.addEventListener("resize", fermerSugg);
+  document.addEventListener("scroll", (e) => { if (!boite || !boite.contains(e.target)) fermerSugg(); }, true);
   window.pcImageBall = (fichier) => fichier ? SPRITES + "items/" + fichier + ".png" : "";
   // image du profil : l'avatar Discord si choisi (ou s'il n'y a pas de Pokémon), sinon le Pokémon
   // version animée des images Discord : avatar « a_… » en GIF, décoration en APNG

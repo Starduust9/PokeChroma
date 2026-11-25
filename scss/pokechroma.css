@@ -633,3 +633,17 @@ body.pc-aide-ouverte { overflow: hidden; }
 
 /* sprites des anciens jeux (pixel art) : agrandis sans flou */
 #main-page img.pc-pixel { image-rendering: pixelated; }
+
+/* choix de l'évolution actuelle (même style que le choix de la Ball, images plus grandes) */
+.pc-evo-grille img { width: 40px; height: 40px; object-fit: contain; image-rendering: auto; }
+.pc-evo-rien { grid-column: 1 / -1; margin: 6px; color: #9aa0b4; font-size: 14px; }
+
+/* noms de Pokémon proposés pendant la saisie */
+.pc-sugg { position: fixed; z-index: 3000; max-height: 60vh; overflow-y: auto; background: #1e1f29; border: 1px solid #3a3c4a; border-radius: 10px;
+  padding: 4px; box-shadow: 0 6px 18px rgba(0,0,0,.45); }
+.pc-sugg[hidden] { display: none; }
+.pc-sugg-l { display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 8px; color: #f8f8f2;
+  font-size: 15px; cursor: pointer; }
+.pc-sugg-l img, .pc-sugg-l span { width: 32px; height: 32px; object-fit: contain; flex: none; }
+.pc-sugg-l:hover, .pc-sugg-sel { background: #282a36; }
+.pc-sugg-sel { outline: 1px solid #ffd75e; }

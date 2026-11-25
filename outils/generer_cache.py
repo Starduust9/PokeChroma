@@ -23,7 +23,7 @@ fichiers = ["/", "/manifest.webmanifest", "/manifest-compteurs.webmanifest",
             "/assets/picture/icone-192.png", "/assets/picture/icone-512.png",
             "/assets/picture/drapeau-fr.svg", "/assets/picture/drapeau-en.svg",
             "/assets/picture/Logo.png", "/assets/data/tutos.json", "/assets/data/noms_pokemon.json",
-            "/assets/data/methodes.json"]
+            "/assets/data/methodes.json", "/assets/data/evolutions.json"]
 pages = []
 for motif in ("Router/*.js", "js/*.js", "pages/*.html", "pages/page-gen/*.html",
               "pages/en/*.html", "pages/en/page-gen/*.html"):
